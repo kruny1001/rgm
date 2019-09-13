@@ -1,7 +1,11 @@
 <template>
   <q-page id="game1" class="flex flex-center">
-    <q-btn @click="onLight()">보이기</q-btn>
-    <q-btn @click="showEgg()">알보이기</q-btn>
+    <section>
+      <q-btn @click="onLight()">보이기</q-btn>
+      <q-btn @click="showEgg()">알보이기</q-btn>
+    </section>
+    <!-- https://jsfiddle.net/de2o3c5s/40/ -->
+
     <!-- <h1 style="position: fixed; top:180px;">알깨기 게임</h1> -->
     <!-- <div> content loader </div>
     <img :src="imageData">
@@ -19,6 +23,7 @@ import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
 import {PixiPlugin} from "gsap/PixiPlugin";
 PixiPlugin.registerPIXI(PIXI);
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
+PIXI.settings.RESOLUTION = window.devicePixelRatio;
 let app
 let frames
 let frames2
@@ -44,12 +49,12 @@ export default {
       // TweenMax.to(orangeEggs, 1, {
       //   pixi: {scale: 1, x: 500 , y: 200, lineWidth: 5, fillColor: 0x0088f7 }
       // });
-      console.log(orangeEggs)
-      TweenMax.to(cardImg, 1, {
-        pixi: { x: 500, lineWidth: 5, fillColor: 0x0088f7 }
-      });
+      // console.log(orangeEggs)
+      // TweenMax.to(cardImg, 1, {
+      //   pixi: { x: 500, lineWidth: 5, fillColor: 0x0088f7 }
+      // });
       this.counts = this.counts + 1
-      orangeEggs.gotoAndStop(this.counts)
+      rbEggs.gotoAndStop(this.counts)
       this.$forceUpdate();
     },
     // 
@@ -58,25 +63,19 @@ export default {
       anim.loop = false;
       // anim.x = screen.width / 2;
       anim.y = screen.height / 2;
-      anim.x = screen.width / 2;
-      anim.height = 200.5 //asset.height;
-      anim.width = 200.5 //asset.width;
+      // anim.x = screen.width / 2;
+      anim.x = asset.x
+      anim.height = asset.height;
+      anim.width = asset.width;
       anim.anchor.set(0.5);
-      anim.animationSpeed = 0.6;
+      // anim.scale.set(0.675);
+      anim.animationSpeed = 0.7;
       // anim.play();
       // app.stage.addChild(anim);
-      
       anim.interactive = true;
-      anim.on("tap", event => {
-        console.log(1);
-      });
-
-      console.log(anim);
-      anim.size = 1;
+      anim.on("tap", event => { console.log(1) })
       var vm = this
-      anim.on('pointerdown', (e)=>{
-        this.onClick(e, id)
-      })
+      anim.on('pointerdown', (e)=>{ this.onClick(e, id) })
       return anim
     },
     onLightAssetLoaded(){
@@ -92,7 +91,11 @@ export default {
         let val = "000";
         if (i < 10) val = `00${i}`;
         else val = `0${i}`;
-        RBFrame.push(PIXI.Texture.from(`colorChange2.R-B_${val}.png`));
+        let sprite = PIXI.Texture.from(`colorChange2.R-B_${val}.png`)
+        // console.log(sprite)
+        sprite.baseTexture.mipmap = false;
+        // sprite.scale.set(0.275);
+        RBFrame.push(sprite);
       }
       for (let i = 0; i < 49; i++) {
         let val = "000";
@@ -102,7 +105,7 @@ export default {
       }
       orangeLight = this.assignSprite(frame1, {height: 100, width:100, x: 100},4)
       orangeEggs = this.assignSprite(frames, {height: 140, width:130, x: 300},3)
-      rbEggs = this.assignSprite(RBFrame, {height: 140, width:130, x: 300},3)
+      rbEggs = this.assignSprite(RBFrame, {height: 80, width:80, x: 200},3)
     },
     onAssetsLoaded() {
       // create an array of textures from an image path
@@ -113,19 +116,19 @@ export default {
         frames.push(PIXI.Texture.from(`colorChange1.W-R_${val}.png`));
         frames2.push(PIXI.Texture.from(`colorChange1.W-R_${val}.png`))
       }
-      redEggs = this.assignSprite(frames, {height: 100, width:100, x: 100},1)
+      redEggs = this.assignSprite(frames, {height: 70, width:70, x: 200},1)
       yellowEggs = this.assignSprite(frames2, {height: 200, width:100, x: 200},2)
       orangeEggs = this.assignSprite(frames, {height: 100, width:100, x: 300},3)
     },
     showEgg(){
-      let lightContainer = new PIXI.Container();
-      lightContainer.addChild( rbEggs);
-      lightContainer.scale.x =1
-      lightContainer.scale.y =1
-      gameScene.addChild(lightContainer);
-      orangeLight.scale.x  = 2
-      orangeLight.scale.y  = 2.5
-      rbEggs.gotoAndPlay(1)
+      let lightContainer = new PIXI.Container()
+      lightContainer.addChild(rbEggs)
+      // lightContainer.scale.x =1
+      // lightContainer.scale.y =1
+      // lightContainer.scale.set(1.2);
+      gameScene.addChild(lightContainer)
+      rbEggs.scale.set(0.7);
+      rbEggs.gotoAndPlay(0)
     },
     onLight(){
       let lightContainer = new PIXI.Container();
@@ -137,18 +140,22 @@ export default {
       orangeLight.scale.y  = 1
       orangeLight.gotoAndPlay(1)
     },
-    // Initialize App  
     async loadContents() {
       app = new PIXI.Application({
         // transparent: true,
-        width: 1700,
-        height: 900,
-        antialias: true,
-        backgroundColor: 0xFFFFFF
+        forceCanvas: true,
+        forceFXAA: true,
+        autoDensity: true,
+        width: 900,
+        resolution: 2,
+        height: 800,
+        // resizeTo: 'HTMLElement',
+        // antialias: true,
+        autoResize: true,
+        backgroundColor: 0x50545c
       });
       
       document.querySelector("#game1").appendChild(app.view);
-
       // Game Container
       gameScene = new PIXI.Container();
       app.stage.addChild(gameScene);
