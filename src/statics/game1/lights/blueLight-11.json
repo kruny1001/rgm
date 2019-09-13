@@ -1,0 +1,71 @@
+{"frames": {
+
+"eggBlueLight_006.png":
+{
+	"frame": {"x":1605,"y":803,"w":442,"h":442},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":747,"y":340,"w":442,"h":442},
+	"sourceSize": {"w":442,"h":442},
+	"anchor": {"x":0.4819,"y":0.588235}
+},
+"eggBlueLight_014.png":
+{
+	"frame": {"x":1,"y":821,"w":800,"h":800},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":561,"y":129,"w":800,"h":800},
+	"sourceSize": {"w":800,"h":800},
+	"anchor": {"x":0.49875,"y":0.58875}
+},
+"eggGreenLight_006.png":
+{
+	"frame": {"x":1605,"y":1247,"w":442,"h":442},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":747,"y":340,"w":442,"h":442},
+	"sourceSize": {"w":442,"h":442},
+	"anchor": {"x":0.4819,"y":0.588235}
+},
+"eggGreenLight_014.png":
+{
+	"frame": {"x":803,"y":821,"w":800,"h":800},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":561,"y":129,"w":800,"h":800},
+	"sourceSize": {"w":800,"h":800},
+	"anchor": {"x":0.49875,"y":0.58875}
+},
+"eggOrangeLight_014.png":
+{
+	"frame": {"x":820,"y":1,"w":800,"h":800},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":561,"y":129,"w":800,"h":800},
+	"sourceSize": {"w":800,"h":800},
+	"anchor": {"x":0.49875,"y":0.58875}
+},
+"eggWhtie light_015.png":
+{
+	"frame": {"x":1,"y":1,"w":817,"h":818},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":552,"y":118,"w":817,"h":818},
+	"sourceSize": {"w":817,"h":818},
+	"anchor": {"x":0.499388,"y":0.589242}
+}},
+"animations": {
+	"eggBlueLight": ["eggBlueLight_006.png","eggBlueLight_014.png"],
+	"eggGreenLight": ["eggGreenLight_006.png","eggGreenLight_014.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "blueLight-11.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":1690},
+	"scale": "1",
+	"related_multi_packs": [ "blueLight-0.json", "blueLight-1.json", "blueLight-2.json", "blueLight-3.json", "blueLight-4.json", "blueLight-5.json", "blueLight-6.json", "blueLight-7.json", "blueLight-8.json", "blueLight-9.json", "blueLight-10.json", "blueLight-12.json", "blueLight-13.json", "blueLight-14.json", "blueLight-15.json", "blueLight-16.json", "blueLight-17.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:7cf533701c14b9c4c6a6f33e7feac816:87adf437a90981cb599004c0d5c3605a:03e57e94f60810a34fd380df8995d866$"
+}
+}

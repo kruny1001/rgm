@@ -1,0 +1,51 @@
+{"frames": {
+
+"eggBlueLight_012.png":
+{
+	"frame": {"x":782,"y":782,"w":752,"h":752},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":586,"y":157,"w":752,"h":752},
+	"sourceSize": {"w":752,"h":752},
+	"anchor": {"x":0.49734,"y":0.589096}
+},
+"eggOrangeLight_013.png":
+{
+	"frame": {"x":1,"y":1,"w":779,"h":779},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":572,"y":141,"w":779,"h":779},
+	"sourceSize": {"w":779,"h":779},
+	"anchor": {"x":0.498074,"y":0.589217}
+},
+"eggPurpleLight_013.png":
+{
+	"frame": {"x":1,"y":782,"w":779,"h":779},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":572,"y":141,"w":779,"h":779},
+	"sourceSize": {"w":779,"h":779},
+	"anchor": {"x":0.498074,"y":0.589217}
+},
+"eggWhtie light_013.png":
+{
+	"frame": {"x":782,"y":1,"w":779,"h":779},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":572,"y":141,"w":779,"h":779},
+	"sourceSize": {"w":779,"h":779},
+	"anchor": {"x":0.498074,"y":0.589217}
+}},
+"animations": {
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "blueLight-13.png",
+	"format": "RGBA8888",
+	"size": {"w":1562,"h":1562},
+	"scale": "1",
+	"related_multi_packs": [ "blueLight-0.json", "blueLight-1.json", "blueLight-2.json", "blueLight-3.json", "blueLight-4.json", "blueLight-5.json", "blueLight-6.json", "blueLight-7.json", "blueLight-8.json", "blueLight-9.json", "blueLight-10.json", "blueLight-11.json", "blueLight-12.json", "blueLight-14.json", "blueLight-15.json", "blueLight-16.json", "blueLight-17.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:7cf533701c14b9c4c6a6f33e7feac816:87adf437a90981cb599004c0d5c3605a:03e57e94f60810a34fd380df8995d866$"
+}
+}
