@@ -1,0 +1,97 @@
+{"frames": {
+
+"colorChange6.P--R_040.png":
+{
+	"frame": {"x":1,"y":1,"w":560,"h":721},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":680,"y":170,"w":560,"h":721},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"colorChange6.P--R_041.png":
+{
+	"frame": {"x":1,"y":724,"w":560,"h":721},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":680,"y":170,"w":560,"h":721},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"colorChange6.P--R_042.png":
+{
+	"frame": {"x":563,"y":1,"w":560,"h":721},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":680,"y":170,"w":560,"h":721},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"colorChange6.P--R_043.png":
+{
+	"frame": {"x":724,"y":563,"w":560,"h":721},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":680,"y":170,"w":560,"h":721},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"colorChange6.P--R_044.png":
+{
+	"frame": {"x":1,"y":1286,"w":560,"h":721},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":680,"y":170,"w":560,"h":721},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"colorChange6.P--R_045.png":
+{
+	"frame": {"x":724,"y":1286,"w":560,"h":721},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":680,"y":170,"w":560,"h":721},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"colorChange6.P--R_046.png":
+{
+	"frame": {"x":1286,"y":1,"w":560,"h":721},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":680,"y":170,"w":560,"h":721},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"colorChange6.P--R_047.png":
+{
+	"frame": {"x":1286,"y":724,"w":560,"h":721},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":680,"y":170,"w":560,"h":721},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"colorChange6.P--R_048.png":
+{
+	"frame": {"x":1447,"y":1286,"w":560,"h":721},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":680,"y":170,"w":560,"h":721},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"animations": {
+	"colorChange6.P--R": ["colorChange6.P--R_040.png","colorChange6.P--R_041.png","colorChange6.P--R_042.png","colorChange6.P--R_043.png","colorChange6.P--R_044.png","colorChange6.P--R_045.png","colorChange6.P--R_046.png","colorChange6.P--R_047.png","colorChange6.P--R_048.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "egg-0.png",
+	"format": "RGBA8888",
+	"size": {"w":2008,"h":2008},
+	"scale": "1",
+	"related_multi_packs": [ "egg-1.json", "egg-2.json", "egg-3.json", "egg-4.json", "egg-5.json", "egg-6.json", "egg-7.json", "egg-8.json", "egg-9.json", "egg-10.json", "egg-11.json", "egg-12.json", "egg-13.json", "egg-14.json", "egg-15.json", "egg-16.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:0582fcdc6907db5bcc26e8e263dc38cb:24ea44d023c6fd8e7123ffdc678e8dec:0ff65bddc337d9ff2d68dbe40610fcca$"
+}
+}

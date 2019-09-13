@@ -1,6 +1,7 @@
 <template>
   <q-page id="game1" class="flex flex-center">
     <q-btn @click="onLight()">보이기</q-btn>
+    <q-btn @click="showEgg()">알보이기</q-btn>
     <!-- <h1 style="position: fixed; top:180px;">알깨기 게임</h1> -->
     <!-- <div> content loader </div>
     <img :src="imageData">
@@ -24,9 +25,11 @@ let frames2
 let redEggs
 let yellowEggs
 let orangeEggs
+let rbEggs
 let gameScene
 let cardImg
 let orangeLight
+
 export default {
   name: "PageIndex",
   data() {
@@ -36,6 +39,7 @@ export default {
     showYellow(){
       yellowEggs.visible = true
     },
+    // event for clicking egg
     onClick(e, id) {
       // TweenMax.to(orangeEggs, 1, {
       //   pixi: {scale: 1, x: 500 , y: 200, lineWidth: 5, fillColor: 0x0088f7 }
@@ -48,6 +52,7 @@ export default {
       orangeEggs.gotoAndStop(this.counts)
       this.$forceUpdate();
     },
+    // 
     assignSprite(tempFrames, asset, id){
       const anim = new PIXI.AnimatedSprite(tempFrames);
       anim.loop = false;
@@ -76,13 +81,28 @@ export default {
     },
     onLightAssetLoaded(){
       let frame1 = []
+      let RBFrame = []
       for (let i = 0; i < 25; i++) {
         let val = "000";
         if (i < 10) val = `00${i}`;
         else val = `0${i}`;
         frame1.push(PIXI.Texture.from(`eggOrangeLight_${val}.png`));
       }
-      orangeLight = this.assignSprite(frame1, {height: 10, width:10, x: 100},4)
+      for (let i = 0; i < 24; i++) {
+        let val = "000";
+        if (i < 10) val = `00${i}`;
+        else val = `0${i}`;
+        RBFrame.push(PIXI.Texture.from(`colorChange2.R-B_${val}.png`));
+      }
+      for (let i = 0; i < 49; i++) {
+        let val = "000";
+        if (i < 10) val = `00${i}`;
+        else val = `0${i}`;
+        frames.push(PIXI.Texture.from(`colorChange6.P--R_${val}.png`));
+      }
+      orangeLight = this.assignSprite(frame1, {height: 100, width:100, x: 100},4)
+      orangeEggs = this.assignSprite(frames, {height: 140, width:130, x: 300},3)
+      rbEggs = this.assignSprite(RBFrame, {height: 140, width:130, x: 300},3)
     },
     onAssetsLoaded() {
       // create an array of textures from an image path
@@ -97,9 +117,18 @@ export default {
       yellowEggs = this.assignSprite(frames2, {height: 200, width:100, x: 200},2)
       orangeEggs = this.assignSprite(frames, {height: 100, width:100, x: 300},3)
     },
+    showEgg(){
+      let lightContainer = new PIXI.Container();
+      lightContainer.addChild( rbEggs);
+      lightContainer.scale.x =1
+      lightContainer.scale.y =1
+      gameScene.addChild(lightContainer);
+      orangeLight.scale.x  = 2
+      orangeLight.scale.y  = 2.5
+      rbEggs.gotoAndPlay(1)
+    },
     onLight(){
       let lightContainer = new PIXI.Container();
-      // gameScene.addChild(orangeLight);
       lightContainer.addChild(orangeLight);
       lightContainer.scale.x =0.5
       lightContainer.scale.y =0.5
@@ -108,28 +137,21 @@ export default {
       orangeLight.scale.y  = 1
       orangeLight.gotoAndPlay(1)
     },
+    // Initialize App  
     async loadContents() {
       app = new PIXI.Application({
         // transparent: true,
-        width: 700,
+        width: 1700,
         height: 900,
         antialias: true,
         backgroundColor: 0xFFFFFF
       });
-
+      
       document.querySelector("#game1").appendChild(app.view);
 
+      // Game Container
       gameScene = new PIXI.Container();
       app.stage.addChild(gameScene);
-      cardImg = new PIXI.Container();
-
-      var graphics = new PIXI.Graphics();
-      graphics.lineStyle(2, 0xffffff, 1);
-      graphics.beginFill(0xff00bb, 0.25);
-      graphics.drawRoundedRect(10, 10, 100, 100, 5);
-      graphics.endFill();
-      cardImg.addChild(graphics);
-      gameScene.addChild(cardImg);
 
       const basicText = new PIXI.Text("알을 흔들어주세요.");
       basicText.x = app.screen.width / 2;
@@ -163,6 +185,23 @@ export default {
         .add("statics/game1/lights/blueLight-15.json")
         .add("statics/game1/lights/blueLight-16.json")
         .add("statics/game1/lights/blueLight-17.json")
+        .add("statics/game1/eggs/egg-0.json")
+        .add("statics/game1/eggs/egg-1.json")
+        .add("statics/game1/eggs/egg-2.json")
+        .add("statics/game1/eggs/egg-3.json")
+        .add("statics/game1/eggs/egg-4.json")
+        .add("statics/game1/eggs/egg-5.json")
+        .add("statics/game1/eggs/egg-6.json")
+        .add("statics/game1/eggs/egg-7.json")
+        .add("statics/game1/eggs/egg-8.json")
+        .add("statics/game1/eggs/egg-9.json")
+        .add("statics/game1/eggs/egg-10.json")
+        .add("statics/game1/eggs/egg-11.json")
+        .add("statics/game1/eggs/egg-12.json")
+        .add("statics/game1/eggs/egg-13.json")
+        .add("statics/game1/eggs/egg-14.json")
+        .add("statics/game1/eggs/egg-15.json")
+        .add("statics/game1/eggs/egg-16.json")
         .load(this.onLightAssetLoaded);
 
     }
