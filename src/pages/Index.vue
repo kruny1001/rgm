@@ -4,8 +4,8 @@
       <q-btn @click="onLight()">보이기</q-btn>
       <q-btn @click="showEgg()">알보이기</q-btn>
     </section>
-    <!-- https://jsfiddle.net/de2o3c5s/40/ -->
 
+    <!-- https://jsfiddle.net/de2o3c5s/40/ -->
     <!-- <h1 style="position: fixed; top:180px;">알깨기 게임</h1> -->
     <!-- <div> content loader </div>
     <img :src="imageData">
@@ -21,6 +21,8 @@
 import * as PIXI from "pixi.js";
 import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
 import {PixiPlugin} from "gsap/PixiPlugin";
+import { mapGetters, mapActions, mapState } from "vuex";
+
 PixiPlugin.registerPIXI(PIXI);
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 PIXI.settings.RESOLUTION = window.devicePixelRatio;
@@ -40,7 +42,16 @@ export default {
   data() {
     return { imageData: null, counts:0 };
   },
+  // computed:{
+  //   ...mapGetters({
+  //       app: 'game1/getApp',
+  //   })
+  // },
   methods: {
+    ...mapActions({
+      createGame : 'game1/createGame',
+      // resetPV : 'game1/reset'
+    }),
     showYellow(){
       yellowEggs.visible = true
     },
@@ -62,9 +73,11 @@ export default {
       const anim = new PIXI.AnimatedSprite(tempFrames);
       anim.loop = false;
       // anim.x = screen.width / 2;
-      anim.y = screen.height / 2;
+      // anim.y = screen.height / 2;
       // anim.x = screen.width / 2;
-      anim.x = asset.x
+      anim.x = app.screen.width / 2;
+      anim.y = app.screen.height / 2;
+      // anim.x = asset.x
       anim.height = asset.height;
       anim.width = asset.width;
       anim.anchor.set(0.5);
@@ -216,8 +229,8 @@ export default {
   mounted() {
     frames = []
     frames2 = []
-    
-    this.loadContents();
+    // this.loadContents();
+    this.createGame('game1')
   }
 };
 </script>

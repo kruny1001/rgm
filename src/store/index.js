@@ -5,6 +5,9 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+// OOP Style 
+import game1 from './modules/games/g1'
+
 /*
  * If not building with SSR mode, you can
  * directly export the Store instantiation
@@ -13,7 +16,7 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // example
+      game1
     },
 
     // enable strict mode (adds overhead!)
