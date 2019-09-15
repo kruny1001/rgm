@@ -31,9 +31,9 @@ class Game extends GameProperties {
       forceCanvas: true,
       forceFXAA: true,
       autoDensity: true,
-      width: 900,
+      width: 800,
       resolution: 2,
-      height: 800,
+      height: 1000,
       // antialias: true,
       autoResize: true,
     //   backgroundColor: 0x50545c
@@ -54,16 +54,16 @@ class Game extends GameProperties {
     basicText.text = textContent
     this.textContainer['hint'] = basicText
   }
-  preAnimation(objectId){
-    let colorEggs = [
-      // {name:'colorChange1.W-R_',frame:24}, 
-      {name:'colorChange2.R-B_',frame:24}, 
-      {name:'colorChange5.G-P_', frame:24}, 
-      {name:'colorChange4.O-G_', frame:24}, 
-      {name:'colorChange3.B-O_', frame:24}, 
-      {name:'colorChange6.P--R_', frame:48}]
+  preAnimation(objectId, relatedObjs){
+    // let colorEggs = [
+    //   // {name:'colorChange1.W-R_',frame:24}, 
+    //   {name:'colorChange2.R-B_',frame:24}, 
+    //   {name:'colorChange5.G-P_', frame:24}, 
+    //   {name:'colorChange4.O-G_', frame:24}, 
+    //   {name:'colorChange3.B-O_', frame:24}, 
+    //   {name:'colorChange6.P--R_', frame:48}]
     
-    for(let target of colorEggs){
+    for(let target of relatedObjs){
       let targetSprite = this.activeSprites[target.name]  
       targetSprite.parent.visible = false;
     }
@@ -71,11 +71,17 @@ class Game extends GameProperties {
     finalTarget.parent.visible = true;
     finalTarget.gotoAndStop(0)
   }
+
   playFrameAnimation(objectId, frame){
     let finalTarget = this.activeSprites[objectId]
     finalTarget.gotoAndStop(frame)
-    
   }
+
+  playAllAnimation(objectId){
+    let finalTarget = this.activeSprites[objectId]
+    finalTarget.gotoAndPlay(0)
+  }
+
   assignSprite(tempFrames, asset){
     const anim = new PIXI.AnimatedSprite(tempFrames);
       anim.loop = false;
@@ -90,26 +96,40 @@ class Game extends GameProperties {
     //   anim.on('pointerdown', (e)=>{ this.onClick(e, id) })
       return anim
   }
+
   onEffectLoaded() {
+    let colorEffectEggs = [
+      {name:'eggWhtieLight_',frame:24}, 
+      {name:'eggRedLight_',frame:24}, 
+      {name:'eggBlueLight_',frame:24}, 
+      {name:'eggPurpleLight_', frame:24}, 
+      {name:'eggGreenLight_', frame:24}, 
+      {name:'eggOrangeLight_', frame:24}, 
+      {name:'twinkle_', frame:36}, 
+    ]
+    for(let target of colorEffectEggs){
       let frame1 = []
-    for (let i = 0; i < 25; i++) {
+      for (let i = 0; i < target.frame; i++) {
         let val = "000";
         if (i < 10) val = `00${i}`;
         else val = `0${i}`;
-        frame1.push(PIXI.Texture.from(`eggOrangeLight_${val}.png`));
+        let sprite = PIXI.Texture.from(`${target.name}${val}.png`)
+        sprite.baseTexture.mipmap = false;
+        frame1.push(sprite);
+      }
+      let orangeLight = this.assignSprite(frame1, {height: 100, width:100, x: 100},4)
+      let lightContainer = new PIXI.Container()
+      lightContainer.addChild(orangeLight)
+      this.app.stage.addChild(lightContainer);
+      orangeLight.scale.set(0.7);
+      orangeLight.animationSpeed = 1;
+      this.activeSprites[target.name] = orangeLight
     }
-    let orangeLight = this.assignSprite(frame1, {height: 100, width:100, x: 100},4)
-    let lightContainer = new PIXI.Container()
-    lightContainer.addChild(orangeLight)
-    this.app.stage.addChild(lightContainer);
-    orangeLight.scale.set(0.7);
-    orangeLight.animationSpeed = 1;
-    this.activeSprites['eggOrangeLight'] = orangeLight
   }
 
   onLightAssetLoaded(){
     let colorEggs = [
-      // {name:'colorChange1.W-R_',frame:24}, 
+      {name:'colorChange1.W-R_',frame:24}, 
       {name:'colorChange2.R-B_',frame:24}, 
       {name:'colorChange5.G-P_', frame:24}, 
       {name:'colorChange4.O-G_', frame:24}, 
@@ -151,30 +171,18 @@ class Game extends GameProperties {
   loadContents(){
     this.app.loader
 
-    .add("statics/game1/lights/blueLight-0.json")
-    .add("statics/game1/lights/blueLight-1.json")
-    .add("statics/game1/lights/blueLight-2.json")
-    .add("statics/game1/lights/blueLight-3.json")
-    .add("statics/game1/lights/blueLight-4.json")
-    .add("statics/game1/lights/blueLight-5.json")
-    .add("statics/game1/lights/blueLight-6.json")
-    .add("statics/game1/lights/blueLight-7.json")
-    .add("statics/game1/lights/blueLight-8.json")
-    .add("statics/game1/lights/blueLight-9.json")
-    .add("statics/game1/lights/blueLight-10.json")
-    .add("statics/game1/lights/blueLight-11.json")
-    .add("statics/game1/lights/blueLight-12.json")
-    .add("statics/game1/lights/blueLight-13.json")
-    .add("statics/game1/lights/blueLight-14.json")
-    .add("statics/game1/lights/blueLight-15.json")
-    .add("statics/game1/lights/blueLight-16.json")
-    .add("statics/game1/lights/blueLight-17.json")
-
-    .add("statics/game1/eggs/egg-0.json")
-    .add("statics/game1/eggs/egg-1.json")
-    .add("statics/game1/eggs/egg-2.json")
-    .add("statics/game1/eggs/egg-3.json")
+    .add("statics/game1/game1-0.json")
+    .add("statics/game1/game1-1.json")
+    .add("statics/game1/game1-2.json")
+    .add("statics/game1/game1-3.json")
+    .add("statics/game1/game1-4.json")
+    .add("statics/game1/game1-5.json")
+    .add("statics/game1/game1-6.json")
+    .add("statics/game1/game1-7.json")
+    .add("statics/game1/game1-8.json")
+    .add("statics/game1/game1-9.json")
     .load((loader, resources) => {
+      this.onEffectLoaded()
       this.onEffectLoaded()
       this.onLightAssetLoaded()
     })

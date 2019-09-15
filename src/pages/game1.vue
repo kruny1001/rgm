@@ -1,25 +1,17 @@
 <template>
-  <q-page id="game1" class="flex flex-center">
-    <section>
-      <!-- <q-btn @click="onLight()">보이기</q-btn>
-      <q-btn @click="eggAni()">알보이기</q-btn> -->
-      <pre> {{count}} {{total}}</pre>
-      <q-btn @click="eggAni('colorChange2.R-B_')">Shaking Event 1</q-btn>
-      <q-btn @click="eggAni('colorChange5.G-P_')">Shaking Event 2 </q-btn>
-      <q-btn @click="eggAni('colorChange4.O-G_')">Shaking Event 3 </q-btn>
-      <q-btn @click="eggAni('colorChange3.B-O_')">Shaking Event 4 </q-btn>
-      <q-btn @click="eggAni('colorChange6.P--R_')">Shaking Event 5 </q-btn>
-      <q-btn @click="eggAni()">Shaking Event 6 </q-btn>
-      
+  <!-- <q-page class="flex flex-center"> -->
+  <q-page class="">
+    <section style="margin: 0 auto; width:1200px;">
+      <q-btn @click="loadContents()">load contents </q-btn>
+      <q-btn @click="readyGame()">readyGame </q-btn>
+      <q-btn @click="twinkle()"> Twinkle </q-btn>
+      <hr/>
+      <pre> CurrentCount: {{count}} SenstivityTotal: {{total}} Stage: {{stage}}</pre>
+      <q-btn @click="eggAni()">Shaking Event </q-btn>
     </section>
-
-    <!-- https://jsfiddle.net/de2o3c5s/40/ -->
-    <!-- <h1 style="position: fixed; top:180px;">알깨기 게임</h1> -->
-    <!-- <div> content loader </div>
-    <img :src="imageData">
-    <img src="https://storage.cloud.google.com/dershare-db/fn.png">-->
-    <!-- <h1 style="position: fixed; bottom:180px;">알을 흔들어주세요. {{counts}}</h1> -->
-
+    <section id="game1" style="margin: 0 auto; width:100%; position:relative;">
+      <h3 style="position:absolute; bottom: 200px; width:100%; text-align:center;"> 알을 흔들어주세요!</h3>
+    </section>
   </q-page>
 </template>
 <script>
@@ -27,33 +19,81 @@ import Game from 'boot/gameLib'
 export default {
   data(){
     return {
+      effects : [
+      {name:'eggWhtieLight_',frame:24}, 
+      {name:'eggRedLight_',frame:24}, 
+      {name:'eggBlueLight_',frame:24}, 
+      {name:'eggPurpleLight_', frame:24}, 
+      {name:'eggGreenLight_', frame:24}, 
+      {name:'eggOrangeLight_', frame:24}, 
+      {name:'twinkle_', frame:36}, 
+      ],
+      eggs: [
+        {name:'colorChange1.W-R_',frame:24}, 
+        {name:'colorChange2.R-B_',frame:24}, 
+        {name:'colorChange5.G-P_', frame:24}, 
+        {name:'colorChange4.O-G_', frame:24}, 
+        {name:'colorChange3.B-O_', frame:24}, 
+        {name:'colorChange6.P--R_', frame:48}],
+      stage: 0,
       game: null,
       count: 0,
-      acc: null
+      acc: null,
+      total: 0,
     }
   },
   methods:{
-    eggAni(id){
+    twinkle(){
+      this.game.preAnimation('twinkle_', this.effects)
+      this.game.playAllAnimation('twinkle_')
+    },
+    eggAni(){
+      if(this.stage < 6){
+        let id = this.eggs[this.stage].name
+        let count = this.eggs[this.stage].frame
+        let effectId = this.effects[this.stage].name
+        let effectCount = this.effects[this.stage].frame
+
+        this.game.preAnimation(id, this.eggs)
+        this.game.playFrameAnimation(id, this.count)
+
+        this.game.preAnimation(effectId, this.effects)
+        this.game.playAllAnimation(effectId)
+        
+        this.count = this.count + 1
+        if(this.count >= count){
+          this.count = 0
+          this.stage = this.stage + 1
+          this.game.changeText('hint', `${this.stage} 번째 색깔이 변했어요!`)
+        } 
+      }
+      else {
+        this.twinkle()
+      }
+    },
+    loadContents(){
+      this.game.loadContents()
+    },
+    readyGame(){
+      let id = this.eggs[this.stage].name
+      let count = this.eggs[this.stage].frame
       this.game.preAnimation(id)
       this.game.playFrameAnimation(id, this.count)
-      this.game.changeText('hint', '4 번째 변화')
-      this.count = this.count + 1
-      if(this.count >= 24)
-        this.count = 0
     }
   },
+  created(){
+    
+    
+  },
   mounted(){
-    console.log(Game)
     this.game = Game
     this.game.createApp('game1')
-    this.game.showText('알을 흔들어주세요.')
-    this.game.loadContents()
+    // this.game.showText('알을 흔들어주세요.')
     const vm = this
     window.addEventListener("devicemotion", event => {
         var x = event.acceleration.x;
         var y = event.acceleration.y;
         var z = event.acceleration.z;
-
         // need to define shake rule
         vm.acc = [x,y,z]
         const sensitive = 1000.5
@@ -61,7 +101,7 @@ export default {
           vm.acc = [x,y,z,'shake']
           vm.total = x**2 + y**2
           console.log('shake')
-          vm.eggAni('colorChange2.R-B_')
+          eggAni()
           // trigger shake action from here
         }
     })
@@ -73,6 +113,8 @@ export default {
 canvas{
   padding:10px; 
   margin:10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  display: block;
+  margin: 0 auto;
 }
 </style>
