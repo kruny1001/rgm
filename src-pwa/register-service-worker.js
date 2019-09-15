@@ -1,4 +1,5 @@
 import { register } from 'register-service-worker'
+import { Notify } from 'quasar'
 
 // The ready(), registered(), cached(), updatefound() and updated()
 // events passes a ServiceWorkerRegistration instance in their arguments.
@@ -29,6 +30,14 @@ register(process.env.SERVICE_WORKER_FILE, {
 
   updated (registration) {
     console.log('New content is available; please refresh.')
+    Notify.create({
+      message: '업데이트를 위해 페이지를 새로고침 합니다.',
+      position: 'top',
+      timeout: 2000, 
+      onDismiss: () => {
+        location.reload(true)
+      }
+    })
   },
 
   offline () {
