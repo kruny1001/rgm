@@ -41,7 +41,9 @@ class Game extends GameProperties {
     });
     document.querySelector(`#${targetId}`).appendChild(this.app.view);
   }
-
+  changeText(id, content){
+    this.textContainer[id].text = content
+  }
   showText(textContent){
     let gameScene = new PIXI.Container();
     this.app.stage.addChild(gameScene);
@@ -52,7 +54,28 @@ class Game extends GameProperties {
     basicText.text = textContent
     this.textContainer['hint'] = basicText
   }
-
+  preAnimation(objectId){
+    let colorEggs = [
+      // {name:'colorChange1.W-R_',frame:24}, 
+      {name:'colorChange2.R-B_',frame:24}, 
+      {name:'colorChange5.G-P_', frame:24}, 
+      {name:'colorChange4.O-G_', frame:24}, 
+      {name:'colorChange3.B-O_', frame:24}, 
+      {name:'colorChange6.P--R_', frame:48}]
+    
+    for(let target of colorEggs){
+      let targetSprite = this.activeSprites[target.name]  
+      targetSprite.parent.visible = false;
+    }
+    let finalTarget = this.activeSprites[objectId]
+    finalTarget.parent.visible = true;
+    finalTarget.gotoAndStop(0)
+  }
+  playFrameAnimation(objectId, frame){
+    let finalTarget = this.activeSprites[objectId]
+    finalTarget.gotoAndStop(frame)
+    
+  }
   assignSprite(tempFrames, asset){
     const anim = new PIXI.AnimatedSprite(tempFrames);
       anim.loop = false;
@@ -80,35 +103,54 @@ class Game extends GameProperties {
     lightContainer.addChild(orangeLight)
     this.app.stage.addChild(lightContainer);
     orangeLight.scale.set(0.7);
-    orangeLight.gotoAndPlay(0)
+    orangeLight.animationSpeed = 1;
+    this.activeSprites['eggOrangeLight'] = orangeLight
   }
 
   onLightAssetLoaded(){
-    let rbFrames = []
+    let colorEggs = [
+      // {name:'colorChange1.W-R_',frame:24}, 
+      {name:'colorChange2.R-B_',frame:24}, 
+      {name:'colorChange5.G-P_', frame:24}, 
+      {name:'colorChange4.O-G_', frame:24}, 
+      {name:'colorChange3.B-O_', frame:24}, 
+      {name:'colorChange6.P--R_', frame:48}]
     
-    for (let i = 0; i < 24; i++) {
-      let val = "000";
-      if (i < 10) val = `00${i}`;
-      else val = `0${i}`;
-      let sprite = PIXI.Texture.from(`colorChange2.R-B_${val}.png`)
-      sprite.baseTexture.mipmap = false;
-      rbFrames.push(sprite);
+    for(let target of colorEggs){
+      let rbFrames = []
+
+      for (let i = 0; i < target.frame; i++) {
+        let val = "000";
+        if (i < 10) val = `00${i}`;
+        else val = `0${i}`;
+        let sprite = PIXI.Texture.from(`${target.name}${val}.png`)
+        sprite.baseTexture.mipmap = false;
+        rbFrames.push(sprite);
+      }
+
+      let rbEggSprite = this.assignSprite(rbFrames, {height: 80, width:80, x: 200})
+      rbEggSprite.scale.set(0.7);
+      rbEggSprite.gotoAndStop(0)
+
+      this.activeSprites[target.name] = rbEggSprite
+      
+      let lightContainer = new PIXI.Container()
+      lightContainer.addChild(rbEggSprite)
+
+      this.app.stage.addChild(lightContainer);
+      
     }
-    let rbEggSprite = this.assignSprite(rbFrames, {height: 80, width:80, x: 200})
+    console.log(this.activeSprites)
     
-    this.activeSprites['rbEggSprite'] = rbEggSprite
 
-    let lightContainer = new PIXI.Container()
-    lightContainer.addChild(rbEggSprite)
 
-    this.app.stage.addChild(lightContainer);
 
-    rbEggSprite.scale.set(0.7);
-    rbEggSprite.gotoAndPlay(0)
+    
 
   }
   loadContents(){
     this.app.loader
+
     .add("statics/game1/lights/blueLight-0.json")
     .add("statics/game1/lights/blueLight-1.json")
     .add("statics/game1/lights/blueLight-2.json")
@@ -128,16 +170,16 @@ class Game extends GameProperties {
     .add("statics/game1/lights/blueLight-16.json")
     .add("statics/game1/lights/blueLight-17.json")
 
-      .add("statics/game1/eggs/egg-0.json")
-      .add("statics/game1/eggs/egg-1.json")
-      .add("statics/game1/eggs/egg-2.json")
-      .add("statics/game1/eggs/egg-3.json")
-      .load((loader, resources) => {
-        this.onEffectLoaded()
-        this.onLightAssetLoaded()
-    
-      })
+    .add("statics/game1/eggs/egg-0.json")
+    .add("statics/game1/eggs/egg-1.json")
+    .add("statics/game1/eggs/egg-2.json")
+    .add("statics/game1/eggs/egg-3.json")
+    .load((loader, resources) => {
+      this.onEffectLoaded()
+      this.onLightAssetLoaded()
+    })
   }
+  
 }
 
 export default new Game();
