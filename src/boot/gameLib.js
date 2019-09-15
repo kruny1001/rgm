@@ -31,7 +31,7 @@ class Game extends GameProperties {
       forceCanvas: true,
       forceFXAA: true,
       autoDensity: true,
-      width: 800,
+      width: 680,
       resolution: 2,
       height: 1000,
       // antialias: true,
@@ -55,14 +55,7 @@ class Game extends GameProperties {
     this.textContainer['hint'] = basicText
   }
   preAnimation(objectId, relatedObjs){
-    // let colorEggs = [
-    //   // {name:'colorChange1.W-R_',frame:24}, 
-    //   {name:'colorChange2.R-B_',frame:24}, 
-    //   {name:'colorChange5.G-P_', frame:24}, 
-    //   {name:'colorChange4.O-G_', frame:24}, 
-    //   {name:'colorChange3.B-O_', frame:24}, 
-    //   {name:'colorChange6.P--R_', frame:48}]
-    
+
     for(let target of relatedObjs){
       let targetSprite = this.activeSprites[target.name]  
       targetSprite.parent.visible = false;

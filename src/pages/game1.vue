@@ -2,8 +2,8 @@
   <!-- <q-page class="flex flex-center"> -->
   <q-page class="">
     <section style="margin: 0 auto; width:1200px;">
-      <q-btn @click="loadContents()">load contents </q-btn>
-      <q-btn @click="readyGame()">readyGame </q-btn>
+      <!-- <q-btn @click="loadContents()">load contents </q-btn>
+      <q-btn @click="readyGame()">readyGame </q-btn> -->
       <q-btn @click="twinkle()"> Twinkle </q-btn>
       <hr/>
       <pre> CurrentCount: {{count}} SenstivityTotal: {{total}} Stage: {{stage}}</pre>
@@ -90,6 +90,9 @@ export default {
     this.game.createApp('game1')
     // this.game.showText('알을 흔들어주세요.')
     const vm = this
+    
+    this.game.loadContents()
+
     window.addEventListener("devicemotion", event => {
         var x = event.acceleration.x;
         var y = event.acceleration.y;
