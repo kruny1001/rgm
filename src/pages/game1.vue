@@ -104,7 +104,7 @@ export default {
           vm.acc = [x,y,z,'shake']
           vm.total = x**2 + y**2
           console.log('shake')
-          eggAni()
+          this.eggAni()
           // trigger shake action from here
         }
     })
