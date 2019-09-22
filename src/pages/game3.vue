@@ -18,27 +18,11 @@
 <script>
 import {leafSetting, levelSetting} from './game3Setting.js'
 
-
-function Job(obj){
-  return {
-      id : 'no-id',
-      callback : null,
-      timeout: 0,
-      ...obj,
-      started: new Date(),
-      elapsed : 0,
-      done: false,
-    }
-}
-
 class LarvaG extends PIXI.Container {
   constructor (){
     super()
-    // this.larva = new PIXI.Sprite.from('statics/game3/larvaG_000.png')
-
     let colorEggs = [
-      {name:'larvaG_',frame:13}, 
-      
+      {name:'larvaG_',frame:13},
     ]
 
     for(let target of colorEggs){
@@ -52,13 +36,9 @@ class LarvaG extends PIXI.Container {
         rbFrames.push(sprite);
       }
 
-      this.larva = this.assignSprite(rbFrames, {height: 80, width:80, x: 200})
-      this.larva.scale.set(0.7);
+      this.larva = this.assignSprite(rbFrames)
       this.larva.animationSpeed = 0.6;
       this.larva.loop = true
-      this.larva.play()
-      // this.activeSprites[target.name] = rbEggSprite
-      this.addChild(this.larva)
     }
   
     this.clicked = false
@@ -67,21 +47,14 @@ class LarvaG extends PIXI.Container {
   assignSprite(tempFrames, asset){
     const anim = new PIXI.AnimatedSprite(tempFrames);
       anim.loop = false;
-      // anim.visible = false;
-      // anim.x = 100
-      // anim.y = 100
-      // anim.height = asset.height;
-      // anim.width = asset.width;
-      // anim.anchor.set(0.5);
       anim.animationSpeed = 0.7;
       anim.interactive = true;
-      // anim.on("tap", event => { console.log(1) })
-    //   anim.on('pointerdown', (e)=>{ this.onClick(e, id) })
       return anim
   }
 
   startLarva(onClick, onTimeout, time){
-    this.addChild( this.larva )
+    this.addChild(this.larva)
+    this.larva.play()
     // move larva animation
 
     // add event
@@ -105,7 +78,6 @@ class LarvaR extends PIXI.Container {
   
   constructor (){
     super()
-    // this.larva = new PIXI.Sprite.from('statics/game3/larvaR_000.png')
     this.clicked = false
     this.timeout = null
 
@@ -125,18 +97,15 @@ class LarvaR extends PIXI.Container {
         rbFrames.push(sprite);
       }
 
-      this.larva = this.assignSprite(rbFrames, {height: 160, width:80, x: 200})
-      this.larva.scale.set(0.7);
+      this.larva = this.assignSprite(rbFrames)
       this.larva.animationSpeed = 0.6;
       this.larva.loop = true
-      this.larva.play()
-      // this.activeSprites[target.name] = rbEggSprite
-      this.addChild(this.larva)
     }
   }
 
   startLarva(onClick, onTimeout, time){
-    // this.addChild( this.larva )
+    this.addChild( this.larva )
+    this.larva.play()
     // move larva animation
 
     // add event
@@ -157,16 +126,7 @@ class LarvaR extends PIXI.Container {
   assignSprite(tempFrames, asset){
     const anim = new PIXI.AnimatedSprite(tempFrames);
       anim.loop = false;
-      // anim.visible = false;
-      // anim.x = 100
-      // anim.y = 100
-      // anim.height = asset.height;
-      // anim.width = asset.width;
-      // anim.anchor.set(0.5);
       anim.animationSpeed = 0.7;
-      anim.interactive = true;
-      // anim.on("tap", event => { console.log(1) })
-    //   anim.on('pointerdown', (e)=>{ this.onClick(e, id) })
       return anim
   }
 }
@@ -227,6 +187,9 @@ class Game3 {
 
   }
   startLevel(level, onComplete){
+    if( this.interval){
+      return
+    }
     this.level = level
     this._updateScore(0)
     console.log('start game')
@@ -286,9 +249,9 @@ class Game3 {
     const larva = larvaColor == 'G' ? new LarvaG() : new LarvaR()
     larva.scale.x = scale
     larva.scale.y = scale
-    larva.x = leafPos.x - 300 * scale
-    larva.y = leafPos.y - 300 * scale
-    
+    larva.x = leafPos.x // - 300 * scale +200
+    larva.y = leafPos.y // - 300 * scale
+
     this.leafBox.addChild(larva)
     if( larvaColor == 'G' ){
       const touchGoodLarva = () => {
