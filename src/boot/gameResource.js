@@ -35,7 +35,11 @@ class GameLoader extends GameProperties {
   getCached(){
     console.log(this.Loader.resources)
   }
-  bringAllResource() {
+  bringAllResource(targetResource) {
+    // console.log(targetResource)
+    // targetResource.forEach(item=>{
+    //   this.Loader.add(item.name, item.src)  
+    // })
     this.Loader
       .add('game1Sprite0', "statics/game1/game1-0.json")
       .add('game1Sprite1', "statics/game1/game1-1.json")

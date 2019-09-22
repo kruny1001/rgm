@@ -125,6 +125,7 @@ class Game3 {
     this.level = 1
     return this._gameLoop(this.level)
   }
+
   async _gameLoop(){
     while(1){
       const successRate = await this._startLevel(this.level)
@@ -132,6 +133,7 @@ class Game3 {
       await this._showResult()
     }
   }
+
   async _startLevel(level){
     this.leafBox.alpha = 0.5
     this.scoreBox.alpha = 0.5
@@ -259,6 +261,11 @@ export default {
   mounted(){
     const game = new Game3(this.$refs.game3)
     game.start()
+  },
+  beforeDestroy() {
+    console.log('Main Vue destroyed')
+    // this.destroy()
+    delete this.game
   }
 };
 </script>
