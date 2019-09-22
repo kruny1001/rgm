@@ -13,8 +13,7 @@ class GameProperties {
     this.userId = '0123'
     this.robotId = '0123',
     this.activeSprites = {},
-    this.textContainer = {},
-    this.resources = []
+    this.textContainer = {}
   }
   drive(target) {
     return target++;
@@ -59,6 +58,7 @@ class Game extends GameProperties {
   }
   
   preAnimation(objectId, relatedObjs){
+
     for(let target of relatedObjs){
       let targetSprite = this.activeSprites[target.name]  
       targetSprite.parent.visible = false;
@@ -94,7 +94,6 @@ class Game extends GameProperties {
   }
 
   onEffectLoaded() {
-
     let colorEffectEggs = [
       {name:'eggWhtieLight_',frame:24}, 
       {name:'eggRedLight_',frame:24}, 
@@ -104,7 +103,6 @@ class Game extends GameProperties {
       {name:'eggOrangeLight_', frame:24}, 
       {name:'twinkle_', frame:36}, 
     ]
-
     for(let target of colorEffectEggs){
       let frame1 = []
       for (let i = 0; i < target.frame; i++) {
@@ -123,7 +121,6 @@ class Game extends GameProperties {
       orangeLight.animationSpeed = 1;
       this.activeSprites[target.name] = orangeLight
     }
-
   }
 
   onLightAssetLoaded(){
@@ -157,41 +154,28 @@ class Game extends GameProperties {
       lightContainer.addChild(rbEggSprite)
 
       this.app.stage.addChild(lightContainer);
-      
     }
-    // console.log(this.activeSprites)
-    
-
-
-
-    
-
+    console.log(this.activeSprites)
   }
   loadContents(){
-    console.log(this.activeSprites)
+    this.app.loader
 
-    this.onEffectLoaded()
-    this.onEffectLoaded()
-    this.onLightAssetLoaded()
-    
-    // this.app.loader
-    // .add("statics/game1/game1-0.json")
-    // .add("statics/game1/game1-1.json")
-    // .add("statics/game1/game1-2.json")
-    // .add("statics/game1/game1-3.json")
-    // .add("statics/game1/game1-4.json")
-    // .add("statics/game1/game1-5.json")
-    // .add("statics/game1/game1-6.json")
-    // .add("statics/game1/game1-7.json")
-    // .add("statics/game1/game1-8.json")
-    // .add("statics/game1/game1-9.json")
-    // .load((loader, resources) => {
-    //   this.onEffectLoaded()
-    //   this.onEffectLoaded()
-    //   this.onLightAssetLoaded()
-    // })
-  }
-  
+    .add("statics/game1/game1-0.json")
+    .add("statics/game1/game1-1.json")
+    .add("statics/game1/game1-2.json")
+    .add("statics/game1/game1-3.json")
+    .add("statics/game1/game1-4.json")
+    .add("statics/game1/game1-5.json")
+    .add("statics/game1/game1-6.json")
+    .add("statics/game1/game1-7.json")
+    .add("statics/game1/game1-8.json")
+    .add("statics/game1/game1-9.json")
+    .load((loader, resources) => {
+      this.onEffectLoaded()
+      this.onEffectLoaded()
+      this.onLightAssetLoaded()
+    })
+  }  
 }
 
-export default new Game();
+export default Game;

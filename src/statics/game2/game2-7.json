@@ -1,0 +1,71 @@
+{"frames": {
+
+"pio3_sleep/pio3_sleep_017.png":
+{
+	"frame": {"x":659,"y":1,"w":656,"h":768},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":175,"w":656,"h":768},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_018.png":
+{
+	"frame": {"x":1317,"y":1,"w":656,"h":768},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":175,"w":656,"h":768},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_019.png":
+{
+	"frame": {"x":659,"y":1,"w":656,"h":768},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":175,"w":656,"h":768},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio4_wakeup/pio4_wakeup_003.png":
+{
+	"frame": {"x":777,"y":771,"w":656,"h":768},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":175,"w":656,"h":768},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio4_wakeup/pio4_wakeup_004.png":
+{
+	"frame": {"x":1,"y":782,"w":656,"h":774},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":169,"w":656,"h":774},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio4_wakeup/pio4_wakeup_005.png":
+{
+	"frame": {"x":1,"y":1,"w":656,"h":779},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":164,"w":656,"h":779},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"animations": {
+	"pio3_sleep/pio3_sleep": ["pio3_sleep/pio3_sleep_017.png","pio3_sleep/pio3_sleep_018.png","pio3_sleep/pio3_sleep_019.png"],
+	"pio4_wakeup/pio4_wakeup": ["pio4_wakeup/pio4_wakeup_003.png","pio4_wakeup/pio4_wakeup_004.png","pio4_wakeup/pio4_wakeup_005.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "game2-7.png",
+	"format": "RGBA8888",
+	"size": {"w":1974,"h":1439},
+	"scale": "1",
+	"related_multi_packs": [ "game2-0.json", "game2-1.json", "game2-2.json", "game2-3.json", "game2-4.json", "game2-5.json", "game2-6.json", "game2-8.json", "game2-9.json", "game2-10.json", "game2-11.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:f0b1bace1d68892fa4332655b7073f4c:9d7386deed1e3a91ff379e5f4d815653:0b6cfdb63a0ca986605ca2e4ada948d8$"
+}
+}

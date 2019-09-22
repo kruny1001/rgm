@@ -1,0 +1,61 @@
+{"frames": {
+
+"pio4_wakeup/pio4_wakeup_006.png":
+{
+	"frame": {"x":1338,"y":672,"w":656,"h":793},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":150,"w":656,"h":793},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio4_wakeup/pio4_wakeup_007.png":
+{
+	"frame": {"x":672,"y":672,"w":664,"h":806},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":137,"w":664,"h":806},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio4_wakeup/pio4_wakeup_008.png":
+{
+	"frame": {"x":1,"y":1,"w":669,"h":811},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":132,"w":669,"h":811},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio4_wakeup/pio4_wakeup_009.png":
+{
+	"frame": {"x":1,"y":814,"w":669,"h":811},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":132,"w":669,"h":811},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio4_wakeup/pio4_wakeup_010.png":
+{
+	"frame": {"x":672,"y":1,"w":669,"h":811},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":132,"w":669,"h":811},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"animations": {
+	"pio4_wakeup/pio4_wakeup": ["pio4_wakeup/pio4_wakeup_006.png","pio4_wakeup/pio4_wakeup_007.png","pio4_wakeup/pio4_wakeup_008.png","pio4_wakeup/pio4_wakeup_009.png","pio4_wakeup/pio4_wakeup_010.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "game2-6.png",
+	"format": "RGBA8888",
+	"size": {"w":1995,"h":1626},
+	"scale": "1",
+	"related_multi_packs": [ "game2-0.json", "game2-1.json", "game2-2.json", "game2-3.json", "game2-4.json", "game2-5.json", "game2-7.json", "game2-8.json", "game2-9.json", "game2-10.json", "game2-11.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:f0b1bace1d68892fa4332655b7073f4c:9d7386deed1e3a91ff379e5f4d815653:0b6cfdb63a0ca986605ca2e4ada948d8$"
+}
+}

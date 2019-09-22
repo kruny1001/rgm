@@ -15,6 +15,7 @@
   </q-page>
 </template>
 <script>
+
 import Game from 'boot/gameLib'
 export default {
   data(){
@@ -88,16 +89,12 @@ export default {
   mounted(){
     this.game = Game
     this.game.createApp('game1')
-    // this.game.showText('알을 흔들어주세요.')
     const vm = this
-    
     this.game.loadContents()
-
     window.addEventListener("devicemotion", event => {
         var x = event.acceleration.x;
         var y = event.acceleration.y;
         var z = event.acceleration.z;
-        // need to define shake rule
         vm.acc = [x,y,z]
         const sensitive = 1000.5
         if( x**2 + y**2 > sensitive ) {
@@ -105,10 +102,14 @@ export default {
           vm.total = x**2 + y**2
           console.log('shake')
           this.eggAni()
-          // trigger shake action from here
         }
     })
 
+  },
+  beforeDestroy() {
+    console.log('Main Vue destroyed')
+    // this.destroy()
+    delete this.game
   }
 };
 </script>

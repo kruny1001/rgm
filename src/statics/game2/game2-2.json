@@ -1,0 +1,117 @@
+{"frames": {
+
+"effect_firework/firework_013.png":
+{
+	"frame": {"x":642,"y":1745,"w":620,"h":251},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":658,"y":173,"w":620,"h":251},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"effect_firework/firework_014.png":
+{
+	"frame": {"x":642,"y":1488,"w":625,"h":255},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":655,"y":172,"w":625,"h":255},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"effect_firework/firework_022.png":
+{
+	"frame": {"x":1,"y":1488,"w":639,"h":269},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":641,"y":172,"w":639,"h":269},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"effect_firework/firework_023.png":
+{
+	"frame": {"x":1,"y":1759,"w":639,"h":269},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":641,"y":172,"w":639,"h":269},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio1_crying/pio1_crying_018.png":
+{
+	"frame": {"x":1,"y":745,"w":1277,"h":741},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":321,"y":202,"w":1277,"h":741},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio1_crying/pio1_crying_019.png":
+{
+	"frame": {"x":1,"y":1,"w":1277,"h":742},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":321,"y":201,"w":1277,"h":742},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_008.png":
+{
+	"frame": {"x":1280,"y":1317,"w":656,"h":762},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":181,"w":656,"h":762},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_010.png":
+{
+	"frame": {"x":1280,"y":1,"w":656,"h":763},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":180,"w":656,"h":763},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_026.png":
+{
+	"frame": {"x":1280,"y":1,"w":656,"h":763},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":180,"w":656,"h":763},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_028.png":
+{
+	"frame": {"x":1280,"y":1317,"w":656,"h":762},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":181,"w":656,"h":762},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio4_wakeup/pio4_wakeup_002.png":
+{
+	"frame": {"x":1280,"y":659,"w":656,"h":763},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":180,"w":656,"h":763},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"animations": {
+	"effect_firework/firework": ["effect_firework/firework_013.png","effect_firework/firework_014.png","effect_firework/firework_022.png","effect_firework/firework_023.png"],
+	"pio1_crying/pio1_crying": ["pio1_crying/pio1_crying_018.png","pio1_crying/pio1_crying_019.png"],
+	"pio3_sleep/pio3_sleep": ["pio3_sleep/pio3_sleep_008.png","pio3_sleep/pio3_sleep_010.png","pio3_sleep/pio3_sleep_026.png","pio3_sleep/pio3_sleep_028.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "game2-2.png",
+	"format": "RGBA8888",
+	"size": {"w":2044,"h":2029},
+	"scale": "1",
+	"related_multi_packs": [ "game2-0.json", "game2-1.json", "game2-3.json", "game2-4.json", "game2-5.json", "game2-6.json", "game2-7.json", "game2-8.json", "game2-9.json", "game2-10.json", "game2-11.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:f0b1bace1d68892fa4332655b7073f4c:9d7386deed1e3a91ff379e5f4d815653:0b6cfdb63a0ca986605ca2e4ada948d8$"
+}
+}

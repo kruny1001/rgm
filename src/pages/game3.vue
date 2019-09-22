@@ -24,8 +24,7 @@ function wait(time){
 }
 
 
-class LarvaG extends PIXI.Container
-{
+class LarvaG extends PIXI.Container {
   constructor (){
     super()
     this.larva = new PIXI.Sprite.from('statics/game3/larvaG_000.png')
@@ -48,13 +47,14 @@ class LarvaG extends PIXI.Container
   }
 }
 
-class LarvaR extends PIXI.Container
-{
+class LarvaR extends PIXI.Container {
+  
   constructor (){
     super()
     this.larva = new PIXI.Sprite.from('statics/game3/larvaR_000.png')
     this.clicked = false
   }
+
   async startLarva(clickCallback){
     this.addChild( this.larva )
     // move larva animation
@@ -69,10 +69,10 @@ class LarvaR extends PIXI.Container
       return clickCallback()
     })
   }
+
 }
 
-class Game3
-{
+class Game3 {
   constructor (dom) {
     //     
     this.gameApp = new PIXI.Application({
@@ -248,14 +248,12 @@ class Game3
 export default {
   data(){
     return {
-
     }
   },
   methods:{
 
   },
   created(){
-    
     
   },
   mounted(){
@@ -264,6 +262,7 @@ export default {
   }
 };
 </script>
+
 <style>
 canvas{
   padding:10px; 

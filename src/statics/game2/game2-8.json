@@ -1,0 +1,88 @@
+{"frames": {
+
+"pio3_sleep/pio3_sleep_000.png":
+{
+	"frame": {"x":761,"y":761,"w":656,"h":756},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":187,"w":656,"h":756},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_001.png":
+{
+	"frame": {"x":1317,"y":1,"w":656,"h":757},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":186,"w":656,"h":757},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_002.png":
+{
+	"frame": {"x":1,"y":1,"w":656,"h":758},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":185,"w":656,"h":758},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_003.png":
+{
+	"frame": {"x":1,"y":761,"w":656,"h":758},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":185,"w":656,"h":758},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_033.png":
+{
+	"frame": {"x":1,"y":761,"w":656,"h":758},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":185,"w":656,"h":758},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_034.png":
+{
+	"frame": {"x":1,"y":1,"w":656,"h":758},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":185,"w":656,"h":758},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio3_sleep/pio3_sleep_035.png":
+{
+	"frame": {"x":1317,"y":1,"w":656,"h":757},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":186,"w":656,"h":757},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"pio4_wakeup/pio4_wakeup_000.png":
+{
+	"frame": {"x":659,"y":1,"w":656,"h":758},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":632,"y":185,"w":656,"h":758},
+	"sourceSize": {"w":1920,"h":1200},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"animations": {
+	"pio3_sleep/pio3_sleep": ["pio3_sleep/pio3_sleep_000.png","pio3_sleep/pio3_sleep_001.png","pio3_sleep/pio3_sleep_002.png","pio3_sleep/pio3_sleep_003.png","pio3_sleep/pio3_sleep_033.png","pio3_sleep/pio3_sleep_034.png","pio3_sleep/pio3_sleep_035.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "game2-8.png",
+	"format": "RGBA8888",
+	"size": {"w":1974,"h":1418},
+	"scale": "1",
+	"related_multi_packs": [ "game2-0.json", "game2-1.json", "game2-2.json", "game2-3.json", "game2-4.json", "game2-5.json", "game2-6.json", "game2-7.json", "game2-9.json", "game2-10.json", "game2-11.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:f0b1bace1d68892fa4332655b7073f4c:9d7386deed1e3a91ff379e5f4d815653:0b6cfdb63a0ca986605ca2e4ada948d8$"
+}
+}
