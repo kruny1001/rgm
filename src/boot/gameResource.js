@@ -51,6 +51,7 @@ class GameLoader extends GameProperties {
       .add('game1Sprite7', "statics/game1/game1-7.json")
       .add('game1Sprite8', "statics/game1/game1-8.json")
       .add('game1Sprite9', "statics/game1/game1-9.json")
+      .add('game3Sprite', "statics/game3/game3.json")
       .load((loader, resources) => {
         
       })

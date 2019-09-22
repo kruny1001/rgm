@@ -34,9 +34,52 @@ function Job(obj){
 class LarvaG extends PIXI.Container {
   constructor (){
     super()
-    this.larva = new PIXI.Sprite.from('statics/game3/larvaG_000.png')
+    // this.larva = new PIXI.Sprite.from('statics/game3/larvaG_000.png')
+
+    let colorEggs = [
+      {name:'larvaG_',frame:13}, 
+      
+    ]
+
+    for(let target of colorEggs){
+      let rbFrames = []
+      for (let i = 0; i < target.frame; i++) {
+        let val = "000";
+        if (i < 10) val = `00${i}`;
+        else val = `0${i}`;
+        let sprite = PIXI.Texture.from(`${target.name}${val}.png`)
+        sprite.baseTexture.mipmap = true;
+        rbFrames.push(sprite);
+      }
+
+      this.larva = this.assignSprite(rbFrames, {height: 80, width:80, x: 200})
+      this.larva.scale.set(0.7);
+      this.larva.animationSpeed = 0.6;
+      this.larva.loop = true
+      this.larva.play()
+      // this.activeSprites[target.name] = rbEggSprite
+      this.addChild(this.larva)
+    }
+  
     this.clicked = false
   }
+
+  assignSprite(tempFrames, asset){
+    const anim = new PIXI.AnimatedSprite(tempFrames);
+      anim.loop = false;
+      // anim.visible = false;
+      // anim.x = 100
+      // anim.y = 100
+      // anim.height = asset.height;
+      // anim.width = asset.width;
+      // anim.anchor.set(0.5);
+      anim.animationSpeed = 0.7;
+      anim.interactive = true;
+      // anim.on("tap", event => { console.log(1) })
+    //   anim.on('pointerdown', (e)=>{ this.onClick(e, id) })
+      return anim
+  }
+
   startLarva(onClick, onTimeout, time){
     this.addChild( this.larva )
     // move larva animation
@@ -62,13 +105,38 @@ class LarvaR extends PIXI.Container {
   
   constructor (){
     super()
-    this.larva = new PIXI.Sprite.from('statics/game3/larvaR_000.png')
+    // this.larva = new PIXI.Sprite.from('statics/game3/larvaR_000.png')
     this.clicked = false
     this.timeout = null
+
+    let colorEggs = [
+      {name:'larvaR_',frame:13}, 
+      
+    ]
+
+    for(let target of colorEggs){
+      let rbFrames = []
+      for (let i = 0; i < target.frame; i++) {
+        let val = "000";
+        if (i < 10) val = `00${i}`;
+        else val = `0${i}`;
+        let sprite = PIXI.Texture.from(`${target.name}${val}.png`)
+        sprite.baseTexture.mipmap = true;
+        rbFrames.push(sprite);
+      }
+
+      this.larva = this.assignSprite(rbFrames, {height: 160, width:80, x: 200})
+      this.larva.scale.set(0.7);
+      this.larva.animationSpeed = 0.6;
+      this.larva.loop = true
+      this.larva.play()
+      // this.activeSprites[target.name] = rbEggSprite
+      this.addChild(this.larva)
+    }
   }
 
   startLarva(onClick, onTimeout, time){
-    this.addChild( this.larva )
+    // this.addChild( this.larva )
     // move larva animation
 
     // add event
@@ -85,6 +153,21 @@ class LarvaR extends PIXI.Container {
   }
   showIncorrect(){
 
+  }
+  assignSprite(tempFrames, asset){
+    const anim = new PIXI.AnimatedSprite(tempFrames);
+      anim.loop = false;
+      // anim.visible = false;
+      // anim.x = 100
+      // anim.y = 100
+      // anim.height = asset.height;
+      // anim.width = asset.width;
+      // anim.anchor.set(0.5);
+      anim.animationSpeed = 0.7;
+      anim.interactive = true;
+      // anim.on("tap", event => { console.log(1) })
+    //   anim.on('pointerdown', (e)=>{ this.onClick(e, id) })
+      return anim
   }
 }
 
