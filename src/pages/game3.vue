@@ -18,7 +18,6 @@
 <script>
 import {leafSetting, levelSetting} from './game3Setting.js'
 
-
 function Job(obj){
   return {
       id : 'no-id',
@@ -183,6 +182,9 @@ class Game3 {
       width: 1600,
       height: 900
     })
+
+    this.gameApp.stop()
+
     dom.appendChild(this.gameApp.view)    
 
     // game data
@@ -359,6 +361,9 @@ export default {
   },
   mounted(){
     this.game = new Game3(this.$refs.game3)
+    this.game.gameApp.renderer.plugins.prepare.upload(this.game.gameApp.stage, () => {
+          this.game.gameApp.start();
+      });
   },
   beforeDestroy(){
     if( this.game && this.game.destroy ){

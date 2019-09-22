@@ -21,28 +21,38 @@ class GameProperties {
 }
 
 class GameClass extends GameProperties {
-  constructor() {
-    console.log(1)
+  constructor(dom) {
     super()
+    this.createApp(dom)
   }
 
-  createApp(targetId){
+  createApp(dom){
     this.app = new PIXI.Application({
-      // transparent: true,
       forceCanvas: true,
       forceFXAA: true,
       autoDensity: true,
-      width: 1280,
-      resolution: 1.5,
-      height: 1000,
+      resolution: 2,
+      autoResize: true,
+      width: 1600,
+      height: 900
+
+      // transparent: true,
+      // forceCanvas: true,
+      // forceFXAA: true,
+      // autoDensity: true,
+      // width: 1280,
+      // resolution: 1.5,
+      // height: 1000,
       // antialias: true,
       // autoResize: true,
-    //   backgroundColor: 0x50545c
-    backgroundColor: 0xffffff
+      //   backgroundColor: 0x50545c
+      // backgroundColor: 0xffffff
     });
     this.app.stop()
-    this.app.renderer.textureGC.mode = PIXI.GC_MODES.MANUAL
-    document.querySelector(`#${targetId}`).appendChild(this.app.view);
+    // this.app.renderer.textureGC.mode = PIXI.GC_MODES.MANUAL
+    // document.querySelector(`#${targetId}`).appendChild(this.app.view);
+    console.log(dom)
+    dom.appendChild(this.app.view)
   }
 
   changeText(id, content){
@@ -231,4 +241,6 @@ class GameClass extends GameProperties {
   
 }
 
-export default new GameClass();
+export {
+  GameClass
+} 
