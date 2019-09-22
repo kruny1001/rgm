@@ -143,27 +143,8 @@ class Game3 {
     // this.gameApp.stage.addChild(this.endingBox)
 
   }
-<<<<<<< HEAD
-  start(){
-    this.level = 1
-    return this._gameLoop(this.level)
-  }
-
-  async _gameLoop(){
-    while(1){
-      const successRate = await this._startLevel(this.level)
-      this.level = this._evalResult(successRate)
-      await this._showResult()
-    }
-  }
-
-  async _startLevel(level){
-    this.leafBox.alpha = 0.5
-    this.scoreBox.alpha = 0.5
-=======
   startLevel(level, onComplete){
     this.level = level
->>>>>>> bda06d06d2c7c34e4d0c07f2b67a9888f824c6f1
     this._updateScore(0)
     console.log('start game')
     // game loop
@@ -294,22 +275,12 @@ export default {
     
   },
   mounted(){
-<<<<<<< HEAD
-    const game = new Game3(this.$refs.game3)
-    game.start()
-  },
-  beforeDestroy() {
-    console.log('Main Vue destroyed')
-    // this.destroy()
-    delete this.game
-=======
     this.game = new Game3(this.$refs.game3)
   },
   beforeDestroy(){
     if( this.game && this.game.destroy ){
       this.game.destroy()
     }
->>>>>>> bda06d06d2c7c34e4d0c07f2b67a9888f824c6f1
   }
 };
 </script>
