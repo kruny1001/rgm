@@ -10,19 +10,26 @@
       <q-btn @click="eggAni()">Shaking Event </q-btn> -->
     </section>
     <section ref="game3" style="margin: 0 auto; width:100%; position:relative;">
-      
+
     </section>
+    <q-btn label="start" @click="btnStart()"/>
   </q-page>
 </template>
 <script>
 import {leafSetting, levelSetting} from './game3Setting.js'
 
-function wait(time){
-  return new Promise( resolve => {
-    setTimeout(resolve, time)
-  })
-}
 
+function Job(obj){
+  return {
+      id : 'no-id',
+      callback : null,
+      timeout: 0,
+      ...obj,
+      started: new Date(),
+      elapsed : 0,
+      done: false,
+    }
+}
 
 class LarvaG extends PIXI.Container {
   constructor (){
@@ -30,32 +37,7 @@ class LarvaG extends PIXI.Container {
     this.larva = new PIXI.Sprite.from('statics/game3/larvaG_000.png')
     this.clicked = false
   }
-  async startLarva(clickCallback){
-    this.addChild( this.larva )
-    // move larva animation
-
-    // add event
-    this.larva.interactive = true
-    this.larva.on('pointerdown', () => {
-      if( this.clicked ){
-        // prevent duplicated click
-        return
-      }
-      this.clicked = true      
-      return clickCallback()
-    })
-  }
-}
-
-class LarvaR extends PIXI.Container {
-  
-  constructor (){
-    super()
-    this.larva = new PIXI.Sprite.from('statics/game3/larvaR_000.png')
-    this.clicked = false
-  }
-
-  async startLarva(clickCallback){
+  startLarva(onClick, onTimeout, time){
     this.addChild( this.larva )
     // move larva animation
 
@@ -66,10 +48,44 @@ class LarvaR extends PIXI.Container {
         return
       }
       this.clicked = true
-      return clickCallback()
+      this.showCorrect()
+      return onClick()
     })
+    this.timeout = setTimeout( onTimeout, time )
+  }
+  showCorrect(){
+
+  }
+}
+
+class LarvaR extends PIXI.Container {
+  
+  constructor (){
+    super()
+    this.larva = new PIXI.Sprite.from('statics/game3/larvaR_000.png')
+    this.clicked = false
+    this.timeout = null
   }
 
+  startLarva(onClick, onTimeout, time){
+    this.addChild( this.larva )
+    // move larva animation
+
+    // add event
+    this.larva.interactive = true
+    this.larva.on('pointerdown', () => {
+      if( this.clicked ){
+        return
+      }
+      this.clicked = true
+      this.showIncorrect()
+      return onClick()
+    })
+    this.timeout = setTimeout( onTimeout, time )
+  }
+  showIncorrect(){
+
+  }
 }
 
 class Game3 {
@@ -82,13 +98,19 @@ class Game3 {
       resolution: 2,
       autoResize: true,
       width: 1600,
-      height: 900 
+      height: 900
     })
     dom.appendChild(this.gameApp.view)    
-    
+
     // game data
     this.score = 0
     this.level = 1
+    this.larvaG = 0
+    this.larvaR = 0
+    this.setting = {}
+
+    // game loop jobs obj
+    this.interval = null
 
     // containers
     this.leafBox = new PIXI.Container()
@@ -110,54 +132,29 @@ class Game3 {
     this.scoreBox.text = scoreNum
     this.scoreBox.addChild(scoreNum)
 
-    this.centerTextBox = new PIXI.Container()
-    this.endingBox = new PIXI.Container()
+    // this.centerTextBox = new PIXI.Container()
+    // this.endingBox = new PIXI.Container()
 
     //
     this.gameApp.stage.addChild(this.leafBox)
     this.gameApp.stage.addChild(this.larvaBox)
     this.gameApp.stage.addChild(this.scoreBox)
-    this.gameApp.stage.addChild(this.centerTextBox)
-    this.gameApp.stage.addChild(this.endingBox)
+    // this.gameApp.stage.addChild(this.centerTextBox)
+    // this.gameApp.stage.addChild(this.endingBox)
 
   }
-  start(){
-    this.level = 1
-    return this._gameLoop(this.level)
-  }
-  async _gameLoop(){
-    while(1){
-      const successRate = await this._startLevel(this.level)
-      this.level = this._evalResult(successRate)
-      await this._showResult()
-    }
-  }
-  async _startLevel(level){
-    this.leafBox.alpha = 0.5
-    this.scoreBox.alpha = 0.5
+  startLevel(level, onComplete){
+    this.level = level
     this._updateScore(0)
-    // show level + sound
-    await this._showLevelBox(level)
-    // show "game start" text
-    await this._showStartBox()
     console.log('start game')
     // game loop
-    let setting = levelSetting[level]    
+    const setting = levelSetting[level]
     setting.leafSetting = leafSetting[setting.leafNum]
 
     this._fillLeaf(setting.leafSetting)
     this.leafBox.alpha = 1
     this.scoreBox.alpha = 1
-    await this._levelLoop(setting)
-
-    const successRate = this.score / ( setting.larvaG )
-    return successRate
-  }
-  async _showLevelBox(level){
-    return
-  }
-  async _showStartBox(){
-    return
+    this._levelLoopStart(setting, onComplete)
   }
   _fillLeaf({leafH, leafW, leafPos}){
     this.leafBox.removeChildren()
@@ -171,56 +168,67 @@ class Game3 {
       this.leafBox.addChild(leaf)
     }
   }
-  async _levelLoop( {leafSetting, larvaG, larvaR, larvaTime} ){
-    let _noInfinity = 0
+  _levelLoopStart({leafSetting, larvaG, larvaR, larvaTime}, onComplete ){
     const leafPosArr = leafSetting.leafPos
     const scale = leafSetting.leafH / 331
-    let _larvaG = larvaG
-    let _larvaR = larvaR
-    while( _larvaG > 0 || _larvaR > 0 ){
-      const randomLeaf = parseInt(Math.random() * new Date().getTime()) % leafPosArr.length
-      const leafPos = leafPosArr[randomLeaf] 
-      let larvaColor 
-      if ( _larvaG <= 0) { 
-        larvaColor = 'R' 
-      } else if ( _larvaR <= 0 ) { 
-        larvaColor = 'G' 
-      } else { 
-        larvaColor = Math.random() > _larvaR/(_larvaR + _larvaG) ? 'G' : 'R' 
-      }
-
-      const larva = larvaColor == 'G' ? new LarvaG() : new LarvaR()
-      larva.scale.x = scale
-      larva.scale.y = scale
-      larva.x = leafPos.x - 300 * scale
-      larva.y = leafPos.y - 300 * scale
-      
-      this.leafBox.addChild(larva)
-      if( larvaColor == 'G' ){
-        const touchGoodLarva = () => {
-          // sound and image "correct"
-
-          // score +1
-          // update score view
-          this._updateScore(this.score + 1)
-        }
-        _larvaG--
-        larva.startLarva(touchGoodLarva)
-      }else{
-        const touchBadLarva = () => {
-          // sound and image "incorrect"
-        }
-        _larvaR--
-        larva.startLarva(touchBadLarva)
-      }
-      await wait(larvaTime)
-      this.leafBox.removeChild(larva)
-      console.log('G',_larvaG, 'R',_larvaR, 'score', this.score)
-      _noInfinity++
-      if(_noInfinity > 100 ){
-        break;
-      }
+    this.larvaG = larvaG
+    this.larvaR = larvaR
+    if( this.interval ){
+      clearInterval(this.interval)
     }
+    this.interval = setInterval(()=>{
+      if( this.larvaG > 0 || this.larvaR > 0 ){
+        this.drawNextLarva({scale, leafPosArr}, larvaTime)
+      }else{
+        clearInterval(this.interval)
+        const score = this.score
+        const successRate = score / larvaG
+        const nextLevel = this._evalResult(successRate)
+        onComplete({score, successRate, nextLevel})
+      }
+    }, larvaTime)
+  }
+  drawNextLarva({scale, leafPosArr}, larvaTime){
+    const randomLeaf = parseInt(Math.random() * new Date().getTime()) % leafPosArr.length
+    const leafPos = leafPosArr[randomLeaf]
+    let larvaColor 
+    if ( this.larvaG <= 0) {
+      larvaColor = 'R'
+    } else if ( this.larvaR <= 0 ) {
+      larvaColor = 'G' 
+    } else {
+      larvaColor = Math.random() > this.larvaR/(this.larvaR + this.larvaG) ? 'G' : 'R'
+    }
+
+    const larva = larvaColor == 'G' ? new LarvaG() : new LarvaR()
+    larva.scale.x = scale
+    larva.scale.y = scale
+    larva.x = leafPos.x - 300 * scale
+    larva.y = leafPos.y - 300 * scale
+    
+    this.leafBox.addChild(larva)
+    if( larvaColor == 'G' ){
+      const touchGoodLarva = () => {
+        // sound and image "correct"
+
+        // score +1
+        // update score view
+        this._updateScore(this.score + 1)
+      }
+      this.larvaG--
+      larva.startLarva(touchGoodLarva, ()=>{
+        this.leafBox.removeChild(larva)
+      }, larvaTime)
+    }else{
+      const touchBadLarva = () => {
+        // sound and image "incorrect"
+      }
+      this.larvaR--
+      larva.startLarva(touchBadLarva, ()=>{
+        this.leafBox.removeChild(larva)
+      }, larvaTime)
+    }
+    console.log('G',this.larvaG, 'R',this.larvaR, 'score', this.score)
   }
   _updateScore( newScore ){
     // draw score
@@ -240,25 +248,39 @@ class Game3 {
     }
     return nextLevel
   }
-  async _showResult(){
-    return
+  destroy(){
+    if( this.interval ){
+      clearInterval(this.interval)
+    }
   }
 }
 
 export default {
   data(){
     return {
+      game : null
     }
   },
   methods:{
-
+    btnStart(){
+      if( this.game && this.game.startLevel ){
+        console.log('btn')
+        this.game.startLevel(1, (result) => {
+          console.log( result)
+        })
+      }
+    }
   },
   created(){
     
   },
   mounted(){
-    const game = new Game3(this.$refs.game3)
-    game.start()
+    this.game = new Game3(this.$refs.game3)
+  },
+  beforeDestroy(){
+    if( this.game && this.game.destroy ){
+      this.game.destroy()
+    }
   }
 };
 </script>
