@@ -17,6 +17,9 @@
 </template>
 <script>
 import {leafSetting, levelSetting} from './game3Setting.js'
+import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
+import {PixiPlugin} from "gsap/PixiPlugin";
+import { middleware } from 'resource-loader';
 
 class LarvaG extends PIXI.Container {
   constructor (){
@@ -70,7 +73,19 @@ class LarvaG extends PIXI.Container {
     this.timeout = setTimeout( onTimeout, time )
   }
   showCorrect(){
-
+    // this.larva.stop()
+    this.removeChild(this.larva)
+    this.larva = new PIXI.Sprite.from('image_correct.png')
+    this.addChild( this.larva )
+    TweenMax.to(this.larva, 0.5, {
+      pixi: {
+        x: 150,
+        y: -150
+      },
+      onComplete: ()=>{
+        this.destroy()
+      }
+    })
   }
 }
 
@@ -121,13 +136,14 @@ class LarvaR extends PIXI.Container {
     this.timeout = setTimeout( onTimeout, time )
   }
   showIncorrect(){
-
+    this.larva.stop()
+    this.addChild(new PIXI.Sprite.from('image_incorrect.png'))
   }
   assignSprite(tempFrames, asset){
     const anim = new PIXI.AnimatedSprite(tempFrames);
-      anim.loop = false;
-      anim.animationSpeed = 0.7;
-      return anim
+    anim.loop = false;
+    anim.animationSpeed = 0.7;
+    return anim
   }
 }
 
@@ -259,23 +275,26 @@ class Game3 {
     if( larvaColor == 'G' ){
       const touchGoodLarva = () => {
         // sound and image "correct"
-
+        larva.showCorrect()
         // score +1
         // update score view
         this._updateScore(this.score + 1)
       }
-      this.larvaG--
-      larva.startLarva(touchGoodLarva, ()=>{
+      const timeoutGoodLarva = ()=>{
         this.leafBox.removeChild(larva)
-      }, larvaTime)
+      }
+      this.larvaG--
+      larva.startLarva(touchGoodLarva, timeoutGoodLarva, larvaTime)
     }else{
       const touchBadLarva = () => {
         // sound and image "incorrect"
+        larva.showIncorrect()
+      }
+      const timeoutBadLarva = ()=>{
+        this.leafBox.removeChild(larva)
       }
       this.larvaR--
-      larva.startLarva(touchBadLarva, ()=>{
-        this.leafBox.removeChild(larva)
-      }, larvaTime)
+      larva.startLarva(touchBadLarva, timeoutBadLarva, larvaTime)
     }
     console.log('G',this.larvaG, 'R',this.larvaR, 'score', this.score)
   }
