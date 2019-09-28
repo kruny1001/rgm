@@ -1,8 +1,9 @@
 <template lang="pug">
   q-page( id="game1" class="flex flex-center")
-    a( href="/#/g1") game 1
-    a( href="/#/g2") game 2
-    a( href="/#/g3") game 3
+    a( href="/#/g3") 애벌레 게임
+    a( href="/#/g1") 알부하시키기
+    //- a( href="/#/g2") game 2
+    
 
 </template>
 
