@@ -9,28 +9,28 @@
       <pre> CurrentCount: {{count}} SenstivityTotal: {{total}} Stage: {{stage}}</pre>
       <q-btn @click="eggAni()">Shaking Event </q-btn> -->
     </section>
-    <section ref="game3" style="margin: 0 auto; width:100%; position:relative;">
+    <section ref="game3" class="game-screen">
 
     </section>
     <q-btn label="start" @click="btnStart()"/>
   </q-page>
 </template>
 <script>
-import {larvaSetting, levelSetting} from './game5-3Setting.js'
-import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
-import {PixiPlugin} from "gsap/PixiPlugin";
+import { larvaSetting, levelSetting } from './game5-3Setting.js'
+import { TweenMax, Power2, TimelineLite } from "gsap/TweenMax";
+import { PixiPlugin } from "gsap/PixiPlugin";
 import { middleware } from 'resource-loader';
 
 class LarvaCicle extends PIXI.Container {
-  constructor () { 
-    super()       
+  constructor (index) {
+    super()
     this.status = 0
+    this.index = index
   }
   changeTo( status ){
     this.removeChildren()
-    const STAT = ['blank', 'body', 'head']
-    const _status = STAT[status]
-    switch(_status){
+    const STAT_LIST = ['blank', 'body', 'head']
+    switch(STAT_LIST[status]){
       case 'blank' :
         this.larva = new PIXI.Sprite.from('statics/game5-3/btn_blank.png')
         break;
@@ -43,6 +43,7 @@ class LarvaCicle extends PIXI.Container {
     }
     this.status = status
     this.larva.anchor.set(0.5)
+    this.larva.interactive = true
     this.addChild(this.larva)
   }
 }
@@ -58,7 +59,8 @@ class Game5_3 {
       resolution: 2,
       autoResize: true,
       width: 1600,
-      height: 900
+      height: 900,
+      resizeTo: dom,
     })
     dom.appendChild(this.gameApp.view)    
 
@@ -119,22 +121,23 @@ class Game5_3 {
     const arr = new Array(rowNum*colNum).fill(1)
     this._updateLarva(arr, rowNum, colNum, larvaSetting)
   }
-  _updateLarva( arr, rowNum, colNum, larvaSetting ){
-    
+  _updateLarva( statArr, rowNum, colNum, larvaSetting ){
     this.larvaBox.removeChildren()
     const {larvaW, larvaH, larvaPos} = larvaSetting
     const scale = larvaW/306
 
-    for( let i = 0 ; i < arr.length ; i++ ){
-      const status = arr[i]
+    for( let i = 0 ; i < statArr.length ; i++ ){
+      const status = statArr[i]
       const pos = larvaPos[i]
-      const larva = new LarvaCicle()
+      const larva = new LarvaCicle(i)
       larva.changeTo(status)
       larva.x = pos.x
       larva.y = pos.y
       larva.scale.x = scale
       larva.scale.y = scale
-
+      larva.larva.on('click', () => {
+        if( larva.status == )
+      })
       this.larvaBox.addChild(larva)
     }
   }
@@ -183,6 +186,7 @@ export default {
     
   },
   mounted(){
+
     this.game = new Game5_3(this.$refs.game3)
     this.game.startLevel(1, ()=>{})
   },
@@ -195,6 +199,10 @@ export default {
 </script>
 
 <style>
+.game-screen{
+  width: 100vw;
+  height: calc(100vw * 9 / 16)
+}
 canvas{
   padding:10px; 
   margin:10px;
