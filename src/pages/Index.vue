@@ -4,20 +4,12 @@
       q-item( clickable v-ripple)
         q-item-section Single line item      
 
-      q-item( clickable v-ripple v-for="item in menu" @click="goTo(item.link)")
+      q-item( clickable v-ripple v-for="(item, idx) in menu" @click="goTo(item.link)" :key="idx")
         q-item-section
           q-item-label {{item.name}}
           q-item-label( caption) Caption 
 
-
-    //- a( href="/#/g1") 알부하시키기
-    //- a( href="/#/g3") 애벌레 게임
-    
-    //- a( href="/#/g2") game 2
-    
-
 </template>
-
 <style>
 </style>
 
@@ -37,7 +29,7 @@ export default {
         {name: "game 1", link:"g1"},
         {name: "game 2", link:"g2"},
         {name: "game 3", link:"g3"},
-        {name: "game 4", link:"g4"},
+        {name: "[5회기] 동작가르치기", link:"g4"},
         {name: "game 5", link:"g5"},
       ],
       imageData: null, 
