@@ -1,7 +1,6 @@
 <template>
   <!-- <q-page class="flex flex-center"> -->
   <q-page class="">
-    
     <section style="margin: 0 auto; width:1200px;">
       <!-- <q-btn @click="loadContents()">load contents </q-btn>
       <q-btn @click="readyGame()">readyGame </q-btn> -->
@@ -152,7 +151,6 @@ export default {
     // console.log(resource)
     this.game = new GameClass(this.$refs.game1)
     this.loadGame()
-
   },
   beforeDestroy() {
     console.log('Main Vue destroyed')

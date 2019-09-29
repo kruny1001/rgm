@@ -2,13 +2,12 @@
   q-page( id="game1" class="flex flex-center")
     q-list.q-ma-md( bordered separator style="width:100%;")
       q-item( clickable v-ripple)
-        q-item-section Single line item      
+        q-item-section Game List   
 
       q-item( clickable v-ripple v-for="(item, idx) in menu" @click="goTo(item.link)" :key="idx")
         q-item-section
           q-item-label {{item.name}}
           q-item-label( caption) Caption 
-
 </template>
 <style>
 </style>
@@ -26,11 +25,11 @@ export default {
   data() {
     return { 
       menu: [
-        {name: "game 1", link:"g1"},
-        {name: "game 2", link:"g2"},
-        {name: "game 3", link:"g3"},
+        {name: "[1회기] 알 부화시키기", link:"g1"},
+        {name: "[2회기] 아기피오 재우기", link:"g2"},
+        {name: "[3회기] 애벌레 잡기", link:"g3"},
         {name: "[5회기] 동작가르치기", link:"g4"},
-        {name: "game 5", link:"g5"},
+        {name: "[5회기] 대왕 애벌레 잡기", link:"g5"},
       ],
       imageData: null, 
       counts:0,

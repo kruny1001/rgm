@@ -34,7 +34,7 @@ class GameClass extends GameProperties {
       resolution: 2,
       autoResize: true,
       width: 1600,
-      height: 900
+      height: 900,
 
       // transparent: true,
       // forceCanvas: true,
@@ -46,7 +46,7 @@ class GameClass extends GameProperties {
       // antialias: true,
       // autoResize: true,
       //   backgroundColor: 0x50545c
-      // backgroundColor: 0xffffff
+      backgroundColor: 0xffffff
     });
     this.app.stop()
     // this.app.renderer.textureGC.mode = PIXI.GC_MODES.MANUAL

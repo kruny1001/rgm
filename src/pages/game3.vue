@@ -1,6 +1,7 @@
 <template>
   <!-- <q-page class="flex flex-center"> -->
   <q-page class="">
+    <gameResult></gameResult>
     <section style="margin: 0 auto; width:1200px;">
       <!-- <q-btn @click="loadContents()">load contents </q-btn>
       <q-btn @click="readyGame()">readyGame </q-btn> -->
@@ -16,6 +17,7 @@
   </q-page>
 </template>
 <script>
+import gameResult from 'src/components/game3Result.vue'
 import {leafSetting, levelSetting} from './game3Setting.js'
 import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
 import {PixiPlugin} from "gsap/PixiPlugin";
@@ -324,6 +326,9 @@ class Game3 {
 }
 
 export default {
+  components:{
+    gameResult
+  },
   data(){
     return {
       game : null
