@@ -1,6 +1,6 @@
 <template>
   <!-- <q-page class="flex flex-center"> -->
-  <q-page class="">
+  <q-page class="screen-fit">
     <section style="margin: 0 auto; width:1200px;">
       <!-- <q-btn @click="loadContents()">load contents </q-btn>
       <q-btn @click="readyGame()">readyGame </q-btn> -->
@@ -9,7 +9,7 @@
       <pre> CurrentCount: {{count}} SenstivityTotal: {{total}} Stage: {{stage}}</pre>
       <q-btn @click="eggAni()">Shaking Event </q-btn> -->
     </section>
-    <section ref="game3" style="margin: 0 auto; width:100%; position:relative;">
+    <section ref="game3" class="screen-fit">
 
     </section>
     <q-btn label="start" @click="btnStart()"/>
@@ -152,14 +152,15 @@ class Game3 {
     //     
     this.gameApp = new PIXI.Application({
       forceCanvas: true,
-      forceFXAA: true,
+      // forceFXAA: true,
       autoDensity: true,
       resolution: 2,
       autoResize: true,
-      width: 1600,
-      height: 900
+      width: 1900,
+      height: 1200,
+      resizeTo: dom,
     })
-    dom.appendChild(this.gameApp.view)    
+    dom.appendChild(this.gameApp.view)
 
     // game data
     this.score = 0
@@ -340,6 +341,7 @@ export default {
     
   },
   mounted(){
+    this.$q.fullscreen.request()
     this.game = new Game3(this.$refs.game3)
   },
   beforeDestroy(){
@@ -351,6 +353,10 @@ export default {
 </script>
 
 <style>
+.screen-fit{
+  width: 100vw;
+  height: calc(100vw * 9 / 16);
+}
 canvas{
   padding:10px; 
   margin:10px;
