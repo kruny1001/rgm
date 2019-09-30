@@ -1,11 +1,14 @@
 <template lang="pug">
   q-page( id="game1" class="flex flex-center")
-    a( href="/#/g1") game 1
-    a( href="/#/g2") game 2
-    a( href="/#/g3") game 3
+    q-list.q-ma-md( bordered separator style="width:100%;")
+      q-item( clickable v-ripple)
+        q-item-section Game List   
 
+      q-item( clickable v-ripple v-for="(item, idx) in menu" @click="goTo(item.link)" :key="idx")
+        q-item-section
+          q-item-label {{item.name}}
+          q-item-label( caption) Caption 
 </template>
-
 <style>
 </style>
 
@@ -20,7 +23,16 @@ let resource = null
 export default {
   name: "PageIndex",
   data() {
-    return { imageData: null, counts:0,
+    return { 
+      menu: [
+        {name: "[1회기] 알 부화시키기", link:"g1"},
+        {name: "[2회기] 아기피오 재우기", link:"g2"},
+        {name: "[3회기] 애벌레 잡기", link:"g3"},
+        {name: "[5회기] 동작가르치기", link:"g4"},
+        {name: "[5회기] 대왕 애벌레 잡기", link:"g5"},
+      ],
+      imageData: null, 
+      counts:0,
       targetResource: [
         {name: "game1Sprite0", src:"statics/game1/game1-0.json"},
         {name: "game1Sprite1", src:"statics/game1/game1-1.json"},
@@ -40,9 +52,14 @@ export default {
     ...mapActions({
       createGame : 'game1/createGame',
     }),
+    goTo(link){
+      this.$router.push(link)
+    }
+
     
   },
   mounted() {
+
     resource = new GameLoader()  
     resource.bringAllResource(this.targetResource)
     // this.bringAllResource(this.targetResource)

@@ -1,6 +1,7 @@
 <template>
   <!-- <q-page class="flex flex-center"> -->
   <q-page class="">
+    <gameResult></gameResult>
     <section style="margin: 0 auto; width:1200px;">
       <!-- <q-btn @click="loadContents()">load contents </q-btn>
       <q-btn @click="readyGame()">readyGame </q-btn> -->
@@ -16,9 +17,10 @@
   </q-page>
 </template>
 <script>
-import { larvaSetting, levelSetting } from './game5-3Setting.js'
-import { TweenMax, Power2, TimelineLite } from "gsap/TweenMax";
-import { PixiPlugin } from "gsap/PixiPlugin";
+import {larvaSetting, levelSetting} from './game5-3Setting.js'
+import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
+import gameResult from 'src/components/game5Result.vue'
+import {PixiPlugin} from "gsap/PixiPlugin";
 import { middleware } from 'resource-loader';
 
 class LarvaCicle extends PIXI.Container {
@@ -167,6 +169,9 @@ class Game5_3 {
 }
 
 export default {
+  components:{
+    gameResult
+  },
   data(){
     return {
       game : null

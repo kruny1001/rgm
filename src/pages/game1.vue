@@ -1,17 +1,13 @@
 <template>
   <!-- <q-page class="flex flex-center"> -->
   <q-page class="">
-    
     <section style="margin: 0 auto; width:1200px;">
       <!-- <q-btn @click="loadContents()">load contents </q-btn>
       <q-btn @click="readyGame()">readyGame </q-btn> -->
-      <q-btn @click="startGame()"> startGame </q-btn>
-      
-      
       <q-btn @click="twinkle()"> Twinkle </q-btn>
-      <q-btn @click="bringAllResource()"> bringAllResource </q-btn>
-      <q-btn @click="getCached()"> getCached </q-btn>
-      <q-btn @click="loadGame()"> loadGame </q-btn>
+      <!-- <q-btn @click="bringAllResource()"> bringAllResource </q-btn> -->
+      <!-- <q-btn @click="getCached()"> getCached </q-btn> -->
+      <q-btn @click="loadGame()"> START </q-btn>
       <hr/>
       <pre> CurrentCount: {{count}} SenstivityTotal: {{total}} Stage: {{stage}}</pre>
       <q-btn @click="eggAni()">Shaking Event {{stage}} </q-btn>
@@ -19,14 +15,16 @@
     </section>
     <div>{{seconds}}</div>
 
-    <section id="game1" style="margin: 0 auto; width:100%; position:relative;">
+    <section ref="game1" style="margin: 0 auto; width:100%; position:relative;">
       <h3 style="position:absolute; bottom: 200px; width:100%; text-align:center;"> {{crntDesc}}</h3>
     </section>
+    <q-btn @click="loadGame()"> startGame </q-btn>
+
   </q-page>
 </template>
 <script>
 
-import GameClass from 'boot/gameLib'
+import {GameClass} from 'boot/gameLib'
 import GameLoader from "boot/gameResource"
 let resource = null
 
@@ -79,17 +77,10 @@ export default {
   },
 
   methods:{
-    bringAllResource(){
-      resource.bringAllResource(this.targetResource)
-    },
-    getCached(){
-      resource.getCached()
-    },
     loadGame() {
-      this.game = GameClass
-      this.game.createApp('game1')
+      // this.game.createApp('game1')
       const vm = this
-      this.game.loadContents()
+      // this.game.loadContents()
       window.addEventListener("devicemotion", event => {
           var x = event.acceleration.x;
           var y = event.acceleration.y;
@@ -108,12 +99,10 @@ export default {
           this.game.app.start();
       });
     },
-
     twinkle(){
       this.game.preAnimation('twinkle_', this.effects)
       this.game.playAllAnimation('twinkle_')
     },
-
     eggAni(){
       if(this.stage < 6){
         this.crntDesc = "알을 흔들어주세요."
@@ -154,18 +143,14 @@ export default {
     endSecCount(){
       clearInterval(this.counter);
     },
-    loadContents(){
-    },
   },
-
   created(){
-    resource = new GameLoader()  
-    this.bringAllResource()
-    console.log("done")
   },
   mounted(){
     // this.loadGame()
-    console.log(resource)
+    // console.log(resource)
+    this.game = new GameClass(this.$refs.game1)
+    this.loadGame()
   },
   beforeDestroy() {
     console.log('Main Vue destroyed')
@@ -177,9 +162,9 @@ export default {
 <style>
 canvas{
   padding:10px; 
-  margin:10px;
+  margin:10px auto;
   /* border: 1px solid black; */
   display: block;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 </style>

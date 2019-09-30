@@ -1,6 +1,7 @@
 <template>
   <!-- <q-page class="flex flex-center"> -->
-  <q-page class="screen-fit">
+  <q-page class="">
+    <gameResult></gameResult>
     <section style="margin: 0 auto; width:1200px;">
       <!-- <q-btn @click="loadContents()">load contents </q-btn>
       <q-btn @click="readyGame()">readyGame </q-btn> -->
@@ -16,6 +17,7 @@
   </q-page>
 </template>
 <script>
+import gameResult from 'src/components/game3Result.vue'
 import {leafSetting, levelSetting} from './game3Setting.js'
 import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
 import {PixiPlugin} from "gsap/PixiPlugin";
@@ -160,7 +162,10 @@ class Game3 {
       height: 1200,
       resizeTo: dom,
     })
-    dom.appendChild(this.gameApp.view)
+
+    this.gameApp.stop()
+
+    dom.appendChild(this.gameApp.view)    
 
     // game data
     this.score = 0
@@ -322,6 +327,9 @@ class Game3 {
 }
 
 export default {
+  components:{
+    gameResult
+  },
   data(){
     return {
       game : null
@@ -343,6 +351,9 @@ export default {
   mounted(){
     this.$q.fullscreen.request()
     this.game = new Game3(this.$refs.game3)
+    this.game.gameApp.renderer.plugins.prepare.upload(this.game.gameApp.stage, () => {
+          this.game.gameApp.start();
+      });
   },
   beforeDestroy(){
     if( this.game && this.game.destroy ){

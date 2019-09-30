@@ -8,7 +8,8 @@ const routes = [
       { path: 'g1', component: () => import('pages/game1.vue') },
       { path: 'g2', component: () => import('pages/game2.vue') },
       { path: 'g3', component: () => import('pages/game3.vue') },
-      { path: 'g5-3', component: () => import('pages/game5-3.vue') },
+      { path: 'g5', component: () => import('pages/game5-3.vue') },
+      { path: 'g4', component: () => import('pages/game4.vue') },
     ]
   }
 ]
