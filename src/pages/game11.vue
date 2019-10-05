@@ -6,18 +6,18 @@
         <img class="select_btn" src="statics/game11/btn_before.png"
           @click=" mode = 'pattern'">
       </div>
-      <div class="select_container bg1"></div>
-      <div class="select_container bg2"></div>
-      <div class="select_container bg3"></div>
-      <div class="select_container bg4"></div>
-      <div class="select_container bg5"></div>
-      <div class="select_container bg6"></div>
-      <div class="select_container bg7"></div>
-      <div class="select_container bg8"></div>
-      <div class="select_container bg9"></div>
-      <div class="select_container bg10"></div>
-      <div class="select_container bg11"></div>
-      <div class="select_container bg12"></div>
+      <div class="select_container bg1"   @click="color = '#FF5955'"></div>
+      <div class="select_container bg2"   @click="color = '#F9E2B4'"></div>
+      <div class="select_container bg3"   @click="color = '#F79F32'"></div>
+      <div class="select_container bg4"   @click="color = '#FFDC48'"></div>
+      <div class="select_container bg5"   @click="color = '#A6F4B5'"></div>
+      <div class="select_container bg6"   @click="color = '#29A585'"></div>
+      <div class="select_container bg7"   @click="color = '#B6DFFC'"></div>
+      <div class="select_container bg8"   @click="color = '#629FDD'"></div>
+      <div class="select_container bg9"   @click="color = '#FFC7C7'"></div>
+      <div class="select_container bg10"  @click="color = '#CD82F9'"></div>
+      <div class="select_container bg11"  @click="color = '#DD9A58'"></div>
+      <div class="select_container bg12"  @click="color = '#3A3A3A'"></div>
       <div class="flex flex-center select_container">
         <img class="select_btn" src="statics/game11/btn_next.png"
           @click=" mode = 'nest'">
@@ -154,34 +154,12 @@
     <!-- SVG Image  -->
     <div style="width:600px; margin:0px auto;">
 
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+      <svg ref="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
           width="100%"
           x="0px" y="0px"
           viewBox="0 0 900 1200" style="enable-background:new 0 0 900 1200;" xml:space="preserve">
-        <g id="pio">
-          <path id="pio_x5F_foot2" class="pio" d="M525.65,818.06c1,24.97,4.19,48.87,9.04,56.75c10.58,17.18,6.17-40.49,9.7-44.17
-            s8.82,34.36,21.17,42.94c12.35,8.59-0.88-25.77,0-36.81c0.88-11.04,14.11,20.86,25.58,18.4c7.49-1.6-7.03-30.34-18-50.08
-            C558.48,810.57,542.66,814.89,525.65,818.06z"/>
-          <path id="pio_x5F_foot1" class="pio" d="M327.57,803.81c-11.04,19.75-26.37,49.73-18.72,51.37c11.47,2.45,24.7-29.45,25.58-18.4
-            c0.88,11.04-12.35,45.4,0,36.81s17.64-46.63,21.17-42.94c3.53,3.68-0.88,61.35,9.7,44.17c4.89-7.94,8.09-32.13,9.06-57.31
-            C357.7,814.13,342.11,809.56,327.57,803.81z"/>
-          <path id="pio_x5F_body" class="pio" d="M471.92,22.73c145.9,20.42,260.81,241.43,260.81,454.5c0,223.63-75.06,347.31-282.75,347.31
-            c-197.66,0-282.72-123.68-282.72-347.31c0-218.91,121.28-446.16,272.85-455.69L471.92,22.73z"/>
-          <path id="pio_x5F_arm2" class="pio" d="M717.67,340c0,0-0.02,0.04-0.05,0.11c9.88,44.68,15.25,91.08,15.25,137.12
-            c0,18.38-0.52,36.08-1.57,53.1c35.45,5.77,81.42-27.62,85.97-61.02C823.51,423.56,717.67,340,717.67,340z"/>
-          <path id="pio_x5F_arm1" class="pio" d="M167.4,477.23c0-45.89,5.33-92.14,15.15-136.68c-0.15-0.35-0.23-0.56-0.23-0.56
-            S76.49,423.56,82.72,469.31c4.57,33.55,50.92,67.09,86.43,60.95C167.99,513.26,167.4,495.59,167.4,477.23z"/>
-          <path id="pio_x5F_cheek1" class="pio" d="M368.09,219.31c0,27.35-22.17,49.54-49.54,49.54c-27.36,0-49.55-22.19-49.55-49.54
-            c0-27.36,22.19-49.55,49.55-49.55C345.92,169.76,368.09,191.94,368.09,219.31"/>
-          <path id="pio_x5F_cheek2" class="pio" d="M531.91,219.31c0,27.35,22.18,49.54,49.54,49.54c27.36,0,49.55-22.19,49.55-49.54
-            c0-27.36-22.19-49.55-49.55-49.55C554.09,169.76,531.91,191.94,531.91,219.31"/>
-          <path id="pio_x5F_hair" class="pio" d="M467.82,43.44c-17.25-9.04-38.16-3.88-49.39,11.3l-0.98,1.4c-0.81,1.18-1.55,2.43-2.23,3.73
-            c-0.16,0.29-0.29,0.59-0.44,0.89c-5.2,7.2-16.04,15.68-28.51,17.52c-14.18,2.09-15.63,7.27-14.78,10
-            c2.58,8.28,20.15,12.32,33.69,11.63c3.72-0.19,11.83-0.8,11.83-0.8c3.53,5.47,8.47,10.14,14.64,13.37
-            c19.06,9.99,42.62,2.63,52.61-16.43C494.24,76.99,486.88,53.43,467.82,43.44z M458.92,82.78c-2.66,5.07-8.93,7.03-14,4.37
-            c-5.07-2.66-7.03-8.93-4.38-13.99c2.66-5.07,8.93-7.03,14-4.37C459.61,71.43,461.58,77.71,458.92,82.78z"/>
-        </g>
-        <g id="nest1">
+
+        <g id="nest1" :class="{ 'show' : nestType == 1 }">
           <path id="nets1_x5F_13" class="nest1" d="M542.41,854.03c11.93,4.64,22.49,10.16,31.31,16.35c6.09,4.28,11.34,8.89,15.66,13.76v0
             c8.19-4.95,16.11-10.34,23.59-16.12c3.96-3.05,7.8-6.22,11.49-9.48c19.62-17.32,32.39-34.99,38.09-50.93
             c9.13-25.53,0.15-46.64-27.75-54.85c-27.9-8.22-68.22-1.63-107.01,15.17l0,0c10.69,15.26,16.96,33.82,16.96,53.83
@@ -242,7 +220,7 @@
             c16.57,0.88,32.35,3.11,46.92,6.46c0.01,0,0.01,0,0.01,0c9.55,2.2,18.58,4.88,26.97,7.99
             C540.44,853.28,541.43,853.65,542.41,854.03"/>
         </g>
-        <g id="nest2">
+        <g id="nest2" :class="{ 'show' : nestType == 2 }">
           <path id="nest2_x5F_3" class="nest2" d="M785,857.75l-92.59-36l-35.37-58.25H542.59l-92.59-36l-92.59,36H242.96l-35.37,58.25
             l-92.59,36L150.37,916L115,974.25l92.59,36l35.37,58.25h114.45l92.59,36l92.59-36h114.45l35.37-58.25l92.59-36L749.63,916
             L785,857.75z M699.51,959.39l-68.96,26.81l-26.34,43.39h-85.24L450,1056.4l-68.96-26.81h-85.24l-26.34-43.39l-68.96-26.81
@@ -257,7 +235,7 @@
             617.23,945.08 571.01,963.05 553.35,992.12 496.22,992.12 450,1010.1 403.78,992.12 346.65,992.12 328.99,963.05 282.77,945.08 
             300.43,916 282.77,886.92 328.99,868.95 346.65,839.88 403.78,839.88 	"/>
         </g>
-        <g id="nest3">
+        <g id="nest3" :class="{ 'show' : nestType == 3 }">
           <path id="nest3_x5F_12" class="nest3" d="M367.6,852.57l0.01,0C367.6,852.56,367.6,852.57,367.6,852.57l-60.51-19.67h-0.01h0.01
             h-0.01l-67.82-66.1l92.12-29.92l68.7,66.96l34.93,34.04v0c-12.18,0.73-23.89,2.34-34.93,4.73c-11.66,2.5-22.56,5.87-32.47,9.96
             H367.6z"/>
@@ -294,23 +272,46 @@
             c-7.11-5.47-15.44-10.39-24.77-14.65c-9.55-4.37-20.14-8.04-31.54-10.87c-10.83-2.7-22.4-4.65-34.47-5.72
             c-7.16-0.64-14.5-0.97-21.97-0.97C444.94,837.43,439.93,837.58,435.01,837.88"/>
         </g>
-        <g id="pattern1">
-          <circle id="p1_x5F_1" class="pattern1" cx="255.68" cy="409.58" r="35.55"/>
-          <circle id="p1_x5F_2" class="pattern1" cx="384.23" cy="409.58" r="35.55"/>
-          <circle id="p1_x5F_3" class="pattern1" cx="512.78" cy="409.58" r="35.55"/>
-          <circle id="p1_x5F_4" class="pattern1" cx="641.34" cy="409.58" r="35.55"/>
-          <circle id="p1_x5F_5" class="pattern1" cx="320.93" cy="504.04" r="35.55"/>
-          <circle id="p1_x5F_6" class="pattern1" cx="448.51" cy="504.04" r="35.55"/>
-          <circle id="p1_x5F_7" class="pattern1" cx="576.09" cy="504.04" r="35.55"/>
-          <circle id="p1_x5F_8" class="pattern1" cx="255.67" cy="606.3" r="35.55"/>
-          <circle id="p1_x5F_9" class="pattern1" cx="384.22" cy="606.3" r="35.55"/>
-          <circle id="p1_x5F_10" class="pattern1" cx="512.78" cy="606.3" r="35.55"/>
-          <circle id="p1_x5F_11" class="pattern1" cx="641.33" cy="606.3" r="35.55"/>
-          <circle id="p1_x5F_12" class="pattern1" cx="320.92" cy="700.77" r="35.55"/>
-          <circle id="p1_x5F_13" class="pattern1" cx="448.5" cy="700.77" r="35.55"/>
-          <circle id="p1_x5F_14" class="pattern1" cx="576.08" cy="700.77" r="35.55"/>
+        <g id="pio">
+          <path id="pio_x5F_foot2" class="pio" d="M525.65,818.06c1,24.97,4.19,48.87,9.04,56.75c10.58,17.18,6.17-40.49,9.7-44.17
+            s8.82,34.36,21.17,42.94c12.35,8.59-0.88-25.77,0-36.81c0.88-11.04,14.11,20.86,25.58,18.4c7.49-1.6-7.03-30.34-18-50.08
+            C558.48,810.57,542.66,814.89,525.65,818.06z"/>
+          <path id="pio_x5F_foot1" class="pio" d="M327.57,803.81c-11.04,19.75-26.37,49.73-18.72,51.37c11.47,2.45,24.7-29.45,25.58-18.4
+            c0.88,11.04-12.35,45.4,0,36.81s17.64-46.63,21.17-42.94c3.53,3.68-0.88,61.35,9.7,44.17c4.89-7.94,8.09-32.13,9.06-57.31
+            C357.7,814.13,342.11,809.56,327.57,803.81z"/>
+          <path id="pio_x5F_body" class="pio" d="M471.92,22.73c145.9,20.42,260.81,241.43,260.81,454.5c0,223.63-75.06,347.31-282.75,347.31
+            c-197.66,0-282.72-123.68-282.72-347.31c0-218.91,121.28-446.16,272.85-455.69L471.92,22.73z"/>
+          <path id="pio_x5F_arm2" class="pio" d="M717.67,340c0,0-0.02,0.04-0.05,0.11c9.88,44.68,15.25,91.08,15.25,137.12
+            c0,18.38-0.52,36.08-1.57,53.1c35.45,5.77,81.42-27.62,85.97-61.02C823.51,423.56,717.67,340,717.67,340z"/>
+          <path id="pio_x5F_arm1" class="pio" d="M167.4,477.23c0-45.89,5.33-92.14,15.15-136.68c-0.15-0.35-0.23-0.56-0.23-0.56
+            S76.49,423.56,82.72,469.31c4.57,33.55,50.92,67.09,86.43,60.95C167.99,513.26,167.4,495.59,167.4,477.23z"/>
+          <path id="pio_x5F_cheek1" class="pio" d="M368.09,219.31c0,27.35-22.17,49.54-49.54,49.54c-27.36,0-49.55-22.19-49.55-49.54
+            c0-27.36,22.19-49.55,49.55-49.55C345.92,169.76,368.09,191.94,368.09,219.31"/>
+          <path id="pio_x5F_cheek2" class="pio" d="M531.91,219.31c0,27.35,22.18,49.54,49.54,49.54c27.36,0,49.55-22.19,49.55-49.54
+            c0-27.36-22.19-49.55-49.55-49.55C554.09,169.76,531.91,191.94,531.91,219.31"/>
+          <path id="pio_x5F_hair" class="pio" d="M467.82,43.44c-17.25-9.04-38.16-3.88-49.39,11.3l-0.98,1.4c-0.81,1.18-1.55,2.43-2.23,3.73
+            c-0.16,0.29-0.29,0.59-0.44,0.89c-5.2,7.2-16.04,15.68-28.51,17.52c-14.18,2.09-15.63,7.27-14.78,10
+            c2.58,8.28,20.15,12.32,33.69,11.63c3.72-0.19,11.83-0.8,11.83-0.8c3.53,5.47,8.47,10.14,14.64,13.37
+            c19.06,9.99,42.62,2.63,52.61-16.43C494.24,76.99,486.88,53.43,467.82,43.44z M458.92,82.78c-2.66,5.07-8.93,7.03-14,4.37
+            c-5.07-2.66-7.03-8.93-4.38-13.99c2.66-5.07,8.93-7.03,14-4.37C459.61,71.43,461.58,77.71,458.92,82.78z"/>
         </g>
-        <g id="pattern2">
+        <g id="pattern1" :class="{ 'show' : patternType == 1 }">
+          <circle id="p1_x5F_1" class="pattern1" cx="255.68" cy="409.58" r="35.55" />
+          <circle id="p1_x5F_2" class="pattern1" cx="384.23" cy="409.58" r="35.55" />
+          <circle id="p1_x5F_3" class="pattern1" cx="512.78" cy="409.58" r="35.55" />
+          <circle id="p1_x5F_4" class="pattern1" cx="641.34" cy="409.58" r="35.55" />
+          <circle id="p1_x5F_5" class="pattern1" cx="320.93" cy="504.04" r="35.55" />
+          <circle id="p1_x5F_6" class="pattern1" cx="448.51" cy="504.04" r="35.55" />
+          <circle id="p1_x5F_7" class="pattern1" cx="576.09" cy="504.04" r="35.55" />
+          <circle id="p1_x5F_8" class="pattern1" cx="255.67" cy="606.3" r="35.55" />
+          <circle id="p1_x5F_9" class="pattern1" cx="384.22" cy="606.3" r="35.55" />
+          <circle id="p1_x5F_10" class="pattern1" cx="512.78" cy="606.3" r="35.55" />
+          <circle id="p1_x5F_11" class="pattern1" cx="641.33" cy="606.3" r="35.55" />
+          <circle id="p1_x5F_12" class="pattern1" cx="320.92" cy="700.77" r="35.55" />
+          <circle id="p1_x5F_13" class="pattern1" cx="448.5" cy="700.77" r="35.55" />
+          <circle id="p1_x5F_14" class="pattern1" cx="576.08" cy="700.77" r="35.55" />
+        </g>
+        <g id="pattern2" :class="{ 'show' : patternType == 2 }">
           <path id="p2_x5F_1" class="pattern2" d="M294.52,357.73c0,23.48-16.72,42.51-37.35,42.51v2.41c19.92,0,36.19,17.74,37.29,40.1h0.13
             c1.1-22.36,17.37-40.1,37.29-40.1v-2.41C311.25,400.24,294.52,381.21,294.52,357.73z"/>
           <path id="p2_x5F_2" class="pattern2" d="M450.02,357.73c0,23.48-16.72,42.51-37.35,42.51v2.41c19.92,0,36.19,17.74,37.29,40.1h0.13
@@ -330,7 +331,7 @@
           <path id="p2_x5F_9" class="pattern2" d="M605.51,636.52c0,23.48-16.72,42.51-37.35,42.51v2.41c19.92,0,36.19,17.74,37.29,40.1h0.13
             c1.1-22.36,17.37-40.1,37.29-40.1v-2.41C622.24,679.03,605.51,660,605.51,636.52z"/>
         </g>
-        <g id="pattern3">
+        <g id="pattern3" :class="{ 'show' : patternType == 3 }">
           <path id="p3_x5F_1" class="pattern3" d="M356.09,459.02c0-7.71-13.92-13.96-31.11-13.96c-2.65,0-5.23,0.15-7.68,0.43
             c1.47-1.99,2.89-4.14,4.21-6.44c8.6-14.88,10.15-30.07,3.47-33.92c-6.68-3.85-19.05,5.08-27.65,19.96c-1.33,2.3-2.48,4.6-3.47,6.87
             c-0.99-2.27-2.14-4.57-3.47-6.86c-8.59-14.89-20.96-23.82-27.64-19.97c-6.67,3.86-5.12,19.04,3.47,33.92
@@ -386,7 +387,7 @@
             c-6.46,3.73-14.73,1.52-18.47-4.95c-3.73-6.46-1.52-14.74,4.95-18.47c6.47-3.73,14.74-1.52,18.47,4.95
             C621.52,604.48,619.3,612.75,612.83,616.48z"/>
         </g>
-        <g id="pattern4">
+        <g id="pattern4" :class="{ 'show' : patternType == 4 }">
           <path id="p4_x5F_1" class="pattern4" d="M730.87,463.61l-14.67-8.78l-53.38,31.95c-7.53,4.51-18.8,4.51-26.32,0l-53.39-31.95
             l-53.43,31.95c-3.74,2.24-8.44,3.38-13.14,3.38c-4.74,0-9.43-1.13-13.18-3.38l-53.38-31.95l-53.43,31.95
             c-7.53,4.51-18.79,4.51-26.31,0l-53.39-31.95l-53.38,31.95c-7.53,4.51-18.83,4.51-26.37,0l-53.38-31.95l-14.3,8.56
@@ -409,7 +410,7 @@
             c2.51,0.78,4.74,1.89,6.53,3.22l51.75,30.97l53.47-32.01c5.85-3.51,14.21-4.37,21.33-2.18c2.55,0.78,4.74,1.89,6.57,3.22
             l51.71,30.97l53.51-32.01C706.19,641.46,709.92,640.35,713.8,640.01z"/>
         </g>
-        <g id="pattern5">
+        <g id="pattern5" :class="{ 'show' : patternType == 5 }">
           <rect id="p5_x5F_1" x="247.38" y="374.03" class="pattern5" width="23" height="49.99"/>
           <rect id="p5_x5F_2" x="297.13" y="424.55" class="pattern5" width="23" height="49.99"/>
           <rect id="p5_x5F_3" x="356.32" y="374.03" class="pattern5" width="23" height="49.99"/>
@@ -435,7 +436,7 @@
           <rect id="p5_x5F_23" x="574.2" y="624.8" class="pattern5" width="23" height="49.99"/>
           <rect id="p5_x5F_24" x="623.95" y="675.32" class="pattern5" width="23" height="49.99"/>
         </g>
-        <g id="pattern6">
+        <g id="pattern6" :class="{ 'show' : patternType == 6 }">
           <path id="p6_x5F_1" class="pattern6" d="M725.49,398.44H170.18c1.37-10.79,3.02-21.53,4.93-32.2h545.45
             C722.46,376.91,724.11,387.65,725.49,398.44z"/>
           <path id="p6_x5F_2" class="pattern6" d="M730.56,477.17c0,1.02,0,2.04-0.01,3.05H165.11c-0.01-1.01-0.01-2.03-0.01-3.05
@@ -447,7 +448,7 @@
           <path id="p6_x5F_5" class="pattern6" d="M692.13,693.4c-5.51,11.46-11.68,22.19-18.52,32.2H225.59c-7.06-10-13.47-20.73-19.24-32.2
             H692.13z"/>
         </g>
-        <g id="pattern7">
+        <g id="pattern7" :class="{ 'show' : patternType == 7 }">
           <path id="p7_x5F_1" class="pattern7" d="M356.09,553.54c-13.6,0-26.18-8.87-33.86-23.51c-15.79,4.92-30.96,2.29-40.57-7.32
             c-9.62-9.62-12.24-24.79-7.33-40.57c-14.64-7.69-23.5-20.27-23.5-33.87c0-13.6,8.86-26.18,23.5-33.86
             c-4.91-15.78-2.29-30.95,7.33-40.57c9.62-9.61,24.78-12.24,40.56-7.33c7.69-14.64,20.27-23.51,33.88-23.51
@@ -504,7 +505,7 @@
             c3.39,3.39,4.32,8.75,2.59,14.32c5.17,2.71,8.3,7.16,8.3,11.96c0,4.8-3.13,9.24-8.3,11.95c1.74,5.57,0.81,10.93-2.58,14.32
             c-3.4,3.39-8.75,4.32-14.32,2.59C588.33,447.3,583.89,450.43,579.09,450.43z"/>
         </g>
-        <g id="pattern8">
+        <g id="pattern8" :class="{ 'show' : patternType == 8 }">
           <path id="p8_x5F_1" class="pattern8" d="M334.12,369.16c-13.82,0-23.45,10.03-23.45,10.03s-9.63-10.03-23.47-10.03
             c-21.97,0-48.8,38.29,5.62,77.94c5.21,3.77,10.87,13.75,17.85,13.75c6.93,0,12.64-9.98,17.85-13.75
             C382.93,407.45,356.08,369.16,334.12,369.16"/>
@@ -533,35 +534,35 @@
             c-21.97,0-48.8,38.29,5.62,77.94c5.21,3.77,10.87,13.75,17.85,13.75c6.93,0,12.64-9.98,17.85-13.75
             C658.6,682.97,631.75,644.69,609.79,644.69"/>
         </g>
-        <g id="mouth1">
+        <g id="mouth1" :class="{ 'show' : mouthType == 1 }">
           <path class="mouth1" d="M463.54,177.84c-8.95-0.01-16.22,5.23-16.23,14.19c0.01-8.95-7.23-14.22-16.19-14.23
             c-8.95-0.01-16.22,7.23-16.23,16.19c0,1.91,0.33,3.74,0.93,5.44c2.1,8.14,14.13,27.65,31.43,27.65c17.29,0,29.42-19.43,31.54-27.56
             c0.61-1.7,0.94-3.53,0.95-5.44C479.74,185.12,472.49,177.85,463.54,177.84z"/>
         </g>
-        <g id="mouth2">
+        <g id="mouth2" :class="{ 'show' : mouthType == 2 }">
           <path class="mouth2" d="M448.58,178.92c-1.12-1.51-2.97-1.51-4.09,0l-17.08,22.97c-1.12,1.51-1.14,4-0.03,5.52l17.15,23.63
             c1.11,1.53,2.92,1.53,4.03,0l17.15-23.63c1.11-1.53,1.09-4.01-0.03-5.52L448.58,178.92z"/>
         </g>
-        <g id="mouth3">
+        <g id="mouth3" :class="{ 'show' : mouthType == 3 }">
           <path class="mouth3" d="M462.53,177.79c-7.58,0-12.87,6.1-12.87,6.1s-5.29-6.1-12.87-6.1c-12.06,0-26.79,32.85,3.08,56.87
             c2.85,2.28,5.97,8.31,9.79,8.31c3.81,0,6.94-6.02,9.79-8.31C489.32,210.64,474.59,177.79,462.53,177.79z"/>
         </g>
-        <g id="mouth4">
+        <g id="mouth4" :class="{ 'show' : mouthType == 4 }">
           <path class="mouth4" d="M449.23,208.89c16.37,0.05,29.67,1.3,29.67-13.66c0-12.04-13.22-17.38-29.59-17.44
             c-16.37,0.05-29.59,5.4-29.59,17.44c0,14.96,13.3,13.72,29.67,13.66"/>
           <path class="mouth4" d="M430.23,208.13c5.17,1.04,11.86,0.78,19.16,0.76h-0.16c7.94,0.03,15.15,0.33,20.48-1.06L470,208
             c5.35,2.85,8.9,8.21,8.9,14.23c0,14.96-13.3,13.72-29.67,13.66h0.16c-16.37,0.05-29.67,1.3-29.67-13.66
             C419.72,215.54,423.8,210.92,430.23,208.13L430.23,208.13z"/>
         </g>
-        <g id="mouth5">
+        <g id="mouth5" :class="{ 'show' : mouthType == 5 }">
           <path class="mouth5" d="M452.32,178.67c-1.46-1.17-3.85-1.17-5.31,0L424.6,196.7c-1.46,1.17-1.47,3.11-0.03,4.3l22.47,18.53
             c1.45,1.19,3.81,1.19,5.26,0l22.47-18.53c1.45-1.19,1.43-3.13-0.03-4.3L452.32,178.67z"/>
         </g>
-        <g id="mouth6">
+        <g id="mouth6" :class="{ 'show' : mouthType == 6 }">
           <path class="mouth6" d="M448.03,223.16L448.03,223.16c-12.48,0-22.69-10.21-22.69-22.69v0c0-12.48,10.21-22.69,22.69-22.69h0
             c12.48,0,22.69,10.21,22.69,22.69v0C470.72,212.95,460.51,223.16,448.03,223.16z"/>
         </g>
-        <g id="eyes1" v-if="eyeType==1">
+        <g id="eyes1" :class="{ 'show' : eyeType == 1 }">
           <g>
             <g>
               <g>
@@ -581,7 +582,7 @@
             </g>
           </g>
         </g>
-        <g id="eyes2" v-if="eyeType==2">
+        <g id="eyes2" :class="{ 'show' : eyeType == 2 }">
           <g>
             <g>
               <g>
@@ -601,7 +602,7 @@
             </g>
           </g>
         </g>
-        <g id="eyes3" v-if="eyeType==3">
+        <g id="eyes3" :class="{ 'show' : eyeType == 3 }">
           <g>
             <g>
               <g>
@@ -625,7 +626,7 @@
             </g>
           </g>
         </g>
-        <g id="eyes4" v-if="eyeType==4">
+        <g id="eyes4" :class="{ 'show' : eyeType == 4 }">
           <g>
             <g>
               <g>
@@ -666,6 +667,7 @@
   </q-page>
 </template>
 <script>
+
 export default {
   data(){ return {
     mode: 'eye',
@@ -673,44 +675,66 @@ export default {
     mouthType: 1,
     patternType: 1,
     nestType: 1,
-
+    color: 'transparent',
+    colorInfo: {}
   }},
   methods:{
-    handleClick(target){
-      if(this.mode == 'fill'){
-        console.log(target)
+    handleColor(evt){
+      console.log(evt.target, this.color)
+      if(this.mode == 'color'){
+        this.colorInfo[evt.target.id] = this.color
+        evt.target.style.fill = this.color
+      }
+    },
+    setEventListener(){
+      const idList = [
+        'pio',
+        'nest1', 'nest2', 'nest3',
+        'mouth1', 'mouth2', 'mouth3', 'mouth4', 'mouth5', 'mouth6',
+        // 'eyes1', 'eyes2', 'eyes3', 'eyes4',
+        'pattern1','pattern2','pattern3','pattern4','pattern5','pattern6','pattern7','pattern8',
+      ]
+      for( let id of idList ){
+        const outer = this.$refs.svg.querySelector('#' + id)
+        outer.querySelectorAll('*').forEach( dom => {
+          dom.addEventListener('click', this.handleColor)
+        })
       }
     }
   },
-
+  mounted(){
+    this.setEventListener()
+  }
 }
 </script>
 <style>
+  path, circle, rect{ fill: transparent; }
   .pio{ fill:beige; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
 
-  .nest1{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
-  .nest2{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
-  .nest3{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
+  .show * {display: block !important}
+  .nest1{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
+  .nest2{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
+  .nest3{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
 
-  .pattern1{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
-  .pattern2{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
-  .pattern3{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:10;}
-  .pattern4{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:10;}
-  .pattern5{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
-  .pattern6{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:10;}
-  .pattern7{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-  .pattern8{display:none; fill:none;stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
+  .pattern1{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
+  .pattern2{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
+  .pattern3{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:10;}
+  .pattern4{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:10;}
+  .pattern5{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
+  .pattern6{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:10;}
+  .pattern7{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+  .pattern8{display: none; fill:white; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
 
-  .mouth1{display:none;  fill:none;stroke:#2D4247;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-  .mouth2{display:none;  fill:none;stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
-  .mouth3{display:none;  fill:none;stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
-  .mouth4{display:none;  fill:none;stroke:#2D4247;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-  .mouth5{display:none;  fill:none;stroke:#2D4247;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-  .mouth6{display:none;  fill:none;stroke:#2D4247;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+  .mouth1{display: none;  fill:white; stroke:#2D4247;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+  .mouth2{display: none;  fill:white; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
+  .mouth3{display: none;  fill:white; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
+  .mouth4{display: none;  fill:white; stroke:#2D4247;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+  .mouth5{display: none;  fill:white; stroke:#2D4247;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+  .mouth6{display: none;  fill:white; stroke:#2D4247;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 
-  .st0{fill:#2D4247;}
-  .st1{fill:#FFFFFF;}
-  .st2{fill:none;stroke:#2D4247;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+  .st0{display: none; fill:#2D4247;}
+  .st1{display: none; fill:#FFFFFF;}
+  .st2{display: none; fill:transparent; stroke:#2D4247;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
   .select_container{
     margin: 10px 10px;
     padding:12px;
