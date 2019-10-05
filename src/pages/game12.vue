@@ -812,7 +812,7 @@
           </g>
         </g>
         <g>
-          <g id="p2Rpenta3_7_">
+          <g id="p2Rpenta3_7_" @click="checkClick('p2Rpenta3_7_')">
             <g>
               <polygon class="p2" points="1265.83,827.15 1339.55,817.34 1371.66,884.4 1317.79,935.65 1252.38,900.27 				"/>
               <polygon class="p2" points="1228.63,849.48 1184.22,909.11 1227.23,969.76 1298.22,947.61 1299.09,873.27 				"/>
@@ -2379,6 +2379,9 @@ export default {
     
   },
   methods:{
+    checkClick(evt){
+      console.log(evt)
+    },
     patternItem(qurryStr){
       console.log(123)
       TweenMax.set(qurryStr, {fill:'orange'})
