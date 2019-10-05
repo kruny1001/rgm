@@ -138,7 +138,7 @@ class Game5_3 {
       larva.scale.x = scale
       larva.scale.y = scale
       larva.larva.on('click', () => {
-        if( larva.status == )
+        // if( larva.status == )
       })
       this.larvaBox.addChild(larva)
     }
