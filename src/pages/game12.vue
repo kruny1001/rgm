@@ -1,7 +1,7 @@
 <template>
   <q-page class="bg" style="background-image: url('~/statics/game12/bg.png');">
     
-    <desc-view class="desc-view"></desc-view>
+    <desc-view class="desc-view" title="game12"></desc-view>
     <div> 망토색칠</div>
     <div id="debugTool">
       <q-btn @click="showDesc()"> Show Desc</q-btn>
@@ -2364,6 +2364,7 @@ export default {
       TweenMax.to('.desc-view', 0.5, {opacity:0, display:'none'})
     },
     showDesc(){
+      TweenMax.set('.desc-view', {display:"block"})
       TweenMax.to('.desc-view', 0.5, {
         css: {
           x: 0,
@@ -2373,7 +2374,7 @@ export default {
           // this.destroy()
         }
       })
-      TweenMax.to('.desc-view', 0.5, {opacity:1, display:'block'})
+      TweenMax.to('.desc-view', 0.5, {opacity:1,})
     }
   }  
 }
@@ -2409,5 +2410,9 @@ export default {
   -ms-user-select:none;
   -o-user-select:none;
   user-select:none;
+  }
+  .desc-view{
+    opacity: 0;
+    display: none;
   }
 </style>

@@ -8,6 +8,9 @@
 <script>
 
 export default {
+    props:{
+        title: String
+    },
     data(){return{
         count: 1,
         max: 12,
@@ -17,19 +20,18 @@ export default {
         prevPage(){
             if(this.count > 1){
                 this.count = --this.count
-                this.imgSrc= `statics/game12/desc/${this.count}.jpg`
+                this.imgSrc= `statics/${this.title}/desc/${this.count}.jpg`
             }
         },
         nextPage(){
             if(this.count < this.max){
                 this.count = ++this.count
-                this.imgSrc= `statics/game12/desc/${this.count}.jpg`
+                this.imgSrc= `statics/${this.title}/desc/${this.count}.jpg`
             }
-            
         }
     },
     created(){
-        this.imgSrc= `statics/game12/desc/${this.count}.jpg`
+        this.imgSrc= `statics/${this.title}/desc/${this.count}.jpg`
     }
 }
 </script>

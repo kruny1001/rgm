@@ -1,6 +1,13 @@
 <template>
   <q-page style="background-image: url('statics/game11/bg.png'); height:100vh;" class="">
     <!-- Select Color  -->
+    <div id="debugTool">
+      <q-btn @click="showDesc()"> Show Desc</q-btn>
+      <q-btn @click="hideDesc()"> Hide Desc</q-btn>
+      <!-- <q-btn @click="fillColor()"> fillColor</q-btn> -->
+      <!-- patternItem -->
+    </div>
+    <desc-view class="desc-view" title="game11"></desc-view>
     <div style="height:120px"></div>
     <div style="background: white; max-width:1000px; margin: 0px auto; border-radius:120px; padding: 20px 60px;">    
       <div class="row" v-if="mode == 'color'" style="max-width:980px; margin: 0px auto;">
@@ -671,8 +678,11 @@
   </q-page>
 </template>
 <script>
-
+import descView from 'src/components/descView.vue'
 export default {
+  components: {
+      descView
+  },
   data(){ return {
     mode: 'eye',
     eyeType: 1,
@@ -683,6 +693,27 @@ export default {
     colorInfo: {}
   }},
   methods:{
+    hideDesc(){
+      TweenMax.to('.desc-view', 0.5, {
+        css: { x: 150, y: -150 },
+        onComplete: ()=>{ // this.destroy()
+        }
+      })
+      TweenMax.to('.desc-view', 0.5, {opacity:0, display:'none'})
+    },
+    showDesc(){
+      TweenMax.set('.desc-view', {display:"block"})
+      TweenMax.to('.desc-view', 0.5, {
+        css: {
+          x: 0,
+          y: 0
+        },
+        onComplete: ()=>{
+          // this.destroy()
+        }
+      })
+      TweenMax.to('.desc-view', 0.5, {opacity:1,})
+    },
     handleColor(evt){
       console.log(evt.target, this.color)
       if(this.mode == 'color'){
@@ -764,4 +795,10 @@ export default {
   .bg10{ background: #CD82F9}
   .bg11{ background: #DD9A58}
   .bg12{ background: #3A3A3A}
+
+
+  .desc-view{
+    opacity: 0;
+    display: none;
+  }
 </style>
