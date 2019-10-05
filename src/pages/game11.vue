@@ -3,7 +3,7 @@
     <!-- Select Color  -->
     <div class="row"> 
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/btn_before.png">
+        <img class="select_mouth" src="statics/game11/btn_before.png">
       </div>
       <div class="select_container bg1"></div>
       <div class="select_container bg2"></div>
@@ -18,105 +18,105 @@
       <div class="select_container bg11"></div>
       <div class="select_container bg12"></div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/btn_next.png">
+        <img class="select_mouth" src="statics/game11/btn_next.png">
       </div>
     </div>
 
     <!-- Eye -->
     <div class="row">
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_eyes_1.png">
+        <img class="select_mouth" src="statics/game11/choice_eyes_1.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_eyes_2.png">
+        <img class="select_mouth" src="statics/game11/choice_eyes_2.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_eyes_3.png">
+        <img class="select_mouth" src="statics/game11/choice_eyes_3.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_eyes_4.png">
+        <img class="select_mouth" src="statics/game11/choice_eyes_4.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/btn_next.png">
+        <img class="select_mouth" src="statics/game11/btn_next.png">
       </div>
     </div>
     <!-- Pattern  -->
     <div class="row">
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/btn_before.png">
+        <img class="select_mouth" src="statics/game11/btn_before.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_pattern1.png">
+        <img class="select_mouth" src="statics/game11/choice_pattern1.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_pattern2.png">
+        <img class="select_mouth" src="statics/game11/choice_pattern2.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_pattern3.png">
+        <img class="select_mouth" src="statics/game11/choice_pattern3.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_pattern4.png">
+        <img class="select_mouth" src="statics/game11/choice_pattern4.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_pattern5.png">
+        <img class="select_mouth" src="statics/game11/choice_pattern5.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_pattern6.png">
+        <img class="select_mouth" src="statics/game11/choice_pattern6.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_pattern7.png">
+        <img class="select_mouth" src="statics/game11/choice_pattern7.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_pattern8.png">
+        <img class="select_mouth" src="statics/game11/choice_pattern8.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/btn_next.png">
+        <img class="select_mouth" src="statics/game11/btn_next.png">
       </div>
     </div>
     <!-- Select Nest  -->
     <div class="row">
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/btn_before.png">
+        <img class="select_mouth" src="statics/game11/btn_before.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_nest1.png">
+        <img class="select_mouth" src="statics/game11/choice_nest1.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_nest2.png">
+        <img class="select_mouth" src="statics/game11/choice_nest2.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_nest3.png">
+        <img class="select_mouth" src="statics/game11/choice_nest3.png">
       </div>
        <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/btn_next.png">
+        <img class="select_mouth" src="statics/game11/btn_next.png">
       </div>
     </div>
 
     <!-- Select Mount -->
     <div class="row">
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/btn_before.png">
+        <img class="select_mouth" src="statics/game11/btn_before.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_mouth1.png">
+        <img class="select_mouth" src="statics/game11/choice_mouth1.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_mouth2.png">
+        <img class="select_mouth" src="statics/game11/choice_mouth2.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_mouth3.png">
+        <img class="select_mouth" src="statics/game11/choice_mouth3.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_mouth4.png">
+        <img class="select_mouth" src="statics/game11/choice_mouth4.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_mouth5.png">
+        <img class="select_mouth" src="statics/game11/choice_mouth5.png">
       </div>
       <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/choice_mouth6.png">
+        <img class="select_mouth" src="statics/game11/choice_mouth6.png">
       </div>
        <div class="flex flex-center select_container">
-        <img class="select_mouth" src="statics/game12/btn_next.png">
+        <img class="select_mouth" src="statics/game11/btn_next.png">
       </div>
     </div>
 
