@@ -23,13 +23,16 @@ let resource = null
 export default {
   name: "PageIndex",
   data() {
-    return { 
+    return {
       menu: [
         {name: "[1회기] 알 부화시키기", link:"g1"},
         {name: "[2회기] 아기피오 재우기", link:"g2"},
         {name: "[3회기] 애벌레 잡기", link:"g3"},
         {name: "[5회기] 동작가르치기", link:"g4"},
         {name: "[5회기] 대왕 애벌레 잡기", link:"g5"},
+
+        {name: "[2회기] 아기피오 색칠하기", link:"g11"},
+        {name: "[3회기] 망토 색칠하기", link:"g12"},
       ],
       imageData: null, 
       counts:0,

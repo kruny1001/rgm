@@ -10,6 +10,8 @@ const routes = [
       { path: 'g3', component: () => import('pages/game3.vue') },
       { path: 'g5', component: () => import('pages/game5-3.vue') },
       { path: 'g4', component: () => import('pages/game4.vue') },
+      { path: 'g11', component: () => import('pages/game11.vue') },
+      { path: 'g12', component: () => import('pages/game12.vue') },
     ]
   }
 ]
