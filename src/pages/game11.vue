@@ -3,152 +3,167 @@
     <!-- Select Color  -->
     <div style="height:120px"></div>
     <div style="background: white; max-width:1000px; margin: 0px auto; border-radius:120px; padding: 20px 60px;">    
-      <div class="row" v-if="mode == 'color'" style="max-width:980px; margin: 0px auto;">
-        <div class="flex flex-center select_container">
+      <div class="row justify-between" v-if="mode == 'color'" style="max-width:980px; margin: 0px auto;">
+        <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
-            @click=" mode = 'pattern'">
+            @click="progress(-1)"/>
         </div>
-        <div class="select_container bg1"   @click="color = '#FF5955'"></div>
-        <div class="select_container bg2"   @click="color = '#F9E2B4'"></div>
-        <div class="select_container bg3"   @click="color = '#F79F32'"></div>
-        <div class="select_container bg4"   @click="color = '#FFDC48'"></div>
-        <div class="select_container bg5"   @click="color = '#A6F4B5'"></div>
-        <div class="select_container bg6"   @click="color = '#29A585'"></div>
-        <div class="select_container bg7"   @click="color = '#B6DFFC'"></div>
-        <div class="select_container bg8"   @click="color = '#629FDD'"></div>
-        <div class="select_container bg9"   @click="color = '#FFC7C7'"></div>
-        <div class="select_container bg10"  @click="color = '#CD82F9'"></div>
-        <div class="select_container bg11"  @click="color = '#DD9A58'"></div>
-        <div class="select_container bg12"  @click="color = '#3A3A3A'"></div>
-        <div class="flex flex-center select_container">
+        <div class="flex flex-center">
+          <div class="select_container_small bg1"   @click="color = '#FF5955'"></div>
+          <div class="select_container_small bg2"   @click="color = '#F9E2B4'"></div>
+          <div class="select_container_small bg3"   @click="color = '#F79F32'"></div>
+          <div class="select_container_small bg4"   @click="color = '#FFDC48'"></div>
+          <div class="select_container_small bg5"   @click="color = '#A6F4B5'"></div>
+          <div class="select_container_small bg6"   @click="color = '#29A585'"></div>
+          <div class="select_container_small bg7"   @click="color = '#B6DFFC'"></div>
+          <div class="select_container_small bg8"   @click="color = '#629FDD'"></div>
+          <div class="select_container_small bg9"   @click="color = '#FFC7C7'"></div>
+          <div class="select_container_small bg10"  @click="color = '#CD82F9'"></div>
+          <div class="select_container_small bg11"  @click="color = '#DD9A58'"></div>
+          <div class="select_container_small bg12"  @click="color = '#3A3A3A'"></div>
+          <div class="select_container_small bg-erase"  @click="color = '#FFFFFF'"></div>
+        </div>
+        <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_next.png"
-            @click=" mode = 'nest'">
+            @click="progress(+1)">
         </div>
       </div>
 
       <!-- Eye -->
-      <div class="row" v-if="mode == 'eye'" style="max-width:980px; margin: 0px auto;">
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_eyes_1.png"
-            @click="()=> eyeType = 1">
+      <div class="row justify-between" v-if="mode == 'eye'" style="max-width:980px; margin: 0px auto;">
+        <div class="flex flex-center select_container" style="opacity: 0">
+          <img class="select_btn" src="statics/game11/btn_before.png"
+            @click="progress(-1)"/>
         </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_eyes_2.png"
-            @click="()=> eyeType = 2">
+        <div class="flex flex-center">
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_eyes_1.png"
+              @click="()=> eyeType = 1">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_eyes_2.png"
+              @click="()=> eyeType = 2">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_eyes_3.png"
+              @click="()=> eyeType = 3">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_eyes_4.png"
+              @click="()=> eyeType = 4">
+          </div>
         </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_eyes_3.png"
-            @click="()=> eyeType = 3">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_eyes_4.png"
-            @click="()=> eyeType = 4">
-        </div>
-        <div class="flex flex-center select_container">
+        <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_next.png"
-            @click="()=> mode = 'mouth'">
+            @click="progress(+1)">
         </div>
       </div>
       <!-- Pattern  -->
-      <div class="row" v-if="mode == 'pattern'">
-        <div class="flex flex-center select_container">
+      <div class="row justify-between" v-if="mode == 'pattern'">
+        <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
-            @click=" ()=> mode = 'mouth'">
+            @click="progress(-1)"/>
         </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_pattern1.png"
-            @click=" ()=> patternType = 1">
+        <div class="flex flex-center">
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_pattern1.png"
+              @click=" ()=> patternType = 1">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_pattern2.png"
+              @click=" ()=> patternType = 2">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_pattern3.png"
+              @click=" ()=> patternType = 3">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_pattern4.png"
+              @click=" ()=> patternType = 4">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_pattern5.png"
+              @click=" ()=> patternType = 5">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_pattern6.png"
+              @click=" ()=> patternType = 6">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_pattern7.png"
+              @click=" ()=> patternType = 7">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_pattern8.png"
+              @click=" ()=> patternType = 8">
+          </div>
         </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_pattern2.png"
-            @click=" ()=> patternType = 2">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_pattern3.png"
-            @click=" ()=> patternType = 3">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_pattern4.png"
-            @click=" ()=> patternType = 4">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_pattern5.png"
-            @click=" ()=> patternType = 5">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_pattern6.png"
-            @click=" ()=> patternType = 6">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_pattern7.png"
-            @click=" ()=> patternType = 7">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_pattern8.png"
-            @click=" ()=> patternType = 8">
-        </div>
-        <div class="flex flex-center select_container">
+        <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_next.png"
-            @click=" ()=> mode = 'color'">
+            @click="progress(+1)">
         </div>
       </div>
       <!-- Select Nest  -->
-      <div class="row" v-if="mode == 'nest'">
-        <div class="flex flex-center select_container">
+      <div class="row justify-between" v-if="mode == 'nest'">
+        <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
-            @click="mode = 'color'">
+            @click="progress(-1)"/>
         </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_nest1.png"
-            @click="() => nestType = 1">
+        <div class="flex flex-center">
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_nest1.png"
+              @click="() => nestType = 1">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_nest2.png"
+              @click="() => nestType = 2">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_nest3.png"
+              @click="() => nestType = 3">
+          </div>
         </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_nest2.png"
-            @click="() => nestType = 2">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_nest3.png"
-            @click="() => nestType = 3">
-        </div>
-        <div class="flex flex-center select_container">
+        <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_next.png"
-            @click="() => ''">
+            @click="progress(+1)">
         </div>
       </div>
 
       <!-- Select Mouth -->
-      <div class="row" v-if="mode == 'mouth'">
-        <div class="flex flex-center select_container">
+      <div class="row justify-between" v-if="mode == 'mouth'">
+        <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
-            @click="mode = 'eye'">
+            @click="progress(-1)"/>
         </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_mouth1.png"
-            @click="mouthType = 1">
+        <div class="flex flex-center">
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_mouth1.png"
+              @click="mouthType = 1">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_mouth2.png"
+              @click="mouthType = 2">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_mouth3.png"
+              @click="mouthType = 3">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_mouth4.png"
+              @click="mouthType = 4">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_mouth5.png"
+              @click="mouthType = 5">
+          </div>
+          <div class="flex flex-center select_container">
+            <img class="select_btn" src="statics/game11/choice_mouth6.png"
+              @click="mouthType = 6">
+          </div>
         </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_mouth2.png"
-            @click="mouthType = 2">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_mouth3.png"
-            @click="mouthType = 3">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_mouth4.png"
-            @click="mouthType = 4">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_mouth5.png"
-            @click="mouthType = 5">
-        </div>
-        <div class="flex flex-center select_container">
-          <img class="select_btn" src="statics/game11/choice_mouth6.png"
-            @click="mouthType = 6">
-        </div>
-        <div class="flex flex-center select_container">
+        <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_next.png"
-            @click="mode = 'pattern'">
+            @click="progress(+1)">
         </div>
       </div>
 
@@ -675,12 +690,14 @@
 export default {
   data(){ return {
     mode: 'eye',
+    curStep: 0,
     eyeType: 1,
     mouthType: 1,
     patternType: 1,
     nestType: 1,
     color: 'transparent',
-    colorInfo: {}
+    colorInfo: {},
+    modeList: ['eye', 'mouth', 'pattern', 'color', 'nest', 'color']
   }},
   methods:{
     handleColor(evt){
@@ -704,6 +721,13 @@ export default {
           dom.addEventListener('click', this.handleColor)
         })
       }
+    },
+    progress(step){
+      let nextStep = this.curStep + step
+      if( nextStep < 0 ){ nextStep = 0 }
+      if( nextStep >= this.modeList.length){ nextStep = this.modeList.length-1}
+      this.curStep = nextStep
+      this.mode = this.modeList[this.curStep]
     }
   },
   mounted(){
@@ -742,16 +766,29 @@ export default {
   .select_container{
     margin: 5px 5px;
     padding:12px;
-    border-radius: 50%; 
+    border-radius: 50%;
     background:#FFC107;
-    width:55px; 
+    width:55px;
     height: 55px;
+  }
+  .select_container_small{
+    margin: 5px 5px;
+    padding:5px;
+    border-radius: 50%;
+    background:#FFC107;
+    width:40px;
+    height: 40px;
   }
   .select_btn{
     display: block;
     width: 100%;
     height: 100%;
   }
+
+  .navi_btn {
+    padding: 0px
+  }
+
   .bg1{ background: #FF5955}
   .bg2{ background: #F9E2B4}
   .bg3{ background: #F79F32}
