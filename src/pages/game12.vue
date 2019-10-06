@@ -571,6 +571,11 @@
           </g>
       </svg>
     </div>
+
+    <div class="desc" style="margin-bottom:20px;"> 
+      <div style="margin-top:15px; text-align:center;"> {{desc[step]}}</div>
+    </div>
+
   </q-page>
 </template>
 <script>
@@ -615,6 +620,12 @@ export default {
   data(){return{
     mode: 'select',
     stepList: ['select', 'match', 'color', 'done'],
+    desc: [
+      '1. 옷에 넣을 무늬 모양을 골라서 눌러주세요.',
+      '2. 두 쪽이 대칭이 되도록 빨간 동그라미에 무늬를 채워주세요.',
+      '3. 색칠하기',
+      '4. 완성된 그림을 참고하여 피오에게 멋진 옷을 만들어주세요!'
+    ],
     step: 0,
     pattern: '',
     shape: '',
@@ -794,4 +805,9 @@ export default {
     border-radius: 30px;
     margin: 3px;
     }
+    .desc{
+    font-weight:bolder;
+    font-size:2rem;
+    font-family: 'NanumSquareRound',sans-serif;
+  }
 </style>

@@ -1,4 +1,4 @@
 <template lang="pug">
-    section.q-pa-md
-        p 다음에 또 만나요!
+    section
+        img(style="width:100%;" src="statics/end.png")
 </template>

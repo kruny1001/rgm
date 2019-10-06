@@ -1,4 +1,4 @@
 <template lang="pug">
-    section.q-pa-md
-        p 시작페이지 
+    section
+        img(style="width:100%;" src="statics/start.png")
 </template>

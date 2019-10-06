@@ -898,7 +898,7 @@ export default {
 
    .desc{
     font-weight:bolder;
-    font-szie:2rem;
+    font-size:2rem;
     font-family: 'NanumSquareRound',sans-serif;
   }
 </style>

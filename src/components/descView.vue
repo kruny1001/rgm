@@ -8,9 +8,9 @@
 <script>
 import { mapGetters, mapActions, mapState } from "vuex";
 export default {
-  props: {
-    title: String
-  },
+  // props: {
+  //   title: String
+  // },
   computed: {
     ...mapGetters({
       crntDesc: "admin/getCrntDescTitle",
@@ -22,15 +22,15 @@ export default {
     })
   },
   watch: {
-    crntDesc(newVal){
-      console.log(newVal)
-      console.log(this.crntUser)
-      // if(this.crntUser != 'admin')
-      //   this.$router.push(newVal)
-    },
-    crntDescTitle(newVal){
-      this.title = newVal
-    },
+    // crntDesc(newVal){
+    //   console.log(newVal)
+    //   console.log(this.crntUser)
+    //   // if(this.crntUser != 'admin')
+    //   //   this.$router.push(newVal)
+    // },
+    // crntDescTitle(newVal){
+    //   this.title = newVal
+    // },
     statusDesc(newVal){
       console.log("changeStatusDesc ",newVal)
       if(this.crntUser != 'admin'){

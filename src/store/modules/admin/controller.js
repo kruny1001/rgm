@@ -45,19 +45,19 @@ const mutations = {
   updateCrntCount(state, data){
     state.crntDescCount = data
     state.imgSrc = `statics/${state.crntDescTitle}/desc/${state.crntDescCount}.jpg`;
-    console.log(data)
+    console.log(data, state.imgSrc)
   }
 }
 
 const actions = {
-  openDesc({commit, state}){
+  async openDesc({commit, state}){
     console.log("open Description")
-    database.ref('statusDesc').set(true)
+    await database.ref('statusDesc').set(true)
   },
 
-  closeDesc({commit, state}){
+  async closeDesc({commit, state}){
     console.log("close Description")
-    database.ref('statusDesc').set(false)
+    await database.ref('statusDesc').set(false)
   },
 
   getConnected({commit}, start){
@@ -98,14 +98,16 @@ const actions = {
     commit('updateUserLevel', level)
   },
 
-  setDescTitle({commit, state}, title){
-    database.ref('crntDescTitle').set(title)
-    database.ref('cntDescCount').set(1)
+  async setDescTitle({commit, state}, title){
+    await database.ref('crntDescTitle').set(title)
+    await database.ref('cntDescCount').set(1)
     // commit('updateCrntDescTitle', title)
     // commit('updateCrntCount', 1)
   },
-
-  incDescTitle({commit, state}){
+  async resetCount({commit}){
+    await database.ref('cntDescCount').set(1)
+  },
+  async incDescTitle({commit, state}){
     let max = 1
     if(state.crntDescTitle == "game11")
       max = 15
@@ -114,16 +116,16 @@ const actions = {
     if(state.crntDescCount + 1 <=  max)  {
       let count = state.crntDescCount + 1
       // state.imgSrc = `statics/${state.title}/desc/${state.count}.jpg`;
-      database.ref('cntDescCount').set(count)
+      await database.ref('cntDescCount').set(count)
       // database.ref('crntDescImg').set(count)
     }
     
   },
 
-  descDescTitle({commit, state}){
-    if(state.crntDescCount - 1 > 1){
+  async descDescTitle({commit, state}){
+    if(state.crntDescCount - 1 > 0){
       let count = state.crntDescCount - 1
-      database.ref('cntDescCount').set(count)
+      await database.ref('cntDescCount').set(count)
     }
     
 
