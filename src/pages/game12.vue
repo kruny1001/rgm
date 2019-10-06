@@ -17,49 +17,60 @@
       <q-btn @click="selectPattern('p3')"> P3</q-btn>
       <q-btn v-if="pattern != ''" @click="progress(+1)"> Next </q-btn>
     </div>
-    <div v-if="mode == 'match' && pattern == 'p1'">
-      <q-btn dense round size="25px" icon="img:statics/game12/p1p1.svg" @click="shape = 'rect'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p1p2.svg" @click="shape = 'circle'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p1p3.svg" @click="shape = 'penta'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p1p4.svg" @click="shape = 'tri'"/>
-    </div>
 
-    <div v-if="mode == 'match' && pattern == 'p2'">
-      <q-btn dense round size="25px" icon="img:statics/game12/p2p1.svg" @click="shape = 'leaf'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p2p2.svg" @click="shape = 'flower'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p2p3.svg" @click="shape = 'penta'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p2p4.svg" @click="shape = 'circle'"/>
-    </div>
 
-    <div v-if="mode == 'match' && pattern == 'p3'">
-      <q-btn dense round size="25px" icon="img:statics/game12/p3p1.svg" @click="shape = 'three'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p3p2.svg" @click="shape = 'penta'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p3p3.svg" @click="shape = 'circle'"/>
-    </div>
-
-    <div>
-      
-
-      <q-btn> Previous </q-btn>
+    <div v-if="mode=='match'" class="row items-center ">
+      <q-btn @clcik="progress(-1)"> Previous </q-btn>
       <!-- 도형이 들어가야함  -->
-      <q-btn @click="showGuide('p1')"> P1 Show Guide</q-btn>
-      <q-btn @click="showGuide('p2')"> P2 Show Guide</q-btn>
-      <q-btn @click="showGuide('p3')"> P3 Show Guide</q-btn>
+      <!-- <q-btn @click="showGuide('p1')"> P1 Show Guide</q-btn> -->
+      <!-- <q-btn @click="showGuide('p2')"> P2 Show Guide</q-btn> -->
+      <!-- <q-btn @click="showGuide('p3')"> P3 Show Guide</q-btn> -->
+      <div v-if="mode == 'match' && pattern == 'p1'">
+        <q-btn dense round size="25px" icon="img:statics/game12/p1p1.svg" @click="shape = 'rect'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p1p2.svg" @click="shape = 'circle'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p1p3.svg" @click="shape = 'penta'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p1p4.svg" @click="shape = 'tri'"/>
+      </div>
 
-      <q-btn> Next </q-btn>
+      <div v-if="mode == 'match' && pattern == 'p2'">
+        <q-btn dense round size="25px" icon="img:statics/game12/p2p1.svg" @click="shape = 'leaf'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p2p2.svg" @click="shape = 'flower'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p2p3.svg" @click="shape = 'penta'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p2p4.svg" @click="shape = 'circle'"/>
+      </div>
+
+      <div v-if="mode == 'match' && pattern == 'p3'">
+        <q-btn dense round size="25px" icon="img:statics/game12/p3p1.svg" @click="shape = 'three'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p3p2.svg" @click="shape = 'penta'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p3p3.svg" @click="shape = 'circle'"/>
+      </div>
+      <q-btn v-if="finish || true" @click="progress(+1)"> Next </q-btn>
     </div>
     <!-- 색칠  -->
-    <div>
+    <div v-if="mode=='color'" class="row no-wrap" >
       <q-btn> Previous </q-btn>
+        <div class="color_pallete_btn" style="background:#FF5955;" @click="color = '#FF5955'"></div>
+        <!-- <div class="color_pallete_btn" style="background:#F9E2B4;" @click="color = '#F9E2B4'"></div> -->
+        <div class="color_pallete_btn" style="background:#F79F32;" @click="color = '#F79F32'"></div>
+        <div class="color_pallete_btn" style="background:#FFDC48;" @click="color = '#FFDC48'"></div>
+        <!-- <div class="color_pallete_btn" style="background:#A6F4B5;" @click="color = '#A6F4B5'"></div> -->
+        <div class="color_pallete_btn" style="background:#29A585;" @click="color = '#29A585'"></div>
+        <div class="color_pallete_btn" style="background:#B6DFFC;" @click="color = '#B6DFFC'"></div>
+        <div class="color_pallete_btn" style="background:#629FDD;" @click="color = '#629FDD'"></div>
+        <!-- <div class="color_pallete_btn" style="background:#FFC7C7;" @click="color = '#FFC7C7'"></div> -->
+        <div class="color_pallete_btn" style="background:#CD82F9;" @click="color = '#CD82F9'"></div>
+        <!-- <div class="color_pallete_btn" style="background:#DD9A58;" @click="color = '#DD9A58'"></div> -->
+        <div class="color_pallete_btn" style="background:#3A3A3A;" @click="color = '#3A3A3A'"></div>
+        <div class="color_pallete_btn" style="background:#DDDDDD;" @click="color = '#FFFFFF'"></div>
       <q-btn> Next </q-btn>
     </div>
 
     <div style="width:100%; max-width:800px; margin:0px auto; ">
-      <svg width="100%" viewBox="0 0 1262 858" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg ref='svg' width="100%" viewBox="0 0 1262 858" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="game12">
               <g id="cape" fill="#E8F4F9" fill-rule="nonzero">
-                  <path id="Path" d="M737.19,2.44 L737.19,808.2 C737.19,808.2 1049.69,981.95 1261.69,677.13 L1052.12,503.38 C1052.12,503.38 1166.08,297.78 1148.94,219.87 C1131.8,141.96 1009.65,6.8 939.69,2.44 C869.75,-1.92 737.19,2.44 737.19,2.44 Z" ></path>
-                  <path id="Path" d="M524.81,2.44 L524.81,808.2 C524.81,808.2 212.31,981.95 0.31,677.13 L209.88,503.38 C209.88,503.38 95.92,297.78 113.06,219.87 C130.2,141.96 252.34,6.79 322.3,2.44 C392.25,-1.92 524.81,2.44 524.81,2.44 Z" ></path>
+                  <path id="Path" fill="#E8F4F9" d="M737.19,2.44 L737.19,808.2 C737.19,808.2 1049.69,981.95 1261.69,677.13 L1052.12,503.38 C1052.12,503.38 1166.08,297.78 1148.94,219.87 C1131.8,141.96 1009.65,6.8 939.69,2.44 C869.75,-1.92 737.19,2.44 737.19,2.44 Z" ></path>
+                  <path id="Path" fill="#E8F4F9" d="M524.81,2.44 L524.81,808.2 C524.81,808.2 212.31,981.95 0.31,677.13 L209.88,503.38 C209.88,503.38 95.92,297.78 113.06,219.87 C130.2,141.96 252.34,6.79 322.3,2.44 C392.25,-1.92 524.81,2.44 524.81,2.44 Z" ></path>
               </g>
               <g id="p3" transform="translate(35.000000, 37.000000)">
                   <g id="show">
@@ -584,8 +595,6 @@ export default {
     this.hideDesc()
     // this.selectPattern('p2')
     this.allReset()
-
-    
   },
   data(){return{
     mode: 'select',
@@ -595,6 +604,7 @@ export default {
     shape: '',
     answerBook: _.cloneDeep(ANSWER),
     finish: false,
+    color: '#FFFFFF',
   }},
   methods:{
       ...mapActions({
@@ -616,8 +626,39 @@ export default {
           this.showGuide(this.pattern)
           break;
         case 'color' :
+          console.log('mode color')
+          //remove event
+          const test = this.$refs.svg.querySelectorAll('path')
+          console.log(test)
+              // .forEach( dom => dom.removeEventListner('click') )
+          this.$refs.svg.querySelectorAll('polygon')
+              .forEach( dom => dom.removeEventListner('click') )
+          this.$refs.svg.querySelectorAll('circle')
+              .forEach( dom => dom.removeEventListner('click') )
+          this.$refs.svg.querySelectorAll('rect')
+              .forEach( dom => dom.removeEventListner('click') )
+          this.$refs.svg.querySelectorAll('ellipse')
+              .forEach( dom => dom.removeEventListner('click') )
+
+          // add event
+          this.$refs.svg.querySelectorAll('path')
+              .forEach( dom => dom.addEventListner('click', this.fillColor) )
+          this.$refs.svg.querySelectorAll('polygon')
+              .forEach( dom => dom.addEventListner('click', this.fillColor) )
+          this.$refs.svg.querySelectorAll('circle')
+              .forEach( dom => dom.addEventListner('click', this.fillColor) )
+          this.$refs.svg.querySelectorAll('rect')
+              .forEach( dom => dom.addEventListner('click', this.fillColor) )
+          this.$refs.svg.querySelectorAll('ellipse')
+              .forEach( dom => dom.addEventListner('click', this.fillColor) )
           break;
       }
+    },
+    fillColor(evt){
+      const target = evt.target
+      const parents = evt.path
+      const groupG = evt.path.find( dom => dom.id == 'Group')
+      console.log(groupG)
     },
     patternItem(id){
       TweenMax.set(`#${id}`, {fill:'orange'})
@@ -679,7 +720,6 @@ export default {
       TweenMax.set([`#p1 #hidden`, `#p2 #hidden`, `#p3 #hidden`], {display:'none'})
       TweenMax.set([`#p1guide`, `#p2guide`, `#p3guide`], {display:'none'})
       TweenMax.set(`#${id} #show`, {display:'block'})
-
     },
     hideDesc(){
       TweenMax.to('.desc-view', 0.5, {
@@ -706,6 +746,7 @@ export default {
 }
 </script>
  <style scoped>
+  svg
   #p1{fill:transparent;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
   #p2{fill:transparent;stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
   #p3{fill:transparent;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
@@ -740,8 +781,14 @@ export default {
     display: none;
   }
 
-  .desc{
+  /* .desc{
     @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
     font-family: 'NanumSquareRound',sans-serif;
+  } */
+  .color_pallete_btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin: 3px;
   }
 </style>
