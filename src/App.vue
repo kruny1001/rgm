@@ -1,6 +1,6 @@
 <template>
   <div id="q-app">
-    <!-- <pre>{{crntGame}}</pre>  -->
+    <pre>{{crntGame}} {{crntUser}} {{crntDescTitle}}</pre> 
     <desc-view class="desc-view" title="game12"></desc-view>
     <router-view />
   </div>
@@ -18,6 +18,12 @@ export default {
     ...mapGetters({ 
         crntGame: 'admin/getCrntGame',
         crntUser: 'admin/getUserLevel',
+        crntDesc: "admin/getCrntDescTitle",
+        crntCount: "admin/getCrntDescCount",
+        crntDescTitle : "admin/getCrntDescTitle",
+        imgSrc: "admin/getImgSrc",
+        crntUser: 'admin/getUserLevel',
+        statusDesc: "admin/getStatusDesc"
     })
   },
   watch: {

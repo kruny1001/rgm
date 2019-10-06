@@ -1,9 +1,10 @@
 <template>
-  <q-page class="descContainer">
+  <section class="descContainer">
+    <p> 설명창 {{statusDesc}}</p>
     <img style="width: 100%;" :src="imgSrc" />
     <!-- <q-btn @click="prevPage()">Before</q-btn>
     <q-btn @click="nextPage()">Next</q-btn> -->
-  </q-page>
+  </section>
 </template>
 <script>
 import { mapGetters, mapActions, mapState } from "vuex";
@@ -13,11 +14,12 @@ export default {
   },
   computed: {
     ...mapGetters({
-      crntDesc: "admin/getCrntDesc",
+      crntDesc: "admin/getCrntDescTitle",
       crntCount: "admin/getCrntDescCount",
       crntDescTitle : "admin/getCrntDescTitle",
       imgSrc: "admin/getImgSrc",
-
+      crntUser: 'admin/getUserLevel',
+      statusDesc: "admin/getStatusDesc"
     })
   },
   watch: {
@@ -30,10 +32,33 @@ export default {
     crntDescTitle(newVal){
       this.title = newVal
     },
-  },
-  data() {
-    return {
-    };
+    statusDesc(newVal){
+      if(this.crntUser != 'admin'){
+        console.log(newVal, " open or close desc")
+        if(newVal){
+          TweenMax.set('.desc-view', {display:"block"})
+          TweenMax.to('.desc-view', 0.5, {
+            css: {
+              x: 0,
+              y: 0
+            },
+            onComplete: ()=>{
+              // this.destroy()
+            }
+          })
+          TweenMax.to('.desc-view', 0.5, {opacity:1,})
+        }
+        else{
+          TweenMax.to('.desc-view', 0.5, {
+            css: { x: 150, y: -150 },
+            onComplete: ()=>{ // this.destroy()
+            }
+          })
+          TweenMax.to('.desc-view', 0.5, {opacity:0, display:'none'})
+        }
+      }
+    }
+      
   },
   methods: {
     prevPage() {
@@ -48,10 +73,10 @@ export default {
         this.imgSrc = `statics/${this.title}/desc/${this.count}.jpg`;
       }
     }
-  },
-  created() {
-    this.imgSrc = `statics/${this.title}/desc/${this.count}.jpg`;
   }
+  // created() {
+  //   this.imgSrc = `statics/${this.title}/desc/${this.count}.jpg`;
+  // }
 };
 </script>
 <style scoped>

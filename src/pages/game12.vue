@@ -582,10 +582,7 @@ export default {
   mounted(){
     this.setAdmin('admin')
     this.hideDesc()
-    // this.selectPattern('p2')
-    this.allReset()
-
-    
+    this.allReset()    
   },
   data(){return{
     mode: 'select',
