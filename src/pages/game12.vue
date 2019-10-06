@@ -1,71 +1,75 @@
 <template>
   <q-page class="bg" style="background-image: url('~/statics/game12/bg.png');">
-    
-    <!-- <desc-view class="desc-view" title="game12"></desc-view> -->
-    <div> 망토색칠</div>
-    <div id="debugTool">
-      <q-btn @click="showDesc()"> Show Desc</q-btn>
-      <q-btn @click="hideDesc()"> Hide Desc</q-btn>
-      <q-btn @click="fillColor()"> fillColor</q-btn>
-      <!-- patternItem -->
-      
-    </div>
-    <div> 패턴선택 </div>
-    <div v-if="mode == 'select'">
-      <q-btn @click="selectPattern('p1')"> P1</q-btn>
-      <q-btn @click="selectPattern('p2')"> P2</q-btn>
-      <q-btn @click="selectPattern('p3')"> P3</q-btn>
-      <q-btn v-if="pattern != ''" @click="progress(+1)"> Next </q-btn>
-    </div>
-
-
-    <div v-if="mode=='match'" class="row items-center ">
-      <q-btn @click="progress(-1)"> Previous </q-btn>
-      <!-- 도형이 들어가야함  -->
-      <!-- <q-btn @click="showGuide('p1')"> P1 Show Guide</q-btn> -->
-      <!-- <q-btn @click="showGuide('p2')"> P2 Show Guide</q-btn> -->
-      <!-- <q-btn @click="showGuide('p3')"> P3 Show Guide</q-btn> -->
-      <div v-if="mode == 'match' && pattern == 'p1'">
-        <q-btn dense round size="25px" icon="img:statics/game12/p1p1.svg" @click="shape = 'rect'"/>
-        <q-btn dense round size="25px" icon="img:statics/game12/p1p2.svg" @click="shape = 'circle'"/>
-        <q-btn dense round size="25px" icon="img:statics/game12/p1p3.svg" @click="shape = 'penta'"/>
-        <q-btn dense round size="25px" icon="img:statics/game12/p1p4.svg" @click="shape = 'tri'"/>
+    <div class="controller" style="padding-top: 20px; padding-bottom: 20px">
+      <!-- <desc-view class="desc-view" title="game12"></desc-view> -->
+      <div v-if="false" id="debugTool">
+        <div> 망토색칠</div>
+        <q-btn @click="showDesc()"> Show Desc</q-btn>
+        <q-btn @click="hideDesc()"> Hide Desc</q-btn>
+        <q-btn @click="fillColor()"> fillColor</q-btn>
+        <!-- patternItem -->      
       </div>
-
-      <div v-if="mode == 'match' && pattern == 'p2'">
-        <q-btn dense round size="25px" icon="img:statics/game12/p2p1.svg" @click="shape = 'leaf'"/>
-        <q-btn dense round size="25px" icon="img:statics/game12/p2p2.svg" @click="shape = 'flower'"/>
-        <q-btn dense round size="25px" icon="img:statics/game12/p2p3.svg" @click="shape = 'penta'"/>
-        <q-btn dense round size="25px" icon="img:statics/game12/p2p4.svg" @click="shape = 'circle'"/>
+      <div v-if="mode == 'select'" class="row justify-between items-center">
+        <q-btn class="q-mx-sm" style="opacity: 0" dense round size="30px" icon="img:statics/game11/btn_before.png"></q-btn>    
+        <div class="row justify-center items-center">
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p1p4.svg" @click="selectPattern('p1')"> </q-btn>
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p2p2.svg" @click="selectPattern('p2')"> </q-btn>
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p1p2.svg" @click="selectPattern('p3')"> </q-btn>
+        </div>
+        <q-btn class="q-mx-sm" v-if="pattern == ''" dense round size="30px" style="opacity: 0"/>
+        <q-btn class="q-mx-sm" v-if="pattern != ''" dense round size="30px" icon="img:statics/game11/btn_next.png" 
+            @click="progress(+1)"></q-btn>
       </div>
+      <div v-if="mode=='match'" class="row justify-between items-center ">
+        <q-btn class="q-mx-sm" dense round size="30px" icon="img:statics/game11/btn_before.png" @click="progress(-1)"></q-btn>
+        <!-- 도형이 들어가야함  -->
+        <!-- <q-btn @click="showGuide('p1')"> P1 Show Guide</q-btn> -->
+        <!-- <q-btn @click="showGuide('p2')"> P2 Show Guide</q-btn> -->
+        <!-- <q-btn @click="showGuide('p3')"> P3 Show Guide</q-btn> -->
+        <div class="row justify-center items-center" v-if="mode == 'match' && pattern == 'p1'">
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p1p1.svg" @click="shape = 'rect'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p1p2.svg" @click="shape = 'circle'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p1p3.svg" @click="shape = 'penta'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p1p4.svg" @click="shape = 'tri'"/>
+        </div>
 
-      <div v-if="mode == 'match' && pattern == 'p3'">
-        <q-btn dense round size="25px" icon="img:statics/game12/p3p1.svg" @click="shape = 'three'"/>
-        <q-btn dense round size="25px" icon="img:statics/game12/p3p2.svg" @click="shape = 'penta'"/>
-        <q-btn dense round size="25px" icon="img:statics/game12/p3p3.svg" @click="shape = 'circle'"/>
+        <div class="row justify-center items-center" v-if="mode == 'match' && pattern == 'p2'">
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p2p1.svg" @click="shape = 'leaf'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p2p2.svg" @click="shape = 'flower'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p2p3.svg" @click="shape = 'penta'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p2p4.svg" @click="shape = 'circle'"/>
+        </div>
+
+        <div class="row justify-center items-center" v-if="mode == 'match' && pattern == 'p3'">
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p3p1.svg" @click="shape = 'three'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p3p2.svg" @click="shape = 'penta'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" icon="img:statics/game12/p3p3.svg" @click="shape = 'circle'"/>
+        </div>
+        <q-btn class="q-mx-sm" v-if="!finish" dense round size="30px" style="opacity: 0"/>
+        <q-btn class="q-mx-sm" v-if="finish" dense round size="30px" icon="img:statics/game11/btn_next.png" @click="progress(+1)"></q-btn>
       </div>
-      <q-btn v-if="finish" @click="progress(+1)"> Next </q-btn>
+      <!-- 색칠  -->
+      <div v-if="mode=='color'" class="row no-wrap justify-between items-center" >
+        <q-btn class="q-mx-sm" dense round size="30px" icon="img:statics/game11/btn_before.png" @click="progress(-1)"></q-btn>
+        <div class="row justify-center items-center">
+          <q-btn class="q-mx-sm" dense round size="25px" style="background: #FF5955;" @click="color = '#FF5955'"/>
+          <!-- <q-btn class="q-mx-sm" dense round size="25px" style="background: #F9E2B4;" @click="color = '#F9E2B4'"/> -->
+          <q-btn class="q-mx-sm" dense round size="25px" style="background: #F79F32;" @click="color = '#F79F32'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" style="background: #FFDC48;" @click="color = '#FFDC48'"/>
+          <!-- <q-btn class="q-mx-sm" dense round size="25px" style="background: #A6F4B5;" @click="color = '#A6F4B5'"/> -->
+          <q-btn class="q-mx-sm" dense round size="25px" style="background: #29A585;" @click="color = '#29A585'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" style="background: #B6DFFC;" @click="color = '#B6DFFC'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" style="background: #629FDD;" @click="color = '#629FDD'"/>
+          <!-- <q-btn class="q-mx-sm" dense round size="25px" style="background: #FFC7C7;" @click="color = '#FFC7C7'"/> -->
+          <q-btn class="q-mx-sm" dense round size="25px" style="background: #CD82F9;" @click="color = '#CD82F9'"/>
+          <!-- <q-btn class="q-mx-sm" dense round size="25px" style="background: #DD9A58;" @click="color = '#DD9A58'"/> -->
+          <q-btn class="q-mx-sm" dense round size="25px" style="background: #3A3A3A;" @click="color = '#3A3A3A'"/>
+          <q-btn class="q-mx-sm" dense round size="25px" style="background: #DDDDDD;" @click="color = '#FFFFFF'"/>
+        </div>
+        <q-btn class="q-mx-sm" dense round size="30px" icon="img:statics/game11/btn_next.png" @click="progress(+1)"></q-btn>
+      </div>
     </div>
-    <!-- 색칠  -->
-    <div v-if="mode=='color'" class="row no-wrap" >
-      <q-btn @click="progress(-1)"> Previous </q-btn>
-        <div class="color_pallete_btn" style="background:#FF5955;" @click="color = '#FF5955'"></div>
-        <!-- <div class="color_pallete_btn" style="background:#F9E2B4;" @click="color = '#F9E2B4'"></div> -->
-        <div class="color_pallete_btn" style="background:#F79F32;" @click="color = '#F79F32'"></div>
-        <div class="color_pallete_btn" style="background:#FFDC48;" @click="color = '#FFDC48'"></div>
-        <!-- <div class="color_pallete_btn" style="background:#A6F4B5;" @click="color = '#A6F4B5'"></div> -->
-        <div class="color_pallete_btn" style="background:#29A585;" @click="color = '#29A585'"></div>
-        <div class="color_pallete_btn" style="background:#B6DFFC;" @click="color = '#B6DFFC'"></div>
-        <div class="color_pallete_btn" style="background:#629FDD;" @click="color = '#629FDD'"></div>
-        <!-- <div class="color_pallete_btn" style="background:#FFC7C7;" @click="color = '#FFC7C7'"></div> -->
-        <div class="color_pallete_btn" style="background:#CD82F9;" @click="color = '#CD82F9'"></div>
-        <!-- <div class="color_pallete_btn" style="background:#DD9A58;" @click="color = '#DD9A58'"></div> -->
-        <div class="color_pallete_btn" style="background:#3A3A3A;" @click="color = '#3A3A3A'"></div>
-        <div class="color_pallete_btn" style="background:#DDDDDD;" @click="color = '#FFFFFF'"></div>
-      <q-btn @click="progress(+1)"> Next </q-btn>
-    </div>
-
-    <div ref='save_target' style="width:100%; max-width:800px; margin:0px auto; ">
+    <div ref='save_target' style="width:100%; max-width:800px; margin: 0px auto;">
       <svg ref='svg' width="100%" viewBox="0 0 1262 858" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="game12">
               <g id="cape" fill="#E8F4F9" fill-rule="nonzero">
@@ -713,6 +717,9 @@ export default {
       TweenMax.set([`#p1 #show`, `#p2 #show`, `#p3 #show`], {display:'none'})
       TweenMax.set([`#p1 #hidden`, `#p2 #hidden`, `#p3 #hidden`], {display:'none'})
       TweenMax.set([`#p1guide`, `#p2guide`, `#p3guide`], {display:'none'})
+      if( id==0 ){ 
+        return 
+      }
       TweenMax.set(`#${id} #show`, {display:'block'})
     },
     hideDesc(){
