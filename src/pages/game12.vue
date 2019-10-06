@@ -1,7 +1,7 @@
 <template>
   <q-page class="bg" style="background-image: url('~/statics/game12/bg.png');">
     
-    <desc-view class="desc-view" title="game12"></desc-view>
+    <!-- <desc-view class="desc-view" title="game12"></desc-view> -->
     <div> 망토색칠</div>
     <div id="debugTool">
       <q-btn @click="showDesc()"> Show Desc</q-btn>
@@ -547,6 +547,7 @@
   </q-page>
 </template>
 <script>
+
 import descView from 'src/components/descView.vue'
 import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
 import _ from 'lodash'
@@ -707,12 +708,13 @@ export default {
   #p3guide{display:none; fill:transparent;stroke:#589AFF;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12;}
   
   /* .st0{fill:none;}
-  .st1{fill:#E8F4F9;stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
-  .st2{display:none; fill:transparent;stroke:#FF5955;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12.1888,12.1888;}
-  .st3{display:none; fill:transparent;stroke:#FF5955;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12.1889,12.1889;} */
+  
   /* path{fill: transparent;}
   polygon{fill: transparent;} */
 
+.st1{fill:#E8F4F9;stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
+  .st2{display:none; fill:rgb(232, 244, 249); stroke:#FF5955;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12.1888,12.1888;}
+  .st3{display:none; fill:rgb(232, 244, 249); stroke:#FF5955;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12.1889,12.1889;}
   /* #cape{
     -webkit-touch-callout: none;
   -webkit-user-select:none;
@@ -725,5 +727,10 @@ export default {
   .desc-view{
     opacity: 0;
     display: none;
+  }
+
+  .desc{
+    @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
+    font-family: 'NanumSquareRound',sans-serif;
   }
 </style>

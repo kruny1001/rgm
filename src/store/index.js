@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 // OOP Style 
 import game1 from './modules/games/g1'
+import admin from './modules/admin/controller'
 
 /*
  * If not building with SSR mode, you can
@@ -16,6 +17,7 @@ import game1 from './modules/games/g1'
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
+      admin,
       game1
     },
 
