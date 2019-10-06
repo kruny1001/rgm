@@ -551,6 +551,7 @@
 import descView from 'src/components/descView.vue'
 import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
 import _ from 'lodash'
+import { mapGetters, mapActions, mapState } from "vuex";
 
 const ANSWER = {
   'p1':{
@@ -575,10 +576,15 @@ export default {
   components: {
       descView
   },
+  created(){
+      this.setAdmin('admin')
+  },
   mounted(){
+    this.setAdmin('admin')
     this.hideDesc()
     // this.selectPattern('p2')
     this.allReset()
+
     
   },
   data(){return{
@@ -591,6 +597,11 @@ export default {
     finish: false,
   }},
   methods:{
+      ...mapActions({
+      setCrntGame: 'admin/setCrntGame',
+      setAdmin: 'admin/setAdmin'
+
+    }),
     progress(num){
       let nextStep = Math.max( 0, Math.min(this.step + num, this.stepList.length-1) )
       this.step = nextStep

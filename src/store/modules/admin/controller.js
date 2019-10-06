@@ -8,14 +8,15 @@ const state = {
   crntDescTitle: '',
   crntDescCount: '',
   imgSrc: '',
-  max: 13
+  max: 13,
+  count: 1
 }
 const getters = {
   getApp: state => state.game,
   getCrntGame : state => state.crntGame,
   getUserLevel: state => state.userLevel,
 
-  getCrntDesc: state => state.crntDescTitle,
+  getCrntDescTitle: state => state.crntDescTitle,
   getCrntDescCount: state => state.crntDescCount,
   getImgSrc: state => state.imgSrc
 
@@ -46,8 +47,10 @@ const actions = {
   setAdmin({commit}, level){
     commit('updateUserLevel', level)
   },
-  setDescTitle({commit}, title){
-    commit('updateDescTitle', title)
+  
+  setDescTitle({commit, state}, title){
+    state.count = 1
+    commit('updateDescTitle', title)  
   },
   incDescTitle({commit, state}, count){
     state.count = state.count ++
