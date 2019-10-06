@@ -37,13 +37,14 @@ const mutations = {
     state.statusDesc = data
   },
   updateCrntDescTitle(state, data){
-    state.getCrntDescTitle = data
+    state.crntDescTitle = data
   },
-  updateCrntDescImg(state, data){
-    state.imgSrc = `statics/${state.title}/desc/${temp.count}.jpg`;
-  },
+  // updateCrntDescImg(state, data){
+  //   state.imgSrc = `statics/${state.title}/desc/${temp.count}.jpg`;
+  // },
   updateCrntCount(state, data){
     state.crntDescCount = data
+    state.imgSrc = `statics/${state.crntDescTitle}/desc/${state.crntDescCount}.jpg`;
     console.log(data)
   }
 }
@@ -51,13 +52,11 @@ const mutations = {
 const actions = {
   openDesc({commit, state}){
     console.log("open Description")
-    commit('updateStatusDesc', true)
     database.ref('statusDesc').set(true)
   },
 
   closeDesc({commit, state}){
     console.log("close Description")
-    commit('updateStatusDesc', false)
     database.ref('statusDesc').set(false)
   },
 
@@ -72,14 +71,15 @@ const actions = {
     })
     database.ref('cntDescCount').on('value', (snap) => {
       let temp = snap.val()
-      if(temp){
+      if(temp !=null){
         commit('updateCrntCount', snap.val())
-        state.imgSrc = `statics/${state.title}/desc/${temp.count}.jpg`;
+        // state.imgSrc = `statics/${state.title}/desc/${temp.count}.jpg`;
       }
     })
-    database.ref('cntDescCount').on('value', (snap) => {
+    database.ref('statusDesc').on('value', (snap) => {
       let temp = snap.val()
-      if(temp)
+      console.log(temp)
+      if(temp !== null)
         commit('updateStatusDesc', snap.val())
     })
 
@@ -106,24 +106,26 @@ const actions = {
   },
 
   incDescTitle({commit, state}){
-    let count = state.crntDescCount + 1
-
-    // state.imgSrc = `statics/${state.title}/desc/${state.count}.jpg`;
-    database.ref('cntDescCount').set(count)
-    // database.ref('crntDescImg').set(count)
+    let max = 1
+    if(state.crntDescTitle == "game11")
+      max = 15
+    if(state.crntDescTitle == "game12")
+      max = 13
+    if(state.crntDescCount + 1 <=  max)  {
+      let count = state.crntDescCount + 1
+      // state.imgSrc = `statics/${state.title}/desc/${state.count}.jpg`;
+      database.ref('cntDescCount').set(count)
+      // database.ref('crntDescImg').set(count)
+    }
+    
   },
 
   descDescTitle({commit, state}){
-    let count = state.crntDescCount - 1
-    console.log(count, state.max)
-    // if (state.count < state.max) {
-    //   if (state.count > 1) {
-    //     count = state.crntDescCount - 1
-    //     // state.imgSrc = `statics/${state.title}/desc/${state.count}.jpg`;
-    //   }
-    // }
-    if(count < 15)
+    if(state.crntDescCount - 1 > 1){
+      let count = state.crntDescCount - 1
       database.ref('cntDescCount').set(count)
+    }
+    
 
   }
 

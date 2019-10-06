@@ -1,6 +1,6 @@
 <template>
   <div id="q-app">
-    <pre>{{crntGame}} {{crntUser}} {{crntDescTitle}}</pre> 
+    <!-- <pre>{{crntGame}} {{crntUser}} {{crntDescTitle}}</pre>  -->
     <desc-view class="desc-view" title="game12"></desc-view>
     <router-view />
   </div>

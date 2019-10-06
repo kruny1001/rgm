@@ -1,6 +1,5 @@
 <template>
   <section class="descContainer">
-    <p> 설명창 {{statusDesc}}</p>
     <img style="width: 100%;" :src="imgSrc" />
     <!-- <q-btn @click="prevPage()">Before</q-btn>
     <q-btn @click="nextPage()">Next</q-btn> -->
@@ -15,7 +14,7 @@ export default {
   computed: {
     ...mapGetters({
       crntDesc: "admin/getCrntDescTitle",
-      crntCount: "admin/getCrntDescCount",
+      crntDescCount: "admin/getCrntDescCount",
       crntDescTitle : "admin/getCrntDescTitle",
       imgSrc: "admin/getImgSrc",
       crntUser: 'admin/getUserLevel',
@@ -33,7 +32,7 @@ export default {
       this.title = newVal
     },
     statusDesc(newVal){
-      console.log(newVal)
+      console.log("changeStatusDesc ",newVal)
       if(this.crntUser != 'admin'){
         console.log(newVal, " open or close desc")
         if(newVal){
@@ -62,18 +61,18 @@ export default {
       
   },
   methods: {
-    prevPage() {
-      if (this.count > 1) {
-        this.count = --this.count;
-        this.imgSrc = `statics/${this.title}/desc/${this.count}.jpg`;
-      }
-    },
-    nextPage() {
-      if (this.count < this.max) {
-        this.count = ++this.count;
-        this.imgSrc = `statics/${this.title}/desc/${this.count}.jpg`;
-      }
-    }
+    // prevPage() {
+    //   if (this.count > 1) {
+    //     this.count = --this.count;
+    //     this.imgSrc = `statics/${this.title}/desc/${this.count}.jpg`;
+    //   }
+    // },
+    // nextPage() {
+    //   if (this.count < this.max) {
+    //     this.count = ++this.count;
+    //     this.imgSrc = `statics/${this.title}/desc/${this.count}.jpg`;
+    //   }
+    // }
   }
   // created() {
   //   this.imgSrc = `statics/${this.title}/desc/${this.count}.jpg`;
@@ -85,6 +84,7 @@ export default {
   position: fixed;
   width: 100%;
   height: 100vh;
-  background: yellow;
+  /* background: yellow; */
+  z-index: 99;
 }
 </style>

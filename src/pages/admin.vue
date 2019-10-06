@@ -25,16 +25,16 @@ section.q-pa-md
       q-btn(@click="closeDesc()") 설명창 감추기
     
     div.q-my-md
-      q-btn(@click="setDescTitle('p11')") p11 설명 설정
-      q-btn(@click="setDescTitle('p12')") p12 설명 설정
+      q-btn(@click="setDescTitle('game11')") g11 설명 설정
+      q-btn(@click="setDescTitle('game12')") g12 설명 설정
     
     div.q-my-md
       q-btn( @click="incDescTitle()") goto Next 
       q-btn( @click="descDescTitle()") goto Previous 
     
     div.q-my-md
-      q-btn( @click="openDesc()") open Desc
-      q-btn( @click="closeDesc()") open Desc
+      q-btn( @click="openDesc()") Open Desc
+      q-btn( @click="closeDesc()") Close Desc
 </template>
 <script>
 import { mapGetters, mapActions, mapState } from "vuex";

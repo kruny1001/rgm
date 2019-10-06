@@ -1,8 +1,9 @@
 <template>
-  <q-page class="bg" style="background-image: url('~/statics/game12/bg.png');">
+    <!-- style="background-image: url('~/statics/game12/bg.png');" -->
+  <q-page class="bg">
     
     <!-- <desc-view class="desc-view" title="game12"></desc-view> -->
-    <!-- <div> 망토색칠</div>
+    <div> 망토색칠</div>
     <div id="debugTool">
       <q-btn @click="showDesc()"> Show Desc</q-btn>
       <q-btn @click="hideDesc()"> Hide Desc</q-btn>
@@ -15,7 +16,7 @@
       <q-btn @click="selectPattern('p2')"> P2</q-btn>
       <q-btn @click="selectPattern('p3')"> P3</q-btn>
       <q-btn v-if="pattern != ''" @click="progress(+1)"> Next </q-btn>
-    </div> -->
+    </div>
 
 
     <div v-if="mode=='match'" class="row items-center ">
@@ -602,7 +603,7 @@ export default {
     //   this.setAdmin('admin')
   },
   mounted(){
-    this.setAdmin('admin')
+    // this.setAdmin('admin')
     this.hideDesc()
     // this.selectPattern('p2')
     this.allReset()

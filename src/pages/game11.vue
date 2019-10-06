@@ -7,7 +7,7 @@
       <q-btn @click="hideDesc()"> Hide Desc</q-btn>
     </div> -->
 
-    <desc-view class="desc-view" title="game11"></desc-view>
+    <!-- <desc-view class="desc-view" title="game11"></desc-view> -->
 
     <div style="height:80px; max-width:1280px; margin: 10px auto;">
       <div class="row justify-between" v-if="mode == 'color'" style="width: 100%;">
