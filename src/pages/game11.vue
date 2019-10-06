@@ -1,5 +1,6 @@
 <template>
   <q-page style="background-image: url('statics/game11/bg.png'); height:100vh;" class="">
+    
     <!-- Select Color  -->
     <div id="debugTool">
       <q-btn @click="showDesc()"> Show Desc</q-btn>
@@ -7,8 +8,11 @@
       <!-- <q-btn @click="fillColor()"> fillColor</q-btn> -->
       <!-- patternItem -->
     </div>
+
     <desc-view class="desc-view" title="game11"></desc-view>
+
     <div style="height:120px"></div>
+
     <div style="background: white; max-width:1000px; margin: 0px auto; border-radius:120px; padding: 20px 60px;">    
       <div class="row justify-between" v-if="mode == 'color'" style="max-width:980px; margin: 0px auto;">
         <div class="flex flex-center select_container navi_btn">
@@ -683,18 +687,13 @@
     <div> 
       <h3 style="margin-top:5px; text-align:center;"> 아기피오가 멋지게 변했어요! <strong>이름</strong>을 지어주세요</h3>
     </div>
-    
-    <!-- Ending Page -->
-    <!-- <div>
-      <div> 
-        <h1 style="margin-top:5px; text-align:center;"> 기다려주세요... </h1>
-      </div>
-    </div> -->
+
   </q-page>
 </template>
 <script>
 import descView from 'src/components/descView.vue'
 export default {
+
   components: {
       descView
   },
