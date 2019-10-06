@@ -1,24 +1,22 @@
 <template>
-  <q-page style="background-image: url('statics/game11/bg.png'); height:100vh;" class="">
+  <q-page style="height:100vh;" class="">
     
     <!-- Select Color  -->
-    <div id="debugTool">
+    <!-- <div id="debugTool">
       <q-btn @click="showDesc()"> Show Desc</q-btn>
       <q-btn @click="hideDesc()"> Hide Desc</q-btn>
-      <!-- <q-btn @click="fillColor()"> fillColor</q-btn> -->
-      <!-- patternItem -->
-    </div>
+    </div> -->
 
     <desc-view class="desc-view" title="game11"></desc-view>
 
-    <div style="height:120px"></div>
-
-    <div style="background: white; max-width:1000px; margin: 0px auto; border-radius:120px; padding: 20px 60px;">    
-      <div class="row justify-between" v-if="mode == 'color'" style="max-width:980px; margin: 0px auto;">
+    <div style="height:80px; max-width:1280px; margin: 10px auto;">
+      <div class="row justify-between" v-if="mode == 'color'" style="width: 100%;">
+      
         <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
             @click="progress(-1)"/>
         </div>
+
         <div class="flex flex-center">
           <div class="select_container_small bg1"   @click="color = '#FF5955'"></div>
           <div class="select_container_small bg2"   @click="color = '#F9E2B4'"></div>
@@ -41,26 +39,26 @@
       </div>
 
       <!-- Eye -->
-      <div class="row justify-between" v-if="mode == 'eye'" style="max-width:980px; margin: 0px auto;">
+      <div class="row justify-between" v-if="mode == 'eye'" style="width: 100%; margin: 0px auto;">
         <div class="flex flex-center select_container" style="opacity: 0">
           <img class="select_btn" src="statics/game11/btn_before.png"
             @click="progress(-1)"/>
         </div>
         <div class="flex flex-center">
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_eyes_1.png"
+            <img class="select_btn" src="statics/game11/eye1.png"
               @click="()=> eyeType = 1">
           </div>
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_eyes_2.png"
+            <img class="select_btn" src="statics/game11/eye2.png"
               @click="()=> eyeType = 2">
           </div>
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_eyes_3.png"
+            <img class="select_btn" src="statics/game11/eye3.png"
               @click="()=> eyeType = 3">
           </div>
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_eyes_4.png"
+            <img class="select_btn" src="statics/game11/eye4.png"
               @click="()=> eyeType = 4">
           </div>
         </div>
@@ -177,10 +175,15 @@
             @click="progress(+1)">
         </div>
       </div>
+    </div>
+
+    <div style="background: white; max-width:1100px; margin: 0px auto; border-radius:120px; padding: 20px 60px;">    
+      
+      
 
 
       <!-- SVG Image  -->
-      <div style="width:400px; margin:0px auto;">
+      <div style="width:600px; margin:0px auto; padding-top: 20px;">
 
         <svg ref="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             width="100%"
@@ -683,9 +686,11 @@
           </svg>
       </div>
     </div>
+
+    <finish-load></finish-load>
     
-    <div> 
-      <h3 style="margin-top:5px; text-align:center;"> 아기피오가 멋지게 변했어요! <strong>이름</strong>을 지어주세요</h3>
+    <div style="margin-bottom:20px;"> 
+      <h4 style="margin-top:5px; text-align:center; font-weight:bold;"> {{desc[curStep]}}</h4>
     </div>
 
   </q-page>
@@ -698,6 +703,15 @@ export default {
       descView
   },
   data(){ return {
+    desc: [
+      '1. 눈 모양 고르기',
+      '2. 부리 모양 고르기',
+      '3. 무늬 고르기',
+      '4. 색칠하기',
+      '5. 둥지 모양 고르기',
+      '6. 둥지 색칠',
+      '7. 이름 짓기',
+    ],
     mode: 'eye',
     curStep: 0,
     eyeType: 0,
@@ -795,25 +809,28 @@ export default {
   .st1{display: none; fill:#FFFFFF;}
   .st2{display: none; fill:transparent; stroke:#2D4247;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
   .select_container{
-    margin: 5px 5px;
-    padding:12px;
+    margin: 5px 7px;
+    padding:4px;
     border-radius: 50%;
-    background:#FFC107;
+    /* background:#FFC107; */
+    width:auto;
+    height: 75px;
+  }
+  .selected_menu{
+    background: #FCEFB9;
+  }
+  .select_container_small{
+    margin: 5px 7px;
+    padding:5px;
+    border-radius: 50%;
+    /* background:#FFC107; */
     width:55px;
     height: 55px;
   }
-  .select_container_small{
-    margin: 5px 5px;
-    padding:5px;
-    border-radius: 50%;
-    background:#FFC107;
-    width:40px;
-    height: 40px;
-  }
   .select_btn{
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 75px;
+    /* height: 100%; */
   }
 
   .navi_btn {
