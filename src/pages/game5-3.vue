@@ -1,19 +1,15 @@
 <template>
   <!-- <q-page class="flex flex-center"> -->
   <q-page class="">
-    <gameResult></gameResult>
-    <section style="margin: 0 auto; width:1200px;">
-      <!-- <q-btn @click="loadContents()">load contents </q-btn>
-      <q-btn @click="readyGame()">readyGame </q-btn> -->
-      <!-- <q-btn @click="twinkle()"> Twinkle </q-btn>
-      <hr/>
-      <pre> CurrentCount: {{count}} SenstivityTotal: {{total}} Stage: {{stage}}</pre>
-      <q-btn @click="eggAni()">Shaking Event </q-btn> -->
+    <gameResult v-if="show == 'result'"></gameResult>
+    <section id="game-view" ref="game3" style="margin: 0 auto; width:100%; position:relative;">
     </section>
-    <section ref="game3" class="game-screen">
-
+    <section class="floatBtn noselect">
+        <button unselectable="on" class="unselectable" onclick="fullscreen()"> 
+            <div unselectable="on" class="unselectable noselect">fullscreen</div> 
+        </button>        
+        <button @click="btnStart()">start </button>
     </section>
-    <q-btn label="start" @click="btnStart()"/>
   </q-page>
 </template>
 <script>
@@ -23,7 +19,25 @@ import gameResult from 'src/components/game5Result.vue'
 import {PixiPlugin} from "gsap/PixiPlugin";
 import { middleware } from 'resource-loader';
 
-class LarvaCicle extends PIXI.Container {
+function shuffle(array) {
+  var m = array.length, t, i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}
+
+class LarvaBtn extends PIXI.Container {
   constructor (index) {
     super()
     this.status = 0
@@ -48,23 +62,26 @@ class LarvaCicle extends PIXI.Container {
     this.larva.interactive = true
     this.addChild(this.larva)
   }
+  clicked(effectType){
+
+  }
 }
 
 
-class Game5_3 {
+class Game5_3 extends PIXI.Application{
   constructor (dom) {
-    //     
-    this.gameApp = new PIXI.Application({
+    //
+    super({
       forceCanvas: true,
       forceFXAA: true,
       autoDensity: true,
       resolution: 2,
-      autoResize: true,
-      width: 1600,
-      height: 900,
       resizeTo: dom,
+
     })
-    dom.appendChild(this.gameApp.view)    
+    this.dom = dom
+    console.log(dom)
+    dom.appendChild(this.view)
 
     // game data
     this.score = 0
@@ -74,6 +91,7 @@ class Game5_3 {
 
     // game loop jobs obj
     this.interval = null
+    this.timeout = null
 
     // containers
     this.larvaBox = new PIXI.Container()
@@ -98,14 +116,23 @@ class Game5_3 {
     // this.endingBox = new PIXI.Container()
 
     //
-    this.gameApp.stage.addChild(this.larvaBox)
-    this.gameApp.stage.addChild(this.scoreBox)
-    // this.gameApp.stage.addChild(this.centerTextBox)
-    // this.gameApp.stage.addChild(this.endingBox)
-
+    this.stage.addChild(this.larvaBox)
+    this.stage.addChild(this.scoreBox)
+    // this.stage.addChild(this.centerTextBox)
+    // this.stage.addChild(this.endingBox)
+    this.rescale
+  }
+  rescale(){
+    const width = window.innerWidth
+    this.width = width
+    this.height = width *9/16
+    this.renderer.resize(this.width, this.height)
+    this.stage.scale.x = width/1600
+    this.stage.scale.y = width/1600
   }
   startLevel(level, onComplete){
-    if( this.interval){
+    if( this.timeout ){
+      console.warn('already started')
       return
     }
     this.level = level
@@ -115,15 +142,46 @@ class Game5_3 {
     const setting =  levelSetting[level]
     const larvaCnt = setting.rowNum* setting.colNum
     setting.larvaSetting = larvaSetting[larvaCnt]
+    this.setting = setting
     this.scoreBox.alpha = 1
     this.larvaBox.alpha = 1
     this._levelLoopStart(setting, onComplete)
+    this.timeout = setTimeout(this._gameEnd, 15000)
   }
-  _levelLoopStart({rowNum, colNum, larvaSetting}, onComplete ){
-    const arr = new Array(rowNum*colNum).fill(1)
-    this._updateLarva(arr, rowNum, colNum, larvaSetting)
+  _levelLoopStart({rowNum, colNum, larvaSetting, speed}, onComplete ){
+    this.state = new Array(rowNum*colNum).fill(1)
+    this.larvaBox.larvaList = this.state.map( i => new LarvaBtn(i) )
+    this._randomHead()
+    this._updateLarva(this.state, larvaSetting)
+    if( this.interval ){
+      clearInterval(this.interval)
+    }
+    this.interval = setInterval( () => {
+      this.state = shuffle(this.state)
+      this._updateLarva()
+    }, speed * 1000 )
   }
-  _updateLarva( statArr, rowNum, colNum, larvaSetting ){
+  _randomHead(){
+    // change all head to body
+    this.state.forEach( (b,i) => {
+      if( b == 2){
+        return this.state[i] = 1
+      }
+    })
+    // gather body index
+    const bodies = this.state.map( (b, i) => b > 0? i : -1 )
+        .filter( idx => idx >= 0)
+    if( bodies.length < 1 ){
+      return
+    }
+    // select random body
+    const random_body = bodies[Math.floor(Math.random()*bodies.length)];
+    this.state[random_body] = 2
+  }
+  _updateLarva( statArr, larvaSetting ){
+    if( !statArr ){ statArr = this.state}
+    if( !larvaSetting ){ larvaSetting = this.setting.larvaSetting}
+
     this.larvaBox.removeChildren()
     const {larvaW, larvaH, larvaPos} = larvaSetting
     const scale = larvaW/306
@@ -131,17 +189,41 @@ class Game5_3 {
     for( let i = 0 ; i < statArr.length ; i++ ){
       const status = statArr[i]
       const pos = larvaPos[i]
-      const larva = new LarvaCicle(i)
+      const larva = new LarvaBtn(i)
       larva.changeTo(status)
       larva.x = pos.x
       larva.y = pos.y
       larva.scale.x = scale
       larva.scale.y = scale
-      larva.larva.on('click', () => {
-        // if( larva.status == )
+      larva.larva.on('pointerdown', () => {
+        if( larva.status == 0) {
+          this._wrongLarva(larva.index)
+        }else{
+          this._correctLarva(larva.index)
+        }
       })
       this.larvaBox.addChild(larva)
     }
+  }
+  _moveLarva(){
+    this.state = shuffle(this.state)
+    this._updateLarva()
+  }
+  _wrongLarva(index){
+    // blank to body
+    this.state[index] = 1
+    this._moveLarva()
+    this._updateLarva()
+  }
+  _correctLarva(index){
+    this.state[index] = 0
+    // check ending
+    if( this.state.filter( b => b > 0).length < 1 ){
+      clearTimeout(this.timeout)
+      return this._catchLarva()
+    }
+    this._randomHead()
+    this._updateLarva()
   }
   _updateScore( newScore ){
     // draw score
@@ -161,10 +243,16 @@ class Game5_3 {
     }
     return nextLevel
   }
-  destroy(){
-    if( this.interval ){
-      clearInterval(this.interval)
-    }
+  _catchLarva(){
+    this._updateScore( this.score + 1)
+    // refill larva
+    const {colNum, rowNum} = this.setting
+    this.state = new Array(colNum * rowNum).fill(1)
+    this._randomHead()
+    this._updateLarva()
+  }
+  _gameEnd(){
+
   }
 }
 
@@ -174,7 +262,8 @@ export default {
   },
   data(){
     return {
-      game : null
+      game : null,
+      show : 'game',
     }
   },
   methods:{
@@ -193,6 +282,7 @@ export default {
   mounted(){
 
     this.game = new Game5_3(this.$refs.game3)
+    this.game.rescale()
     this.game.startLevel(1, ()=>{})
   },
   beforeDestroy(){
@@ -203,16 +293,27 @@ export default {
 };
 </script>
 
-<style>
-.game-screen{
+<style scoped>
+#game-view{
   width: 100vw;
-  height: calc(100vw * 9 / 16)
+  min-height: calc(100vw * 9 / 16);
+  overflow: hidden;
 }
-canvas{
-  padding:10px; 
-  margin:10px;
-  /* border: 1px solid black; */
-  display: block;
-  margin: 0 auto;
+canvas {display: block; background: blue;}
+.floatBtn{position:fixed; top: 10px; right:10px}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
 }
+*.unselectable {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
 </style>

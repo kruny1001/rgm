@@ -17,53 +17,64 @@
       <q-btn @click="selectPattern('p3')"> P3</q-btn>
       <q-btn v-if="pattern != ''" @click="progress(+1)"> Next </q-btn>
     </div>
-    <div v-if="mode == 'match' && pattern == 'p1'">
-      <q-btn dense round size="25px" icon="img:statics/game12/p1p1.svg" @click="shape = 'rect'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p1p2.svg" @click="shape = 'circle'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p1p3.svg" @click="shape = 'penta'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p1p4.svg" @click="shape = 'tri'"/>
-    </div>
 
-    <div v-if="mode == 'match' && pattern == 'p2'">
-      <q-btn dense round size="25px" icon="img:statics/game12/p2p1.svg" @click="shape = 'leaf'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p2p2.svg" @click="shape = 'flower'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p2p3.svg" @click="shape = 'penta'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p2p4.svg" @click="shape = 'circle'"/>
-    </div>
 
-    <div v-if="mode == 'match' && pattern == 'p3'">
-      <q-btn dense round size="25px" icon="img:statics/game12/p3p1.svg" @click="shape = 'three'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p3p2.svg" @click="shape = 'penta'"/>
-      <q-btn dense round size="25px" icon="img:statics/game12/p3p3.svg" @click="shape = 'circle'"/>
-    </div>
-
-    <div>
-      
-
-      <q-btn> Previous </q-btn>
+    <div v-if="mode=='match'" class="row items-center ">
+      <q-btn @click="progress(-1)"> Previous </q-btn>
       <!-- 도형이 들어가야함  -->
-      <q-btn @click="showGuide('p1')"> P1 Show Guide</q-btn>
-      <q-btn @click="showGuide('p2')"> P2 Show Guide</q-btn>
-      <q-btn @click="showGuide('p3')"> P3 Show Guide</q-btn>
+      <!-- <q-btn @click="showGuide('p1')"> P1 Show Guide</q-btn> -->
+      <!-- <q-btn @click="showGuide('p2')"> P2 Show Guide</q-btn> -->
+      <!-- <q-btn @click="showGuide('p3')"> P3 Show Guide</q-btn> -->
+      <div v-if="mode == 'match' && pattern == 'p1'">
+        <q-btn dense round size="25px" icon="img:statics/game12/p1p1.svg" @click="shape = 'rect'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p1p2.svg" @click="shape = 'circle'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p1p3.svg" @click="shape = 'penta'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p1p4.svg" @click="shape = 'tri'"/>
+      </div>
 
-      <q-btn> Next </q-btn>
+      <div v-if="mode == 'match' && pattern == 'p2'">
+        <q-btn dense round size="25px" icon="img:statics/game12/p2p1.svg" @click="shape = 'leaf'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p2p2.svg" @click="shape = 'flower'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p2p3.svg" @click="shape = 'penta'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p2p4.svg" @click="shape = 'circle'"/>
+      </div>
+
+      <div v-if="mode == 'match' && pattern == 'p3'">
+        <q-btn dense round size="25px" icon="img:statics/game12/p3p1.svg" @click="shape = 'three'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p3p2.svg" @click="shape = 'penta'"/>
+        <q-btn dense round size="25px" icon="img:statics/game12/p3p3.svg" @click="shape = 'circle'"/>
+      </div>
+      <q-btn v-if="finish" @click="progress(+1)"> Next </q-btn>
     </div>
     <!-- 색칠  -->
-    <div>
-      <q-btn> Previous </q-btn>
-      <q-btn> Next </q-btn>
+    <div v-if="mode=='color'" class="row no-wrap" >
+      <q-btn @click="progress(-1)"> Previous </q-btn>
+        <div class="color_pallete_btn" style="background:#FF5955;" @click="color = '#FF5955'"></div>
+        <!-- <div class="color_pallete_btn" style="background:#F9E2B4;" @click="color = '#F9E2B4'"></div> -->
+        <div class="color_pallete_btn" style="background:#F79F32;" @click="color = '#F79F32'"></div>
+        <div class="color_pallete_btn" style="background:#FFDC48;" @click="color = '#FFDC48'"></div>
+        <!-- <div class="color_pallete_btn" style="background:#A6F4B5;" @click="color = '#A6F4B5'"></div> -->
+        <div class="color_pallete_btn" style="background:#29A585;" @click="color = '#29A585'"></div>
+        <div class="color_pallete_btn" style="background:#B6DFFC;" @click="color = '#B6DFFC'"></div>
+        <div class="color_pallete_btn" style="background:#629FDD;" @click="color = '#629FDD'"></div>
+        <!-- <div class="color_pallete_btn" style="background:#FFC7C7;" @click="color = '#FFC7C7'"></div> -->
+        <div class="color_pallete_btn" style="background:#CD82F9;" @click="color = '#CD82F9'"></div>
+        <!-- <div class="color_pallete_btn" style="background:#DD9A58;" @click="color = '#DD9A58'"></div> -->
+        <div class="color_pallete_btn" style="background:#3A3A3A;" @click="color = '#3A3A3A'"></div>
+        <div class="color_pallete_btn" style="background:#DDDDDD;" @click="color = '#FFFFFF'"></div>
+      <q-btn @click="progress(+1)"> Next </q-btn>
     </div>
 
-    <div style="width:100%; max-width:800px; margin:0px auto; ">
-      <svg width="100%" viewBox="0 0 1262 858" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <div ref='save_target' style="width:100%; max-width:800px; margin:0px auto; ">
+      <svg ref='svg' width="100%" viewBox="0 0 1262 858" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="game12">
               <g id="cape" fill="#E8F4F9" fill-rule="nonzero">
-                  <path id="Path" d="M737.19,2.44 L737.19,808.2 C737.19,808.2 1049.69,981.95 1261.69,677.13 L1052.12,503.38 C1052.12,503.38 1166.08,297.78 1148.94,219.87 C1131.8,141.96 1009.65,6.8 939.69,2.44 C869.75,-1.92 737.19,2.44 737.19,2.44 Z" ></path>
-                  <path id="Path" d="M524.81,2.44 L524.81,808.2 C524.81,808.2 212.31,981.95 0.31,677.13 L209.88,503.38 C209.88,503.38 95.92,297.78 113.06,219.87 C130.2,141.96 252.34,6.79 322.3,2.44 C392.25,-1.92 524.81,2.44 524.81,2.44 Z" ></path>
+                  <path id="Path" fill="#E8F4F9" d="M737.19,2.44 L737.19,808.2 C737.19,808.2 1049.69,981.95 1261.69,677.13 L1052.12,503.38 C1052.12,503.38 1166.08,297.78 1148.94,219.87 C1131.8,141.96 1009.65,6.8 939.69,2.44 C869.75,-1.92 737.19,2.44 737.19,2.44 Z" ></path>
+                  <path id="Path" fill="#E8F4F9" d="M524.81,2.44 L524.81,808.2 C524.81,808.2 212.31,981.95 0.31,677.13 L209.88,503.38 C209.88,503.38 95.92,297.78 113.06,219.87 C130.2,141.96 252.34,6.79 322.3,2.44 C392.25,-1.92 524.81,2.44 524.81,2.44 Z" ></path>
               </g>
-              <g id="p3" transform="translate(35.000000, 37.000000)">
+              <g id="p3" class="color-able" transform="translate(35.000000, 37.000000)">
                   <g id="show">
-                      <g id="p6r7s" transform="translate(719.000000, 627.000000)">
+                      <g id="p3r7s" class="color-unit" transform="translate(719.000000, 627.000000)">
                           <g id="Group" fill="#000000" fill-rule="nonzero">
                               <path id="Path" d="M460.03,23.44 C457.63,23.44 455.21,22.62 453.23,20.94 C448.81,17.18 448.27,10.56 452.03,6.14 C452.92,5.09 453.4,4.5 453.45,4.44 C457.08,-0.07 463.68,-0.79 468.2,2.84 C472.72,6.47 473.44,13.07 469.82,17.59 C469.82,17.59 469.22,18.34 468.04,19.73 C465.95,22.19 463,23.44 460.03,23.44 Z" ></path>
                               <path id="Shape" d="M169.25,162.83 L168.9,162.83 C163.1,162.83 158.4,158.13 158.4,152.33 C158.4,146.53 163.1,141.83 168.9,141.83 L169.25,141.83 C170.77,141.83 172.28,141.82 173.79,141.8 C179.61,141.71 184.35,146.36 184.43,152.15 C184.51,157.94 179.87,162.71 174.08,162.79 C172.48,162.82 170.87,162.83 169.25,162.83 Z M118.74,159.09 C118.23,159.09 117.71,159.05 117.19,158.98 C115.49,158.73 113.78,158.46 112.07,158.19 C106.35,157.26 102.46,151.87 103.38,146.15 C104.3,140.43 109.7,136.53 115.42,137.46 C117.03,137.72 118.64,137.97 120.25,138.21 C125.99,139.06 129.95,144.39 129.1,150.13 C128.34,155.34 123.86,159.09 118.74,159.09 Z M224.04,158.37 C218.99,158.37 214.53,154.71 213.69,149.56 C212.75,143.84 216.64,138.44 222.36,137.5 C223.97,137.24 225.58,136.96 227.17,136.68 C232.88,135.66 238.33,139.46 239.35,145.17 C240.37,150.88 236.57,156.33 230.86,157.35 C229.16,157.65 227.46,157.94 225.74,158.22 C225.17,158.33 224.6,158.37 224.04,158.37 Z M64.75,146.89 C63.74,146.89 62.71,146.74 61.69,146.43 C60.05,145.93 58.4,145.42 56.75,144.89 C51.22,143.13 48.17,137.23 49.93,131.7 C51.69,126.18 57.59,123.12 63.12,124.88 C64.68,125.38 66.24,125.86 67.8,126.34 C73.35,128.03 76.48,133.89 74.79,139.44 C73.41,143.97 69.25,146.89 64.75,146.89 Z M277.78,145.16 C273.37,145.16 269.27,142.36 267.81,137.94 C265.99,132.43 268.99,126.5 274.49,124.68 C276.04,124.17 277.59,123.65 279.13,123.12 C284.61,121.23 290.59,124.14 292.48,129.62 C294.37,135.1 291.46,141.08 285.98,142.97 C284.35,143.53 282.72,144.08 281.07,144.63 C279.98,144.99 278.87,145.16 277.78,145.16 Z M328.96,124.04 C325.1,124.04 321.39,121.91 319.55,118.22 C316.96,113.03 319.08,106.73 324.27,104.14 C325.74,103.41 327.2,102.67 328.65,101.93 C333.81,99.28 340.14,101.31 342.79,106.47 C345.44,111.63 343.41,117.96 338.25,120.61 C336.72,121.39 335.19,122.17 333.64,122.94 C332.13,123.68 330.53,124.04 328.96,124.04 Z M376.78,96.11 C373.4,96.11 370.09,94.48 368.06,91.47 C364.82,86.66 366.1,80.13 370.91,76.9 C372.28,75.98 373.64,75.05 374.97,74.13 C379.74,70.84 386.28,72.04 389.58,76.81 C392.87,81.58 391.67,88.12 386.9,91.42 C385.5,92.39 384.08,93.36 382.64,94.32 C380.83,95.53 378.79,96.11 376.78,96.11 Z M420.74,62.42 C417.8,62.42 414.88,61.19 412.8,58.8 C409,54.42 409.47,47.79 413.85,43.99 C415.11,42.9 416.34,41.81 417.55,40.75 C421.89,36.9 428.52,37.3 432.37,41.63 C436.22,45.96 435.82,52.6 431.49,56.45 C430.23,57.57 428.93,58.71 427.61,59.85 C425.63,61.58 423.18,62.42 420.74,62.42 Z" ></path>
@@ -75,18 +86,16 @@
                               <path id="Path" d="M12.98,127.26 C11.53,127.26 10.05,126.96 8.64,126.32 C7.87,125.97 7.09,125.61 6.31,125.26 C1.04,122.83 -1.26,116.6 1.17,111.33 C3.6,106.06 9.83,103.76 15.1,106.19 C15.84,106.53 16.59,106.87 17.33,107.21 C22.61,109.61 24.94,115.84 22.54,121.11 C20.78,124.98 16.97,127.26 12.98,127.26 Z" ></path>
                           </g>
                       </g>
-                      <g id="p3r6s" transform="translate(904.000000, 545.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+                      <g id="p3r6s" class="color-unit" transform="translate(904.000000, 545.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
                           <g id="Group">
                               <polygon id="Path" points="74.91 12.47 144.5 0.48 177.41 62.96 128.15 113.57 64.8 82.36"></polygon>
                               <polygon id="Path" points="40.42 35.01 0.45 93.23 43.47 149.23 110.02 125.63 108.14 55.04"></polygon>
-                          </g>
-                          <g id="Group">
-                              <polygon id="Path" points="74.91 12.47 144.5 0.48 177.41 62.96 128.15 113.57 64.8 82.36"></polygon>
-                              <polygon id="Path" points="40.42 35.01 0.45 93.23 43.47 149.23 110.02 125.63 108.14 55.04"></polygon>
+                              <polygon id="Path" fill="transparent" points="74.91 12.47 144.5 0.48 177.41 62.96 128.15 113.57 64.8 82.36"></polygon>
+                              <polygon id="Path" fill="transparent" points="40.42 35.01 0.45 93.23 43.47 149.23 110.02 125.63 108.14 55.04"></polygon>
                           </g>
                       </g>
-                      <circle id="p3r5s" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" cx="828.89" cy="657.17" r="23.7"></circle>
-                      <g id="p3r4s" transform="translate(779.000000, 526.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+                      <circle id="p3r5s" class="color-unit" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" cx="828.89" cy="657.17" r="23.7"></circle>
+                      <g id="p3r4s" class="color-unit" transform="translate(779.000000, 526.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
                           <g id="Group">
                               <path id="Path" d="M90.6,0.5 L0.6,0.5" ></path>
                               <path id="Path" d="M90.6,19.5 L0.6,19.5" ></path>
@@ -98,11 +107,13 @@
                               <path id="Path" d="M90.6,38.5 L0.6,38.5" ></path>
                           </g>
                       </g>
-                      <g id="p3r3s" transform="translate(733.000000, 339.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+                      <g id="p3r3s" class="color-unit" transform="translate(733.000000, 339.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
                           <polygon id="Path" points="105.09 0.44 171.73 23.79 170.12 94.39 102.48 114.68 62.29 56.61"></polygon>
                           <polygon id="Path" points="63.99 3.38 0.76 34.83 11.13 104.68 80.77 116.41 113.44 53.8"></polygon>
+                          <polygon id="Path" fill="transparent" points="105.09 0.44 171.73 23.79 170.12 94.39 102.48 114.68 62.29 56.61"></polygon>
+                          <polygon id="Path" fill="transparent" points="63.99 3.38 0.76 34.83 11.13 104.68 80.77 116.41 113.44 53.8"></polygon>
                       </g>
-                      <g id="p3r2s" transform="translate(958.000000, 130.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+                      <g id="p3r2s" class="color-unit" transform="translate(958.000000, 130.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
                           <g id="Group">
                               <path id="Path" d="M90.6,0.5 L0.6,0.5" ></path>
                               <path id="Path" d="M90.6,19.5 L0.6,19.5" ></path>
@@ -114,17 +125,15 @@
                               <path id="Path" d="M90.6,38.5 L0.6,38.5" ></path>
                           </g>
                       </g>
-                      <g id="p3r1s" transform="translate(731.000000, 0.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+                      <g id="p3r1s" class="color-unit" transform="translate(731.000000, 0.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
                           <g id="Group">
                               <polygon id="Path" points="104.99 0.47 171.64 23.82 170.03 94.42 102.38 114.7 62.19 56.64"></polygon>
                               <polygon id="Path" points="63.9 3.41 0.67 34.86 11.04 104.71 80.67 116.44 113.35 53.83"></polygon>
-                          </g>
-                          <g id="Group">
-                              <polygon id="Path" points="104.99 0.47 171.64 23.82 170.03 94.42 102.38 114.7 62.19 56.64"></polygon>
-                              <polygon id="Path" points="63.9 3.41 0.67 34.86 11.04 104.71 80.67 116.44 113.35 53.83"></polygon>
+                              <polygon id="Path" fill="transparent" points="104.99 0.47 171.64 23.82 170.03 94.42 102.38 114.7 62.19 56.64"></polygon>
+                              <polygon id="Path" fill="transparent" points="63.9 3.41 0.67 34.86 11.04 104.71 80.67 116.44 113.35 53.83"></polygon>
                           </g>
                       </g>
-                      <g id="p3l7s" transform="translate(0.000000, 627.000000)">
+                      <g id="p3l7s" class="color-unit" transform="translate(0.000000, 627.000000)">
                           <g id="Group" fill="#000000" fill-rule="nonzero">
                               <path id="Path" d="M13.07,23.44 C10.1,23.44 7.14,22.18 5.07,19.74 C3.89,18.35 3.29,17.6 3.29,17.6 C-0.33,13.08 0.39,6.47 4.91,2.84 C9.43,-0.79 16.03,-0.07 19.66,4.44 L19.66,4.44 C19.71,4.5 20.19,5.09 21.08,6.14 C24.84,10.56 24.3,17.18 19.88,20.94 C17.89,22.62 15.47,23.44 13.07,23.44 Z" ></path>
                               <path id="Shape" d="M304.19,162.83 L303.84,162.83 C302.23,162.83 300.62,162.82 299.01,162.8 C293.21,162.72 288.58,157.95 288.66,152.16 C288.74,146.41 293.43,141.81 299.16,141.81 C299.21,141.81 299.26,141.81 299.31,141.81 C300.82,141.83 302.33,141.84 303.85,141.84 L304.2,141.84 C310,141.84 314.7,146.54 314.7,152.34 C314.7,158.14 309.99,162.83 304.19,162.83 Z M354.36,159.09 C349.24,159.09 344.76,155.34 343.99,150.12 C343.14,144.38 347.11,139.05 352.84,138.2 C354.45,137.96 356.06,137.71 357.67,137.45 C363.39,136.52 368.79,140.41 369.71,146.14 C370.63,151.87 366.75,157.26 361.02,158.18 C359.31,158.46 357.6,158.72 355.9,158.97 C355.38,159.05 354.87,159.09 354.36,159.09 Z M249.06,158.37 C248.5,158.37 247.93,158.33 247.35,158.23 C245.64,157.95 243.93,157.66 242.23,157.36 C236.52,156.34 232.72,150.89 233.74,145.18 C234.76,139.47 240.21,135.67 245.92,136.69 C247.52,136.98 249.12,137.25 250.73,137.51 C256.45,138.45 260.33,143.84 259.4,149.57 C258.57,154.71 254.11,158.37 249.06,158.37 Z M408.35,146.89 C403.85,146.89 399.69,143.97 398.31,139.44 C396.62,133.89 399.75,128.03 405.3,126.34 C406.86,125.87 408.42,125.38 409.98,124.88 C415.5,123.12 421.41,126.18 423.17,131.7 C424.93,137.23 421.87,143.13 416.35,144.89 C414.7,145.41 413.05,145.93 411.41,146.43 C410.39,146.74 409.36,146.89 408.35,146.89 Z M195.31,145.16 C194.22,145.16 193.11,144.99 192.02,144.63 C190.37,144.09 188.74,143.54 187.11,142.97 C181.63,141.08 178.72,135.1 180.61,129.62 C182.5,124.14 188.48,121.23 193.96,123.12 C195.5,123.65 197.04,124.17 198.6,124.68 C204.11,126.5 207.1,132.43 205.28,137.94 C203.83,142.36 199.72,145.16 195.31,145.16 Z M144.14,124.04 C142.57,124.04 140.97,123.69 139.47,122.94 C137.92,122.17 136.38,121.39 134.86,120.61 C129.7,117.96 127.67,111.63 130.32,106.47 C132.97,101.31 139.3,99.28 144.46,101.93 C145.91,102.67 147.37,103.41 148.84,104.14 C154.03,106.73 156.14,113.03 153.56,118.22 C151.71,121.9 147.99,124.04 144.14,124.04 Z M96.32,96.11 C94.3,96.11 92.26,95.53 90.47,94.32 C89.03,93.35 87.61,92.38 86.21,91.42 C81.44,88.13 80.24,81.59 83.53,76.81 C86.82,72.04 93.36,70.84 98.14,74.13 C99.48,75.05 100.83,75.98 102.2,76.9 C107.01,80.14 108.28,86.66 105.05,91.47 C103.01,94.49 99.69,96.11 96.32,96.11 Z M52.36,62.42 C49.92,62.42 47.47,61.58 45.48,59.85 C44.16,58.7 42.86,57.57 41.6,56.45 C37.26,52.6 36.87,45.96 40.72,41.63 C44.57,37.29 51.21,36.9 55.54,40.75 C56.74,41.82 57.98,42.9 59.24,43.99 C63.62,47.79 64.09,54.42 60.29,58.8 C58.22,61.2 55.3,62.42 52.36,62.42 Z" ></path>
@@ -136,19 +145,17 @@
                               <path id="Path" d="M460.12,127.26 C456.13,127.26 452.31,124.97 450.56,121.1 C448.16,115.82 450.49,109.6 455.77,107.2 C456.51,106.86 457.25,106.52 458,106.18 C463.27,103.75 469.5,106.05 471.93,111.32 C474.36,116.59 472.06,122.82 466.79,125.25 C466.01,125.61 465.24,125.96 464.46,126.31 C463.05,126.96 461.57,127.26 460.12,127.26 Z" ></path>
                           </g>
                       </g>
-                      <circle id="p3l6s" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" cx="363.21" cy="657.17" r="23.7"></circle>
-                      <circle id="p3l5s" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" cx="233.85" cy="489.35" r="23.7"></circle>
-                      <g id="p3l4s" transform="translate(127.000000, 209.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+                      <circle id="p3l6s" class="color-unit" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" cx="363.21" cy="657.17" r="23.7"></circle>
+                      <circle id="p3l5s" class="color-unit" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" cx="233.85" cy="489.35" r="23.7"></circle>
+                      <g id="p3l4s" class="color-unit" transform="translate(127.000000, 209.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
                           <g id="Group">
                               <polygon id="Path" points="46.1 23.45 0.44 77.32 37.56 137.4 106.17 120.66 111.45 50.24"></polygon>
                               <polygon id="Path" points="83.03 5.19 153.48 0.31 179.89 65.81 125.77 111.16 65.9 73.7"></polygon>
-                          </g>
-                          <g id="Group">
-                              <polygon id="Path" points="46.1 23.45 0.44 77.32 37.56 137.4 106.17 120.66 111.45 50.24"></polygon>
-                              <polygon id="Path" points="83.03 5.19 153.48 0.31 179.89 65.81 125.77 111.16 65.9 73.7"></polygon>
+                              <polygon id="Path" fill="transparent" points="46.1 23.45 0.44 77.32 37.56 137.4 106.17 120.66 111.45 50.24"></polygon>
+                              <polygon id="Path" fill="transparent" points="83.03 5.19 153.48 0.31 179.89 65.81 125.77 111.16 65.9 73.7"></polygon>
                           </g>
                       </g>
-                      <g id="p3l3s" transform="translate(376.000000, 186.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+                      <g id="p3l3s" class="color-unit" transform="translate(376.000000, 186.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
                           <g id="Group">
                               <path id="Path" d="M38.5,0.5 L38.5,90.5" ></path>
                               <path id="Path" d="M19.5,0.5 L19.5,90.5" ></path>
@@ -160,31 +167,27 @@
                               <path id="Path" d="M0.5,0.5 L0.5,90.5" ></path>
                           </g>
                       </g>
-                      <circle id="p3l2s" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" cx="236.85" cy="62.65" r="23.7"></circle>
-                      <g id="p3l1s" transform="translate(289.000000, 0.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+                      <circle id="p3l2s" class="color-unit" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" cx="236.85" cy="62.65" r="23.7"></circle>
+                      <g id="p3l1s" class="color-unit" transform="translate(289.000000, 0.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
                           <g id="Group">
                               <polygon id="Path" points="67.1 0.47 0.46 23.82 2.07 94.42 69.71 114.7 109.91 56.64"></polygon>
                               <polygon id="Path" points="108.2 3.41 171.43 34.86 161.06 104.71 91.42 116.44 58.75 53.83"></polygon>
-                          </g>
-                          <g id="Group">
-                              <polygon id="Path" points="67.1 0.47 0.46 23.82 2.07 94.42 69.71 114.7 109.91 56.64"></polygon>
-                              <polygon id="Path" points="108.2 3.41 171.43 34.86 161.06 104.71 91.42 116.44 58.75 53.83"></polygon>
+                              <polygon id="Path" fill="transparent" points="67.1 0.47 0.46 23.82 2.07 94.42 69.71 114.7 109.91 56.64"></polygon>
+                              <polygon id="Path" fill="transparent" points="108.2 3.41 171.43 34.86 161.06 104.71 91.42 116.44 58.75 53.83"></polygon>
                           </g>
                       </g>
                   </g>
                   <g id="hidden" transform="translate(110.000000, 38.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
-                      <circle id="p3l4h" cx="848.25" cy="451.35" r="23.7"></circle>
-                      <g id="p3l3h" transform="translate(775.000000, 171.000000)">
+                      <circle id="p3r4h" class="color-unit" cx="848.25" cy="451.35" r="23.7"></circle>
+                      <g id="p3r3h" class="color-unit" transform="translate(775.000000, 171.000000)">
                           <g id="Group">
                               <polygon id="Path" points="133.99 23.45 179.66 77.32 142.54 137.4 73.93 120.66 68.65 50.24"></polygon>
                               <polygon id="Path" points="97.06 5.19 26.61 0.31 0.2 65.81 54.33 111.16 114.19 73.7"></polygon>
-                          </g>
-                          <g id="Group">
-                              <polygon id="Path" points="133.99 23.45 179.66 77.32 142.54 137.4 73.93 120.66 68.65 50.24"></polygon>
-                              <polygon id="Path" points="97.06 5.19 26.61 0.31 0.2 65.81 54.33 111.16 114.19 73.7"></polygon>
+                              <polygon id="Path" fill="transparent" points="133.99 23.45 179.66 77.32 142.54 137.4 73.93 120.66 68.65 50.24"></polygon>
+                              <polygon id="Path" fill="transparent" points="97.06 5.19 26.61 0.31 0.2 65.81 54.33 111.16 114.19 73.7"></polygon>
                           </g>
                       </g>
-                      <g id="p3l2h" transform="translate(667.000000, 148.000000)">
+                      <g id="p3r2h" class="color-unit" transform="translate(667.000000, 148.000000)">
                           <g id="Group">
                               <path id="Path" d="M0.6,0.5 L0.6,90.5" ></path>
                               <path id="Path" d="M19.6,0.5 L19.6,90.5" ></path>
@@ -196,18 +199,16 @@
                               <path id="Path" d="M38.6,0.5 L38.6,90.5" ></path>
                           </g>
                       </g>
-                      <circle id="p3r1h" cx="845.25" cy="24.65" r="23.7"></circle>
-                      <g id="p3l4h" transform="translate(0.000000, 507.000000)">
+                      <circle id="p3r1h" class="color-unit" cx="845.25" cy="24.65" r="23.7"></circle>
+                      <g id="p3l4h" class="color-unit" transform="translate(0.000000, 507.000000)">
                           <g id="Group">
                               <polygon id="Path" points="103.19 12.47 33.6 0.48 0.69 62.96 49.94 113.57 113.29 82.36"></polygon>
                               <polygon id="Path" points="137.67 35.01 177.64 93.23 134.63 149.23 68.07 125.63 69.95 55.04"></polygon>
-                          </g>
-                          <g id="Group">
-                              <polygon id="Path" points="103.19 12.47 33.6 0.48 0.69 62.96 49.94 113.57 113.29 82.36"></polygon>
-                              <polygon id="Path" points="137.67 35.01 177.64 93.23 134.63 149.23 68.07 125.63 69.95 55.04"></polygon>
+                              <polygon id="Path" fill="transparent" points="103.19 12.47 33.6 0.48 0.69 62.96 49.94 113.57 113.29 82.36"></polygon>
+                              <polygon id="Path" fill="transparent" points="137.67 35.01 177.64 93.23 134.63 149.23 68.07 125.63 69.95 55.04"></polygon>
                           </g>
                       </g>
-                      <g id="p3l3h" transform="translate(212.000000, 488.000000)">
+                      <g id="p3l3h" class="color-unit" transform="translate(212.000000, 488.000000)">
                           <g id="Group">
                               <path id="Path" d="M0.5,0.5 L90.5,0.5" ></path>
                               <path id="Path" d="M0.5,19.5 L90.5,19.5" ></path>
@@ -219,11 +220,13 @@
                               <path id="Path" d="M0.5,38.5 L90.5,38.5" ></path>
                           </g>
                       </g>
-                      <g id="p3l2h" transform="translate(177.000000, 301.000000)">
+                      <g id="p3l2h" class="color-unit" transform="translate(177.000000, 301.000000)">
                           <polygon id="Path" points="67.01 0.44 0.36 23.79 1.97 94.39 69.62 114.68 109.81 56.61"></polygon>
                           <polygon id="Path" points="108.1 3.38 171.33 34.83 160.96 104.68 91.33 116.41 58.65 53.8"></polygon>
+                          <polygon id="Path" fill="transparent" points="67.01 0.44 0.36 23.79 1.97 94.39 69.62 114.68 109.81 56.61"></polygon>
+                          <polygon id="Path" fill="transparent" points="108.1 3.38 171.33 34.83 160.96 104.68 91.33 116.41 58.65 53.8"></polygon>
                       </g>
-                      <g id="p3l1h" transform="translate(33.000000, 92.000000)">
+                      <g id="p3l1h" class="color-unit" transform="translate(33.000000, 92.000000)">
                           <g id="Group">
                               <path id="Path" d="M0.5,0.5 L90.5,0.5" ></path>
                               <path id="Path" d="M0.5,19.5 L90.5,19.5" ></path>
@@ -237,9 +240,9 @@
                       </g>
                   </g>
               </g>
-              <g id="p2" transform="translate(59.000000, 31.000000)" stroke="#000000" stroke-width="5">
+              <g id="p2" class="color-able" transform="translate(59.000000, 31.000000)" stroke="#000000" stroke-width="5">
                   <g id="show">
-                      <g id="p2r6s" transform="translate(800.000000, 711.000000)">
+                      <g id="p2r6s" class="color-unit" transform="translate(800.000000, 711.000000)">
                           <g id="Group">
                               <path id="Path" d="M0.91,22.66 C0.91,22.66 46.63,-7.25 87.93,3.09 C129.23,13.42 148.91,59.7 148.91,59.7 C148.91,59.7 109.73,91.24 68.44,80.91 C27.15,70.58 0.91,22.66 0.91,22.66 Z" ></path>
                               <path id="Path" d="M124.57,53.61 L27.21,29.24" ></path>
@@ -249,7 +252,7 @@
                               <path id="Path" d="M70.63,52.51 L46.92,61.05" ></path>
                           </g>
                       </g>
-                      <g id="p2r5s" transform="translate(695.000000, 579.000000)">
+                      <g id="p2r5s" class="color-unit" transform="translate(695.000000, 579.000000)">
                           <g id="Group">
                               <path id="Path" d="M44.13,74.61 C39.71,77.56 35.58,81.93 32.42,87.41 C24.43,101.25 25.61,116.9 35.07,122.35 C44.53,127.81 58.67,121.01 66.67,107.17 C67.85,105.13 68.83,103.05 69.61,100.96" ></path>
                               <path id="Path" d="M92.8,78.58 C97.56,80.93 103.42,82.32 109.75,82.32 C125.74,82.32 138.7,73.47 138.7,62.55 C138.7,51.63 125.74,42.78 109.75,42.78 C107.39,42.78 105.1,42.97 102.9,43.34" ></path>
@@ -260,13 +263,15 @@
                               <ellipse id="Oval" cx="69.61" cy="62.55" rx="28.19" ry="28.18"></ellipse>
                           </g>
                       </g>
-                      <g id="p2r4s" transform="translate(709.000000, 352.000000)">
+                      <g id="p2r4s" class="color-unit" transform="translate(709.000000, 352.000000)">
                           <g id="Group">
                               <polygon id="Path" points="110.06 0.57 180.25 25.16 178.55 99.48 107.31 120.84 64.98 59.71"></polygon>
                               <polygon id="Path" points="66.78 3.67 0.19 36.77 11.11 110.31 84.45 122.66 118.86 56.75"></polygon>
+                              <polygon id="Path" fill="transparent" points="110.06 0.57 180.25 25.16 178.55 99.48 107.31 120.84 64.98 59.71"></polygon>
+                              <polygon id="Path" fill="transparent" points="66.78 3.67 0.19 36.77 11.11 110.31 84.45 122.66 118.86 56.75"></polygon>
                           </g>
                       </g>
-                      <g id="p2r3s" transform="translate(915.000000, 256.000000)">
+                      <g id="p2r3s" class="color-unit" transform="translate(915.000000, 256.000000)">
                           <g id="Group">
                               <path id="Path" d="M0.09,0.14 C0.09,0.14 54.69,-2.01 84.79,28.09 C114.89,58.18 107.97,107.99 107.97,107.99 C107.97,107.99 58.14,114.91 28.04,84.82 C-2.06,54.73 0.09,0.14 0.09,0.14 Z" ></path>
                               <path id="Path" d="M90.23,90.25 L19.26,19.3" ></path>
@@ -276,7 +281,7 @@
                               <path id="Path" d="M44.53,61.58 L19.8,56.71" ></path>
                           </g>
                       </g>
-                      <g id="p2r2s" transform="translate(899.000000, 96.000000)">
+                      <g id="p2r2s" class="color-unit" transform="translate(899.000000, 96.000000)">
                           <g id="Group">
                               <path id="Path" d="M44.11,74.62 C39.69,77.57 35.56,81.94 32.4,87.42 C24.41,101.26 25.59,116.91 35.05,122.36 C44.51,127.82 58.65,121.02 66.65,107.18 C67.83,105.14 68.81,103.06 69.59,100.97" ></path>
                               <path id="Path" d="M92.78,78.58 C97.54,80.93 103.4,82.32 109.73,82.32 C125.72,82.32 138.68,73.47 138.68,62.55 C138.68,51.63 125.72,42.78 109.73,42.78 C107.37,42.78 105.08,42.97 102.88,43.34" ></path>
@@ -287,19 +292,23 @@
                               <ellipse id="Oval" cx="69.59" cy="62.56" rx="28.19" ry="28.18"></ellipse>
                           </g>
                       </g>
-                      <g id="p2r1s" transform="translate(726.000000, 0.000000)">
+                      <g id="p2r1s" class="color-unit" transform="translate(726.000000, 0.000000)">
                           <g id="Group">
                               <polygon id="Path" points="110.08 0.83 180.27 25.41 178.57 99.73 107.33 121.09 65 59.96"></polygon>
                               <polygon id="Path" points="66.8 3.92 0.21 37.03 11.13 110.57 84.47 122.91 118.88 57"></polygon>
+                              <polygon id="Path" fill="transparent" points="110.08 0.83 180.27 25.41 178.57 99.73 107.33 121.09 65 59.96"></polygon>
+                              <polygon id="Path" fill="transparent" points="66.8 3.92 0.21 37.03 11.13 110.57 84.47 122.91 118.88 57"></polygon>
                           </g>
                       </g>
-                      <g id="p2l5s" transform="translate(0.000000, 615.000000)">
+                      <g id="p2l5s" class="color-unit" transform="translate(0.000000, 615.000000)">
                           <g id="Group">
                               <polygon id="Path" points="106.17 10.15 32.45 0.34 0.34 67.4 54.21 118.65 119.62 83.27"></polygon>
                               <polygon id="Path" points="143.37 32.48 187.78 92.11 144.77 152.76 73.78 130.61 72.91 56.27"></polygon>
+                              <polygon id="Path" fill="transparent" points="106.17 10.15 32.45 0.34 0.34 67.4 54.21 118.65 119.62 83.27"></polygon>
+                              <polygon id="Path" fill="transparent" points="143.37 32.48 187.78 92.11 144.77 152.76 73.78 130.61 72.91 56.27"></polygon>
                           </g>
                       </g>
-                      <g id="p2l4s" transform="translate(310.000000, 579.000000)">
+                      <g id="p2l4s" class="color-unit" transform="translate(310.000000, 579.000000)">
                           <g id="Group">
                               <path id="Path" d="M94.87,74.61 C99.29,77.56 103.42,81.93 106.58,87.41 C114.57,101.25 113.39,116.9 103.93,122.35 C94.47,127.81 80.33,121.01 72.33,107.17 C71.15,105.13 70.17,103.05 69.39,100.96" ></path>
                               <path id="Path" d="M46.2,78.58 C41.44,80.93 35.58,82.32 29.25,82.32 C13.26,82.32 0.3,73.47 0.3,62.55 C0.3,51.63 13.26,42.78 29.25,42.78 C31.61,42.78 33.9,42.97 36.1,43.34" ></path>
@@ -310,7 +319,7 @@
                               <ellipse id="Oval" cx="69.39" cy="62.55" rx="28.19" ry="28.18"></ellipse>
                           </g>
                       </g>
-                      <g id="p2l3s" transform="translate(137.000000, 490.000000)">
+                      <g id="p2l3s" class="color-unit" transform="translate(137.000000, 490.000000)">
                           <g id="Group">
                               <ellipse id="Oval" cx="82.64" cy="82.33" rx="82.29" ry="82.26"></ellipse>
                               <g transform="translate(29.000000, 35.000000)">
@@ -324,7 +333,7 @@
                               </g>
                           </g>
                       </g>
-                      <g id="p2l2s" transform="translate(120.000000, 256.000000)">
+                      <g id="p2l2s" class="color-unit" transform="translate(120.000000, 256.000000)">
                           <g id="Group">
                               <path id="Path" d="M108.91,0.14 C108.91,0.14 54.31,-2.01 24.21,28.09 C-5.89,58.18 1.03,107.99 1.03,107.99 C1.03,107.99 50.86,114.91 80.96,84.82 C111.06,54.72 108.91,0.14 108.91,0.14 Z" ></path>
                               <path id="Path" d="M18.77,90.25 L89.74,19.3" ></path>
@@ -334,7 +343,7 @@
                               <path id="Path" d="M64.47,61.58 L89.2,56.71" ></path>
                           </g>
                       </g>
-                      <g id="p2l1s" transform="translate(264.000000, 159.000000)">
+                      <g id="p2l1s" class="color-unit" transform="translate(264.000000, 159.000000)">
                           <g id="Group">
                               <ellipse id="Oval" cx="82.81" cy="82.8" rx="82.29" ry="82.26"></ellipse>
                               <g transform="translate(30.000000, 35.000000)">
@@ -350,13 +359,15 @@
                       </g>
                   </g>
                   <g id="hidden" transform="translate(106.000000, 0.000000)">
-                      <g id="p2r3h" transform="translate(850.000000, 615.000000)">
+                      <g id="p2r3h" class="color-unit" transform="translate(850.000000, 615.000000)">
                           <g id="Group">
                               <polygon id="Path" points="81.83 10.15 155.55 0.34 187.66 67.4 133.79 118.65 68.38 83.27"></polygon>
                               <polygon id="Path" points="44.63 32.48 0.22 92.11 43.23 152.76 114.22 130.61 115.09 56.27"></polygon>
+                              <polygon id="Path" fill="transparent" points="81.83 10.15 155.55 0.34 187.66 67.4 133.79 118.65 68.38 83.27"></polygon>
+                              <polygon id="Path" fill="transparent" points="44.63 32.48 0.22 92.11 43.23 152.76 114.22 130.61 115.09 56.27"></polygon>
                           </g>
                       </g>
-                      <g id="p2r2h" transform="translate(736.000000, 490.000000)">
+                      <g id="p2r2h" class="color-unit" transform="translate(736.000000, 490.000000)">
                           <g id="Group">
                               <ellipse id="Oval" cx="82.36" cy="82.33" rx="82.29" ry="82.26"></ellipse>
                               <g transform="translate(29.000000, 35.000000)">
@@ -370,7 +381,7 @@
                               </g>
                           </g>
                       </g>
-                      <g id="p2r1h" transform="translate(608.000000, 159.000000)">
+                      <g id="p2r1h" class="color-unit" transform="translate(608.000000, 159.000000)">
                           <g id="Group">
                               <ellipse id="Oval" cx="83.19" cy="82.8" rx="82.29" ry="82.26"></ellipse>
                               <g transform="translate(30.000000, 35.000000)">
@@ -384,7 +395,7 @@
                               </g>
                           </g>
                       </g>
-                      <g id="p2l4h" transform="translate(89.000000, 711.000000)">
+                      <g id="p2l4h" class="color-unit" transform="translate(89.000000, 711.000000)">
                           <g id="Group">
                               <path id="Path" d="M148.09,22.66 C148.09,22.66 102.37,-7.25 61.07,3.09 C19.77,13.42 0.09,59.7 0.09,59.7 C0.09,59.7 39.27,91.24 80.56,80.91 C121.85,70.58 148.09,22.66 148.09,22.66 Z" ></path>
                               <path id="Path" d="M24.43,53.61 L121.79,29.24" ></path>
@@ -394,13 +405,15 @@
                               <path id="Path" d="M78.37,52.51 L102.08,61.05" ></path>
                           </g>
                       </g>
-                      <g id="p2l3h" transform="translate(148.000000, 352.000000)">
+                      <g id="p2l3h" class="color-unit" transform="translate(148.000000, 352.000000)">
                           <g id="Group">
                               <polygon id="Path" points="70.94 0.57 0.75 25.16 2.45 99.48 73.69 120.84 116.02 59.71"></polygon>
                               <polygon id="Path" points="114.22 3.67 180.81 36.77 169.89 110.31 96.55 122.66 62.14 56.75"></polygon>
+                              <polygon id="Path" fill="transparent" points="70.94 0.57 0.75 25.16 2.45 99.48 73.69 120.84 116.02 59.71"></polygon>
+                              <polygon id="Path" fill="transparent" points="114.22 3.67 180.81 36.77 169.89 110.31 96.55 122.66 62.14 56.75"></polygon>
                           </g>
                       </g>
-                      <g id="p2l2h" transform="translate(0.000000, 96.000000)">
+                      <g id="p2l2h" class="color-unit" transform="translate(0.000000, 96.000000)">
                           <g id="Group">
                               <path id="Path" d="M94.89,74.62 C99.31,77.57 103.44,81.94 106.6,87.42 C114.59,101.26 113.41,116.91 103.95,122.36 C94.49,127.82 80.35,121.02 72.35,107.18 C71.17,105.14 70.19,103.06 69.41,100.97" ></path>
                               <path id="Path" d="M46.22,78.58 C41.46,80.93 35.6,82.32 29.27,82.32 C13.28,82.32 0.32,73.47 0.32,62.55 C0.32,51.63 13.28,42.78 29.27,42.78 C31.63,42.78 33.92,42.97 36.12,43.34" ></path>
@@ -411,82 +424,92 @@
                               <ellipse id="Oval" cx="69.41" cy="62.56" rx="28.19" ry="28.18"></ellipse>
                           </g>
                       </g>
-                      <g id="p2l1h" transform="translate(131.000000, 0.000000)">
+                      <g id="p2l1h" class="color-unit" transform="translate(131.000000, 0.000000)">
                           <g id="Group">
                               <polygon id="Path" points="70.92 0.83 0.73 25.41 2.43 99.73 73.67 121.09 116 59.96"></polygon>
                               <polygon id="Path" points="114.2 3.92 180.79 37.03 169.87 110.57 96.53 122.91 62.12 57"></polygon>
+                              <polygon id="Path" fill="transparent" points="70.92 0.83 0.73 25.41 2.43 99.73 73.67 121.09 116 59.96"></polygon>
+                              <polygon id="Path" fill="transparent" points="114.2 3.92 180.79 37.03 169.87 110.57 96.53 122.91 62.12 57"></polygon>
                           </g>
                       </g>
                   </g>
               </g>
-              <g id="p1" transform="translate(55.000000, 23.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+              <g id="p1" class="color-able" transform="translate(55.000000, 23.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
                   <g id="hidden" transform="translate(0.000000, 42.000000)">
-                      <polygon id="p1r4h" points="958.73 489.9 1019.29 594.8 898.16 594.8"></polygon>
-                      <g id="p1r3h" transform="translate(716.000000, 425.000000)">
+                      <polygon id="p1r4h" class="color-unit" points="958.73 489.9 1019.29 594.8 898.16 594.8"></polygon>
+                      <g id="p1r3h" class="color-unit" transform="translate(716.000000, 425.000000)">
                           <polygon id="Path" points="111.28 0.29 182.34 25.18 180.62 100.45 108.5 122.08 65.65 60.17"></polygon>
                           <polygon id="Path" points="67.47 3.42 0.06 36.95 11.11 111.42 85.36 123.92 120.19 57.18"></polygon>
+                          <polygon id="Path" fill="transparent" points="111.28 0.29 182.34 25.18 180.62 100.45 108.5 122.08 65.65 60.17"></polygon>
+                          <polygon id="Path" fill="transparent" points="67.47 3.42 0.06 36.95 11.11 111.42 85.36 123.92 120.19 57.18"></polygon>
                       </g>
-                      <rect id="p1r2h" x="718.47" y="275.04" width="107.09" height="107.09"></rect>
-                      <g id="p1r1h" transform="translate(870.000000, 0.000000)">
+                      <rect id="p1r2h" class="color-unit" x="718.47" y="275.04" width="107.09" height="107.09"></rect>
+                      <g id="p1r1h" class="color-unit" transform="translate(870.000000, 0.000000)">
                           <circle id="Oval" cx="56.83" cy="56.86" r="56.5"></circle>
                           <circle id="Oval" cx="56.83" cy="56.86" r="31.89"></circle>
                       </g>
-                      <rect id="p1l4h" x="182.02" y="638.4" width="107.09" height="107.09"></rect>
-                      <g id="p1l3h" transform="translate(0.000000, 567.000000)">
+                      <rect id="p1l4h" class="color-unit" x="182.02" y="638.4" width="107.09" height="107.09"></rect>
+                      <g id="p1l3h" class="color-unit" transform="translate(0.000000, 567.000000)">
                           <circle id="Oval" cx="56.79" cy="57.01" r="56.5"></circle>
                           <circle id="Oval" cx="56.79" cy="57.01" r="31.89"></circle>
                       </g>
-                      <g id="p1l2h" transform="translate(160.000000, 304.000000)">
+                      <g id="p1l2h" class="color-unit" transform="translate(160.000000, 304.000000)">
                           <circle id="Oval" cx="57.33" cy="56.71" r="56.5"></circle>
                           <circle id="Oval" cx="57.33" cy="56.71" r="31.89"></circle>
                       </g>
-                      <g id="p1l1h" transform="translate(324.000000, 106.000000)">
+                      <g id="p1l1h" class="color-unit" transform="translate(324.000000, 106.000000)">
                           <circle id="Oval" cx="56.94" cy="57.17" r="56.5"></circle>
                           <circle id="Oval" cx="56.94" cy="57.17" r="31.89"></circle>
                       </g>
                   </g>
                   <g id="show" transform="translate(106.630000, 0.920000)">
-                      <rect id="p1r7s" x="756.26" y="679.48" width="107.09" height="107.09"></rect>
-                      <g id="p1r6s" transform="translate(593.370000, 648.080000)">
+                      <rect id="p1r7s" class="color-unit" x="756.26" y="679.48" width="107.09" height="107.09"></rect>
+                      <g id="p1r6s" class="color-unit" transform="translate(593.370000, 648.080000)">
                           <circle id="Oval" cx="56.77" cy="56.7" r="56.5"></circle>
                           <circle id="Oval" cx="56.77" cy="56.7" r="31.89"></circle>
                       </g>
-                      <g id="p1r5s" transform="translate(931.370000, 608.080000)">
+                      <g id="p1r5s" class="color-unit" transform="translate(931.370000, 608.080000)">
                           <circle id="Oval" cx="57.21" cy="57.01" r="56.5"></circle>
                           <circle id="Oval" cx="57.21" cy="57.01" r="31.89"></circle>
                       </g>
-                      <g id="p1r4s" transform="translate(771.370000, 345.080000)">
+                      <g id="p1r4s" class="color-unit" transform="translate(771.370000, 345.080000)">
                           <circle id="Oval" cx="56.67" cy="56.71" r="56.5"></circle>
                           <circle id="Oval" cx="56.67" cy="56.71" r="31.89"></circle>
                       </g>
-                      <g id="p1r3s" transform="translate(754.370000, 194.080000)">
+                      <g id="p1r3s" class="color-unit" transform="translate(754.370000, 194.080000)">
                           <polygon id="Path" points="111.99 0.54 183.04 25.43 181.33 100.7 109.21 122.33 66.36 60.43"></polygon>
                           <polygon id="Path" points="68.18 3.67 0.77 37.2 11.82 111.67 86.06 124.17 120.9 57.43"></polygon>
+                          <polygon id="Path" fill="transparent" points="111.99 0.54 183.04 25.43 181.33 100.7 109.21 122.33 66.36 60.43"></polygon>
+                          <polygon id="Path" fill="transparent" points="68.18 3.67 0.77 37.2 11.82 111.67 86.06 124.17 120.9 57.43"></polygon>
                       </g>
-                      <g id="p1r2s" transform="translate(607.370000, 147.080000)">
+                      <g id="p1r2s" class="color-unit" transform="translate(607.370000, 147.080000)">
                           <circle id="Oval" cx="57.06" cy="57.17" r="56.5"></circle>
                           <circle id="Oval" cx="57.06" cy="57.17" r="31.89"></circle>
                       </g>
-                      <polygon id="p1r1s" points="665.18 0 725.74 104.9 604.61 104.9"></polygon>
-                      <g id="p1l7s" transform="translate(231.370000, 648.080000)">
+                      <polygon id="p1r1s" class="color-unit" points="665.18 0 725.74 104.9 604.61 104.9"></polygon>
+                      <g id="p1l7s" class="color-unit" transform="translate(231.370000, 648.080000)">
                           <circle id="Oval" cx="57.23" cy="56.7" r="56.5"></circle>
                           <circle id="Oval" cx="57.23" cy="56.7" r="31.89"></circle>
                       </g>
-                      <polygon id="p1l6s" points="86.64 530.98 26.08 635.88 147.21 635.88"></polygon>
-                      <g id="p1l5s" transform="translate(146.370000, 466.080000)">
+                      <polygon id="p1l6s" class="color-unit" points="86.64 530.98 26.08 635.88 147.21 635.88"></polygon>
+                      <g id="p1l5s" class="color-unit" transform="translate(146.370000, 466.080000)">
                           <polygon id="Path" points="71.72 0.29 0.66 25.18 2.38 100.45 74.5 122.08 117.35 60.17"></polygon>
                           <polygon id="Path" points="115.53 3.42 182.94 36.95 171.89 111.42 97.64 123.92 62.81 57.18"></polygon>
+                          <polygon id="Path" fill="transparent" points="71.72 0.29 0.66 25.18 2.38 100.45 74.5 122.08 117.35 60.17"></polygon>
+                          <polygon id="Path" fill="transparent" points="115.53 3.42 182.94 36.95 171.89 111.42 97.64 123.92 62.81 57.18"></polygon>
                       </g>
-                      <rect id="p1l4s" x="219.81" y="316.12" width="107.09" height="107.09"></rect>
-                      <g id="p1l3s" transform="translate(0.370000, 194.080000)">
+                      <rect id="p1l4s" class="color-unit" x="219.81" y="316.12" width="107.09" height="107.09"></rect>
+                      <g id="p1l3s" class="color-unit" transform="translate(0.370000, 194.080000)">    
                           <polygon id="Path" points="72.01 0.54 0.96 25.43 2.67 100.7 74.79 122.33 117.64 60.43"></polygon>
                           <polygon id="Path" points="115.82 3.67 183.23 37.2 172.18 111.67 97.94 124.17 63.1 57.43"></polygon>
+                          <polygon id="Path" fill="transparent" points="72.01 0.54 0.96 25.43 2.67 100.7 74.79 122.33 117.64 60.43"></polygon>
+                          <polygon id="Path" fill="transparent" points="115.82 3.67 183.23 37.2 172.18 111.67 97.94 124.17 63.1 57.43"></polygon>
                       </g>
-                      <g id="p1l2s" transform="translate(61.370000, 41.080000)">
+                      <g id="p1l2s" class="color-unit" transform="translate(61.370000, 41.080000)">
                           <circle id="Oval" cx="57.17" cy="56.86" r="56.5"></circle>
                           <circle id="Oval" cx="57.17" cy="56.86" r="31.89"></circle>
                       </g>
-                      <polygon id="p1l1s" points="273.56 0 213 104.9 334.13 104.9"></polygon>
+                      <polygon id="p1l1s" class="color-unit" points="273.56 0 213 104.9 334.13 104.9"></polygon>
                   </g>
               </g>
               <g id="p3guide" transform="translate(164.000000, 64.000000)" stroke="#FF5955" stroke-dasharray="12" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
@@ -582,16 +605,22 @@ export default {
   mounted(){
     this.setAdmin('admin')
     this.hideDesc()
+<<<<<<< HEAD
     this.allReset()    
+=======
+    // this.selectPattern('p2')
+    this.allReset()
+>>>>>>> 45ac002cd4f007071b046e5ddc1197e7a34b8065
   },
   data(){return{
     mode: 'select',
-    stepList: ['select', 'match', 'color'],
+    stepList: ['select', 'match', 'color', 'done'],
     step: 0,
     pattern: '',
     shape: '',
     answerBook: _.cloneDeep(ANSWER),
     finish: false,
+    color: '#FFFFFF',
   }},
   methods:{
       ...mapActions({
@@ -608,12 +637,28 @@ export default {
     initMode(mode){
       switch(mode){
         case 'select' :
+          this.selectPattern(0)
           break;
         case 'match' :
           this.showGuide(this.pattern)
           break;
         case 'color' :
+          console.log('mode color')
+          const vm = this
+          // add event
+          const target = this.$refs.svg.querySelectorAll('.color-unit')
+        //   target.forEach( dom => dom.removeEventListener('click', this.fillColor ) )
+          target.forEach( dom => dom.addEventListener('click', (ev) => { this.fillColor(ev) }) )
           break;
+        case 'done' :
+          let svgString = this.$refs.svg.outerHTML
+          localStorage.setItem('capeSVG', svgString)
+      }
+    },
+    fillColor(evt){
+      const target = evt.path.find( dom => [...dom.classList].includes('color-unit') )
+      if(target){
+        target.style.fill = this.color
       }
     },
     patternItem(id){
@@ -623,18 +668,15 @@ export default {
       TweenMax.set([`#p1 #show`, `#p2 #show`, `#p3 #show`], {display:'none'})
       TweenMax.set([`#p1 #hidden`, `#p2 #hidden`, `#p3 #hidden`], {display:'none'})
     },
-    fillColor(){
-      // TweenMax.set('#p2Lleaf1_7_ path', {fill:'orange'})
-      // TweenMax.set('#p2Rleaf1_7_ path', {fill:'orange'})
-      // TweenMax.set('#p2Rpenta3_6_ polygon', {fill:'blue'})
-      // TweenMax.set('#p2Rpenta3_6_ polygon', {fill:'orange'})
-    },
-
     clickGuide(id){
+      console.log(id)
       //search answer
       const pNum = this.pattern
       const shape = this.shape
       const answer = this.answerBook[pNum][shape]
+      if( !answer ){
+        return
+      }
       const idx = answer.indexOf(id)
       // if not answer
       if( idx < 0 ){
@@ -676,7 +718,6 @@ export default {
       TweenMax.set([`#p1 #hidden`, `#p2 #hidden`, `#p3 #hidden`], {display:'none'})
       TweenMax.set([`#p1guide`, `#p2guide`, `#p3guide`], {display:'none'})
       TweenMax.set(`#${id} #show`, {display:'block'})
-
     },
     hideDesc(){
       TweenMax.to('.desc-view', 0.5, {
@@ -703,10 +744,14 @@ export default {
 }
 </script>
  <style scoped>
-  #p1{fill:transparent;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-  #p2{fill:transparent;stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
-  #p3{fill:transparent;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+  svg
+  #p1{fill:none; stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+  #p2{fill:none; stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
+  #p3{fill:none; stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 
+  .color-able .color-unit {
+    fill: transparent
+  }
   /* #p1{ display:none; }
   #p2{ display:none; }
   #p3{ display:none; } */
@@ -737,8 +782,14 @@ export default {
     display: none;
   }
 
-  .desc{
+  /* .desc{
     @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
     font-family: 'NanumSquareRound',sans-serif;
+  } */
+  .color_pallete_btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin: 3px;
   }
 </style>

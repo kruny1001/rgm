@@ -14,6 +14,7 @@ const routes = [
       { path: 'g11', component: () => import('pages/game11.vue') },
       { path: 'g12', component: () => import('pages/game12.vue') },
       { path: 'end', component: () => import('pages/end.vue') },
+      { path: 'test', component: () => import('pages/test.vue') },
     ]
   },
   {

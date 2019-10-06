@@ -11,7 +11,7 @@
     
     <div style="height:80px; max-width:1280px; margin: 10px auto;">
       <div class="row justify-between" v-if="mode == 'color'" style="width: 100%;">
-      
+
         <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
             @click="progress(-1)"/>
@@ -177,18 +177,13 @@
       </div>
     </div>
 
-    <div style="background: white; max-width:1100px; margin: 0px auto; border-radius:120px; padding: 20px 60px;">    
-      
-      
-
-
+    <div class="row justify-around" style="background: white; max-width:1100px; margin: 0px auto; border-radius:120px; padding: 15px 60px;">
       <!-- SVG Image  -->
-      <div style="width:600px; margin:0px auto; padding-top: 20px;">
-
+      <div style="width:330px; padding-top: 20px;">
         <svg ref="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             width="100%"
             x="0px" y="0px"
-            viewBox="0 0 900 1200" style="enable-background:new 0 0 900 1200;" xml:space="preserve">
+            viewBox="0 0 900 1150" style="enable-background:new 0 0 900 1150;" xml:space="preserve">
 
           <g id="nest1" :class="{ 'show' : nestType == 1 }">
             <path id="nets1_x5F_13" class="nest1" d="M542.41,854.03c11.93,4.64,22.49,10.16,31.31,16.35c6.09,4.28,11.34,8.89,15.66,13.76v0
@@ -685,6 +680,12 @@
           </g>
           </svg>
       </div>
+      <div id="name-tag" v-if="mode=='name'">
+        <div class="name-container row justify-center no-wrap">
+          <div class="name-pin"/>
+          <input class="name-input" v-model="name"/>
+        </div>
+      </div>
     </div>
 
     <!-- <finish-load></finish-load> -->
@@ -703,6 +704,7 @@ export default {
       descView
   },
   data(){ return {
+    name: '이름',
     desc: [
       '1. 눈 모양 고르기',
       '2. 부리 모양 고르기',
@@ -720,7 +722,7 @@ export default {
     nestType: 0,
     color: 'transparent',
     colorInfo: {},
-    stepList: ['eye', 'mouth', 'pattern', 'color', 'nest', 'color']
+    stepList: ['eye', 'mouth', 'pattern', 'color', 'nest', 'color', 'name']
   }},
   methods:{
     hideDesc(){
@@ -773,6 +775,16 @@ export default {
       if( nextStep >= this.stepList.length){ nextStep = this.stepList.length-1}
       this.curStep = nextStep
       this.mode = this.stepList[this.curStep]
+      this.initMode(this.mode)
+    },
+    initMode(mode){
+      switch(mode){
+        case 'name':
+          TweenMax.set('svg *', {'stroke-width': 0})
+          const svgStr = this.$refs.svg.outerHTML
+          localStorage.setItem('pioSVG',svgStr)
+          break;
+      }
     }
   },
   mounted(){
@@ -780,7 +792,34 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped>
+<style scoped>
+  #name-tag{
+    padding-top: 100px;
+  }
+  .name-container{
+    /* width: 300px; */
+    height: 200px;
+    background: #fec;
+    position: relative;
+  }
+  .name-pin{
+    position: absolute;
+    background: #333;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    top: -10px
+  }
+  .name-input{
+    background: transparent;
+    border: none;
+    font-size: 75px;
+    color: #a98;
+    width: 400px;
+    text-align: center;
+    overflow:visible;
+  }
+
   path, circle, rect{ fill: transparent; }
   .pio{ fill:beige; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
 
