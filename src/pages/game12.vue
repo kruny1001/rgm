@@ -2,12 +2,11 @@
   <q-page class="bg" style="background-image: url('~/statics/game12/bg.png');">
     
     <!-- <desc-view class="desc-view" title="game12"></desc-view> -->
-    <div> 망토색칠</div>
+    <!-- <div> 망토색칠</div>
     <div id="debugTool">
       <q-btn @click="showDesc()"> Show Desc</q-btn>
       <q-btn @click="hideDesc()"> Hide Desc</q-btn>
       <q-btn @click="fillColor()"> fillColor</q-btn>
-      <!-- patternItem -->
       
     </div>
     <div> 패턴선택 </div>
@@ -16,7 +15,7 @@
       <q-btn @click="selectPattern('p2')"> P2</q-btn>
       <q-btn @click="selectPattern('p3')"> P3</q-btn>
       <q-btn v-if="pattern != ''" @click="progress(+1)"> Next </q-btn>
-    </div>
+    </div> -->
 
 
     <div v-if="mode=='match'" class="row items-center ">
@@ -600,17 +599,13 @@ export default {
       descView
   },
   created(){
-      this.setAdmin('admin')
+    //   this.setAdmin('admin')
   },
   mounted(){
     this.setAdmin('admin')
     this.hideDesc()
-<<<<<<< HEAD
-    this.allReset()    
-=======
     // this.selectPattern('p2')
     this.allReset()
->>>>>>> 45ac002cd4f007071b046e5ddc1197e7a34b8065
   },
   data(){return{
     mode: 'select',
@@ -626,7 +621,6 @@ export default {
       ...mapActions({
       setCrntGame: 'admin/setCrntGame',
       setAdmin: 'admin/setAdmin'
-
     }),
     progress(num){
       let nextStep = Math.max( 0, Math.min(this.step + num, this.stepList.length-1) )
@@ -744,52 +738,52 @@ export default {
 }
 </script>
  <style scoped>
-  svg
-  #p1{fill:none; stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-  #p2{fill:none; stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
-  #p3{fill:none; stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+    svg
+    #p1{fill:none; stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+    #p2{fill:none; stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
+    #p3{fill:none; stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 
-  .color-able .color-unit {
-    fill: transparent
-  }
-  /* #p1{ display:none; }
-  #p2{ display:none; }
-  #p3{ display:none; } */
+    .color-able .color-unit {
+        fill: transparent
+    }
+    /* #p1{ display:none; }
+    #p2{ display:none; }
+    #p3{ display:none; } */
 
-  #p1guide{display:none; fill:transparent;stroke:#FF5858;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12;}
-  #p2guide{display:none; fill:transparent;stroke:#B7FF58;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12;}
-  #p3guide{display:none; fill:transparent;stroke:#589AFF;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12;}
-  
-  /* .st0{fill:none;}
-  
-  /* path{fill: transparent;}
-  polygon{fill: transparent;} */
+    #p1guide{display:none; fill:transparent;stroke:#FF5858;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12;}
+    #p2guide{display:none; fill:transparent;stroke:#B7FF58;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12;}
+    #p3guide{display:none; fill:transparent;stroke:#589AFF;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:12;}
+    
+    /* .st0{fill:none;}
+    
+    /* path{fill: transparent;}
+    polygon{fill: transparent;} */
 
-.st1{fill:#E8F4F9;stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
-  .st2{display:none; fill:rgb(232, 244, 249); stroke:#FF5955;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12.1888,12.1888;}
-  .st3{display:none; fill:rgb(232, 244, 249); stroke:#FF5955;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12.1889,12.1889;}
-  /* #cape{
+    .st1{fill:#E8F4F9;stroke:#000000;stroke-width:5;stroke-miterlimit:10;}
+    .st2{display:none; fill:rgb(232, 244, 249); stroke:#FF5955;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12.1888,12.1888;}
+    .st3{display:none; fill:rgb(232, 244, 249); stroke:#FF5955;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12.1889,12.1889;}
+    /* #cape{
     -webkit-touch-callout: none;
-  -webkit-user-select:none;
-  -khtml-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  -o-user-select:none;
-  user-select:none;
-  } */
-  .desc-view{
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+    } */
+    .desc-view{
     opacity: 0;
     display: none;
-  }
+    }
 
-  /* .desc{
+    /* .desc{
     @import url('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css');
     font-family: 'NanumSquareRound',sans-serif;
-  } */
-  .color_pallete_btn{
+    } */
+    .color_pallete_btn{
     width: 30px;
     height: 30px;
     border-radius: 30px;
     margin: 3px;
-  }
+    }
 </style>

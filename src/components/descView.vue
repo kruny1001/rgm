@@ -26,13 +26,14 @@ export default {
     crntDesc(newVal){
       console.log(newVal)
       console.log(this.crntUser)
-      if(this.crntUser != 'admin')
-        this.$router.push(newVal)
+      // if(this.crntUser != 'admin')
+      //   this.$router.push(newVal)
     },
     crntDescTitle(newVal){
       this.title = newVal
     },
     statusDesc(newVal){
+      console.log(newVal)
       if(this.crntUser != 'admin'){
         console.log(newVal, " open or close desc")
         if(newVal){

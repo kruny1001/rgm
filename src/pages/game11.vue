@@ -8,7 +8,7 @@
     </div> -->
 
     <desc-view class="desc-view" title="game11"></desc-view>
-    
+
     <div style="height:80px; max-width:1280px; margin: 10px auto;">
       <div class="row justify-between" v-if="mode == 'color'" style="width: 100%;">
 
@@ -697,12 +697,12 @@
   </q-page>
 </template>
 <script>
-import descView from 'src/components/descView.vue'
+// import descView from 'src/components/descView.vue'
 export default {
 
-  components: {
-      descView
-  },
+  // components: {
+  //     descView
+  // },
   data(){ return {
     name: '이름',
     desc: [
@@ -725,27 +725,28 @@ export default {
     stepList: ['eye', 'mouth', 'pattern', 'color', 'nest', 'color', 'name']
   }},
   methods:{
-    hideDesc(){
-      TweenMax.to('.desc-view', 0.5, {
-        css: { x: 150, y: -150 },
-        onComplete: ()=>{ // this.destroy()
-        }
-      })
-      TweenMax.to('.desc-view', 0.5, {opacity:0, display:'none'})
-    },
-    showDesc(){
-      TweenMax.set('.desc-view', {display:"block"})
-      TweenMax.to('.desc-view', 0.5, {
-        css: {
-          x: 0,
-          y: 0
-        },
-        onComplete: ()=>{
-          // this.destroy()
-        }
-      })
-      TweenMax.to('.desc-view', 0.5, {opacity:1,})
-    },
+    // hideDesc(){
+    //   TweenMax.to('.desc-view', 0.5, {
+    //     css: { x: 150, y: -150 },
+    //     onComplete: ()=>{ // this.destroy()
+    //     }
+    //   })
+    //   TweenMax.to('.desc-view', 0.5, {opacity:0, display:'none'})
+    // },
+    // showDesc(){
+    //   TweenMax.set('.desc-view', {display:"block"})
+    //   TweenMax.to('.desc-view', 0.5, {
+    //     css: {
+    //       x: 0,
+    //       y: 0
+    //     },
+    //     onComplete: ()=>{
+    //       // this.destroy()
+    //     }
+    //   })
+    //   TweenMax.to('.desc-view', 0.5, {opacity:1,})
+    // },
+
     handleColor(evt){
       // console.log(evt.target, this.color)
       if(this.mode == 'color'){
@@ -890,10 +891,10 @@ export default {
   .bg12{ background: #3A3A3A}
 
 
-  .desc-view{
+  /* .desc-view{
     opacity: 0;
     display: none;
-  }
+  } */
 
    .desc{
     font-weight:bolder;

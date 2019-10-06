@@ -24,7 +24,17 @@ section.q-pa-md
       q-btn(@click="openDesc()") 설명창 뛰우기
       q-btn(@click="closeDesc()") 설명창 감추기
     
-
+    div.q-my-md
+      q-btn(@click="setDescTitle('p11')") p11 설명 설정
+      q-btn(@click="setDescTitle('p12')") p12 설명 설정
+    
+    div.q-my-md
+      q-btn( @click="incDescTitle()") goto Next 
+      q-btn( @click="descDescTitle()") goto Previous 
+    
+    div.q-my-md
+      q-btn( @click="openDesc()") open Desc
+      q-btn( @click="closeDesc()") open Desc
 </template>
 <script>
 import { mapGetters, mapActions, mapState } from "vuex";
@@ -41,6 +51,11 @@ export default {
       setAdmin: 'admin/setAdmin',
       openDesc: 'admin/openDesc',
       closeDesc: 'admin/closeDesc',
+      setDescTitle: 'admin/setDescTitle',
+      incDescTitle: 'admin/incDescTitle',
+      descDescTitle: 'admin/descDescTitle',
+      openDesc: 'admin/openDesc',
+      closeDesc: 'admin/closeDesc'
     })
   },
   watch: {
