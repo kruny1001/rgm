@@ -701,13 +701,13 @@ export default {
   data(){ return {
     mode: 'eye',
     curStep: 0,
-    eyeType: 1,
-    mouthType: 1,
-    patternType: 1,
-    nestType: 1,
+    eyeType: 0,
+    mouthType: 0,
+    patternType: 0,
+    nestType: 0,
     color: 'transparent',
     colorInfo: {},
-    modeList: ['eye', 'mouth', 'pattern', 'color', 'nest', 'color']
+    stepList: ['eye', 'mouth', 'pattern', 'color', 'nest', 'color']
   }},
   methods:{
     hideDesc(){
@@ -732,10 +732,11 @@ export default {
       TweenMax.to('.desc-view', 0.5, {opacity:1,})
     },
     handleColor(evt){
-      console.log(evt.target, this.color)
+      // console.log(evt.target, this.color)
       if(this.mode == 'color'){
         this.colorInfo[evt.target.id] = this.color
         evt.target.style.fill = this.color
+        console.log(this.colorInfo)
       }
     },
     setEventListener(){
@@ -756,9 +757,9 @@ export default {
     progress(step){
       let nextStep = this.curStep + step
       if( nextStep < 0 ){ nextStep = 0 }
-      if( nextStep >= this.modeList.length){ nextStep = this.modeList.length-1}
+      if( nextStep >= this.stepList.length){ nextStep = this.stepList.length-1}
       this.curStep = nextStep
-      this.mode = this.modeList[this.curStep]
+      this.mode = this.stepList[this.curStep]
     }
   },
   mounted(){
