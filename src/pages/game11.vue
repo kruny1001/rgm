@@ -8,7 +8,7 @@
     </div> -->
 
     <desc-view class="desc-view" title="game11"></desc-view>
-
+    
     <div style="height:80px; max-width:1280px; margin: 10px auto;">
       <div class="row justify-between" v-if="mode == 'color'" style="width: 100%;">
 
@@ -145,28 +145,28 @@
             @click="progress(-1)"/>
         </div>
         <div class="flex flex-center">
-          <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_mouth1.png"
+          <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
+            <img class="select_btn" src="statics/game11/mouth1.png"
               @click="mouthType = 1">
           </div>
-          <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_mouth2.png"
+          <div class="flex flex-center select_container"  style="height:100%;max-height: 65px; width: auto;">
+            <img class="select_btn" src="statics/game11/mouth2.png" 
               @click="mouthType = 2">
           </div>
-          <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_mouth3.png"
+          <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
+            <img class="select_btn" src="statics/game11/mouth3.png" 
               @click="mouthType = 3">
           </div>
-          <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_mouth4.png"
+          <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
+            <img class="select_btn" src="statics/game11/mouth4.png" 
               @click="mouthType = 4">
           </div>
-          <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_mouth5.png"
+          <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
+            <img class="select_btn" src="statics/game11/mouth5.png" 
               @click="mouthType = 5">
           </div>
-          <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_mouth6.png"
+          <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
+            <img class="select_btn" src="statics/game11/mouth6.png" 
               @click="mouthType = 6">
           </div>
         </div>
@@ -688,10 +688,10 @@
       </div>
     </div>
 
-    <finish-load></finish-load>
+    <!-- <finish-load></finish-load> -->
     
-    <div style="margin-bottom:20px;"> 
-      <h4 style="margin-top:5px; text-align:center; font-weight:bold;"> {{desc[curStep]}}</h4>
+    <div class="desc" style="margin-bottom:20px;"> 
+      <div style="margin-top:5px; text-align:center;"> {{desc[curStep]}}</div>
     </div>
 
   </q-page>
@@ -790,7 +790,7 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="stylus" scoped>
   #name-tag{
     padding-top: 100px;
   }
@@ -817,7 +817,6 @@ export default {
     text-align: center;
     overflow:visible;
   }
-
 
   path, circle, rect{ fill: transparent; }
   .pio{ fill:beige; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
@@ -892,5 +891,11 @@ export default {
   .desc-view{
     opacity: 0;
     display: none;
+  }
+
+   .desc{
+    font-weight:bolder;
+    font-szie:2rem;
+    font-family: 'NanumSquareRound',sans-serif;
   }
 </style>
