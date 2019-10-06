@@ -10,7 +10,7 @@
       <pre> CurrentCount: {{count}} SenstivityTotal: {{total}} Stage: {{stage}}</pre>
       <q-btn @click="eggAni()">Shaking Event </q-btn> -->
     </section>
-    <section ref="game3" style="margin: 0 auto; width:100%; position:relative;">
+    <section ref="game3" class="screen-fit">
 
     </section>
     <q-btn label="start" @click="btnStart()"/>
@@ -154,12 +154,13 @@ class Game3 {
     //     
     this.gameApp = new PIXI.Application({
       forceCanvas: true,
-      forceFXAA: true,
+      // forceFXAA: true,
       autoDensity: true,
       resolution: 2,
       autoResize: true,
-      width: 1600,
-      height: 900
+      width: 1900,
+      height: 1200,
+      resizeTo: dom,
     })
 
     this.gameApp.stop()
@@ -348,6 +349,7 @@ export default {
     
   },
   mounted(){
+    this.$q.fullscreen.request()
     this.game = new Game3(this.$refs.game3)
     this.game.gameApp.renderer.plugins.prepare.upload(this.game.gameApp.stage, () => {
           this.game.gameApp.start();
@@ -362,6 +364,10 @@ export default {
 </script>
 
 <style>
+.screen-fit{
+  width: 100vw;
+  height: calc(100vw * 9 / 16);
+}
 canvas{
   padding:10px; 
   margin:10px;

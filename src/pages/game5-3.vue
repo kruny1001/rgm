@@ -280,6 +280,7 @@ export default {
     
   },
   mounted(){
+
     this.game = new Game5_3(this.$refs.game3)
     this.game.rescale()
     this.game.startLevel(1, ()=>{})
