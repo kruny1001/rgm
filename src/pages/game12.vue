@@ -18,6 +18,28 @@
       <q-btn> Next </q-btn>
     </div>
     <div>
+      <q-btn dense round size="25px" icon="img:statics/game12/p1p1.svg" />
+      <q-btn dense round size="25px" icon="img:statics/game12/p1p2.svg" />
+      <q-btn dense round size="25px" icon="img:statics/game12/p1p3.svg" />
+      <q-btn dense round size="25px" icon="img:statics/game12/p1p4.svg" />
+    </div>
+
+    <div>
+      <q-btn dense round size="25px" icon="img:statics/game12/p2p1.svg" />
+      <q-btn dense round size="25px" icon="img:statics/game12/p2p2.svg" />
+      <q-btn dense round size="25px" icon="img:statics/game12/p2p3.svg" />
+      <q-btn dense round size="25px" icon="img:statics/game12/p2p4.svg" />
+    </div>
+
+    <div>
+      <q-btn dense round size="25px" icon="img:statics/game12/p3p1.svg" />
+      <q-btn dense round size="25px" icon="img:statics/game12/p3p2.svg" />
+      <q-btn dense round size="25px" icon="img:statics/game12/p3p3.svg" />
+    </div>
+
+    <div>
+      
+
       <q-btn> Previous </q-btn>
       <!-- 도형이 들어가야함  -->
       <q-btn @click="showGuide('p1')"> P1 Show Guide</q-btn>
