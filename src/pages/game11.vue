@@ -781,6 +781,8 @@ export default {
       switch(mode){
         case 'name':
           TweenMax.set('svg *', {'stroke-width': 0})
+          const svgStr = this.$refs.svg.outerHTML
+          localStorage.setItem('pioSVG',svgStr)
           break;
       }
     }
@@ -790,7 +792,7 @@ export default {
   }
 }
 </script>
-<style lang="stylus" scoped>
+<style scoped>
   #name-tag{
     padding-top: 100px;
   }
