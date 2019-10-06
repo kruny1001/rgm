@@ -1,8 +1,8 @@
 <template>
   <q-page class="descContainer">
     <img style="width: 100%;" :src="imgSrc" />
-    <q-btn @click="prevPage()">Before</q-btn>
-    <q-btn @click="nextPage()">Next</q-btn>
+    <!-- <q-btn @click="prevPage()">Before</q-btn>
+    <q-btn @click="nextPage()">Next</q-btn> -->
   </q-page>
 </template>
 <script>
@@ -14,7 +14,10 @@ export default {
   computed: {
     ...mapGetters({
       crntDesc: "admin/getCrntDesc",
-      crntCount: "admin/getCrntDescCount"
+      crntCount: "admin/getCrntDescCount",
+      crntDescTitle : "admin/getCrntDescTitle",
+      imgSrc: "admin/getImgSrc",
+
     })
   },
   watch: {
@@ -23,14 +26,13 @@ export default {
       console.log(this.crntUser)
       if(this.crntUser != 'admin')
         this.$router.push(newVal)
-      
-    }
+    },
+    crntDescTitle(newVal){
+      this.title = newVal
+    },
   },
   data() {
     return {
-      count: 1,
-      max: 12,
-      imgSrc: ""
     };
   },
   methods: {
