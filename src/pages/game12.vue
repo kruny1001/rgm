@@ -504,6 +504,24 @@
 <script>
 import descView from 'src/components/descView.vue'
 import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
+import _ from 'lodash'
+
+const ANSWER = {
+  'p1':{
+    cicle:['p1r1', 'p1l1', 'p1l2', 'p1l3'],
+    rect:['p1r2', 'p1l4'],
+    tri: ['p1r4'],
+    penta: ['p1r3']
+  },
+  'p2':{
+    
+  },
+  'p3':{
+
+  }
+}
+
+
 export default {
   components: {
       descView
@@ -514,7 +532,31 @@ export default {
     this.allReset()
     
   },
+  data(){return{
+    mode: 'select',
+    stepList: ['select', 'match', 'color'],
+    step: 0,
+    pattern: '',
+    shape: '',
+    answerList: _.cloneDeep(ANSWER)
+  }},
   methods:{
+    progress(num){
+      let nextStep = Math.max( 0, Math.min(this.step + num, this.stepList.length-1) )
+      this.step = nextStep
+      this.mode = this.stepList[this.step]
+      this.initMode(this.mode)
+    },
+    initMode(mode){
+      switch(mode){
+        case 'select' :
+          break;
+        case 'match' :
+          break;
+        case 'color' :
+          break;
+      }
+    },
     patternItem(id){
       TweenMax.set(`#${id}`, {fill:'orange'})
     },
@@ -530,17 +572,19 @@ export default {
     },
 
     showGuide(id){
-      TweenMax.set('#hidden > *', {display:'none'})
+      TweenMax.set('#hidden', {display:'none'})
       TweenMax.set([`#p1guide`, `#p2guide`, `#p3guide`], {display:'none'})
       TweenMax.set([`#${id}guide`], {display:'block'})
+      TweenMax.set([`#${id} #hidden`, `#hidden > *`], {display:'block'})
     },
     
     selectPattern(id){
       console.log(id)
       TweenMax.set([`#p1 #show`, `#p2 #show`, `#p3 #show`], {display:'none'})
       TweenMax.set([`#p1 #hidden`, `#p2 #hidden`, `#p3 #hidden`], {display:'none'})
+      TweenMax.set([`#p1guide`, `#p2guide`, `#p3guide`], {display:'none'})
       TweenMax.set(`#${id} #show`, {display:'block'})
-      
+
     },
     hideDesc(){
       TweenMax.to('.desc-view', 0.5, {
