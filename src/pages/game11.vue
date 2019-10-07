@@ -1,3 +1,4 @@
+
 <template>
   <q-page style="height:100vh;" class="">
     
@@ -689,17 +690,16 @@
     </div>
 
     <!-- <finish-load></finish-load> -->
-    
     <div class="desc" style="margin-bottom:20px;"> 
       <div style="margin-top:5px; text-align:center;"> {{desc[curStep]}}</div>
     </div>
 
   </q-page>
 </template>
+
 <script>
 // import descView from 'src/components/descView.vue'
 export default {
-
   // components: {
   //     descView
   // },
