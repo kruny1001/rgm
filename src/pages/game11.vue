@@ -11,14 +11,14 @@
     <!-- <desc-view class="desc-view" title="game11"></desc-view> -->
 
     <div style="height:80px; max-width:1280px; margin: 10px auto;">
-      <div class="row justify-between" v-if="mode == 'color'" style="width: 100%;">
+      <div class="row justify-between no-wrap" v-if="mode == 'color'" style="width: 100%;">
 
         <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
             @click="progress(-1)"/>
         </div>
 
-        <div class="flex flex-center">
+        <div class="flex flex-center no-wrap">
           <div class="select_container_small bg1"   @click="color = '#FF5955'"></div>
           <div class="select_container_small bg2"   @click="color = '#F9E2B4'"></div>
           <div class="select_container_small bg3"   @click="color = '#F79F32'"></div>
@@ -40,12 +40,12 @@
       </div>
 
       <!-- Eye -->
-      <div class="row justify-between" v-if="mode == 'eye'" style="width: 100%; margin: 0px auto;">
+      <div class="row justify-between no-wrap" v-if="mode == 'eye'" style="width: 100%; margin: 0px auto;">
         <div class="flex flex-center select_container" style="opacity: 0">
           <img class="select_btn" src="statics/game11/btn_before.png"
             @click="progress(-1)"/>
         </div>
-        <div class="flex flex-center">
+        <div class="flex flex-center no-wrap">
           <div class="flex flex-center select_container">
             <img class="select_btn" src="statics/game11/eye1.png"
               @click="()=> eyeType = 1">
@@ -69,12 +69,12 @@
         </div>
       </div>
       <!-- Pattern  -->
-      <div class="row justify-between" v-if="mode == 'pattern'">
+      <div class="row justify-between nowrap" v-if="mode == 'pattern'">
         <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
             @click="progress(-1)"/>
         </div>
-        <div class="flex flex-center">
+        <div class="flex flex-center no-wrap">
           <div class="flex flex-center select_container">
             <img class="select_btn" src="statics/game11/choice_pattern1.png"
               @click=" ()=> patternType = 1">
@@ -114,12 +114,12 @@
         </div>
       </div>
       <!-- Select Nest  -->
-      <div class="row justify-between" v-if="mode == 'nest'">
+      <div class="row justify-between no-wrap" v-if="mode == 'nest'">
         <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
             @click="progress(-1)"/>
         </div>
-        <div class="flex flex-center">
+        <div class="flex flex-center no-wrap">
           <div class="flex flex-center select_container">
             <img class="select_btn" src="statics/game11/choice_nest1.png"
               @click="() => nestType = 1">
@@ -140,12 +140,12 @@
       </div>
 
       <!-- Select Mouth -->
-      <div class="row justify-between" v-if="mode == 'mouth'">
+      <div class="row justify-between no-wrap" v-if="mode == 'mouth'">
         <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
             @click="progress(-1)"/>
         </div>
-        <div class="flex flex-center">
+        <div class="flex flex-center no-wrap">
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
             <img class="select_btn" src="statics/game11/mouth1.png"
               @click="mouthType = 1">
@@ -864,7 +864,7 @@ export default {
     padding:5px;
     border-radius: 50%;
     /* background:#FFC107; */
-    width:55px;
+    width: 55px;
     height: 55px;
   }
   .select_btn{
