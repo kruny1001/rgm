@@ -31,6 +31,22 @@ section.q-pa-md
     q-btn(@click.prevent="playSound('dingdong')") dingdong
     q-btn(@click.prevent="playSound('done')") done
     q-btn(@click.prevent="playSound('fail')") fail
+    
+    q-img(
+      src="statics/game11/eye1.png"
+      style="height: 140px; max-width: 150px")
+
+    div 
+    q-img(
+      :src="images.g11img1"
+      style="height: 140px; max-width: 150px")
+    q-img(
+      :src="images.g11img2"
+      style="height: 140px; max-width: 150px")
+    
+      
+    div 
+      q-btn(@click.prevent="imageSave()") 이미지 저장
     //- div.q-my-md
     //-   q-btn(@click="openDesc()") 설명창 뛰우기
     //-   q-btn(@click="closeDesc()") 설명창 감추기
@@ -62,7 +78,7 @@ export default {
   },
   data(){
     return{
-      buff: 'Sub1:<br>'
+      buff: 'Sub1:<br>',
     }
   },
    mqtt: {
@@ -90,6 +106,7 @@ export default {
   },
   computed:{
     ...mapGetters({ 
+        images: 'image/images',
         crntGame: 'admin/getCrntGame',
         crntUser: 'admin/getUserLevel',
     })
@@ -106,7 +123,9 @@ export default {
       openDesc: 'admin/openDesc',
       closeDesc: 'admin/closeDesc',
       resetCount: 'admin/resetCount',
-      playSound: 'sound/playSound'
+      playSound: 'sound/playSound',
+      imageSave: 'image/saveImage',
+      getImage: 'image/getImage'
     }),
     
     async startDesc(id){
@@ -136,6 +155,8 @@ export default {
     this.$mqtt.subscribe('VueMqtt/#')
     this.$mqtt.subscribe('demo/#')
     console.log(this.$mqtt)
+    this.getImage('g11img1')
+    this.getImage('g11img2')
   }
 };
 </script>

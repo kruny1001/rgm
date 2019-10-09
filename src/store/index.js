@@ -9,6 +9,7 @@ Vue.use(Vuex)
 import game1 from './modules/games/g1'
 import sound from './modules/games/sound'
 import admin from './modules/admin/controller'
+import image from './modules/resource/image'
 
 /*
  * If not building with SSR mode, you can
@@ -20,7 +21,8 @@ export default function (/* { ssrContext } */) {
     modules: {
       admin,
       game1,
-      sound
+      sound,
+      image
     },
 
     // enable strict mode (adds overhead!)
