@@ -636,7 +636,8 @@ export default {
   methods:{
       ...mapActions({
       setCrntGame: 'admin/setCrntGame',
-      setAdmin: 'admin/setAdmin'
+      setAdmin: 'admin/setAdmin',
+      playSound: 'sound/playSound',
     }),
     progress(num){
       let nextStep = Math.max( 0, Math.min(this.step + num, this.stepList.length-1) )
@@ -685,11 +686,13 @@ export default {
       const shape = this.shape
       const answer = this.answerBook[pNum][shape]
       if( !answer ){
+        // this.playSound('incorrect')
         return
       }
       const idx = answer.indexOf(id)
       // if not answer
       if( idx < 0 ){
+        this.playSound('incorrect')
         return
       }
       //else answer

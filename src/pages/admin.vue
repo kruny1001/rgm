@@ -24,7 +24,7 @@ section.q-pa-md
 
     q-btn(@click.prevent="playSound('brush')") brush
     q-btn(@click.prevent="playSound('colorchange')") colorchange
-    q-btn(@clic.preventk="playSound('correct')") correct
+    q-btn(@clic.prevent="playSound('correct')") correct
     q-btn(@click.prevent="playSound('crack')") crack
     q-btn(@click.prevent="playSound('cute')") cute
     q-btn(@click.prevent="playSound('ding')") ding
