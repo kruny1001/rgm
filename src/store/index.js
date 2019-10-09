@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 // OOP Style 
 import game1 from './modules/games/g1'
+import sound from './modules/games/sound'
 import admin from './modules/admin/controller'
 
 /*
@@ -18,7 +19,8 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       admin,
-      game1
+      game1,
+      sound
     },
 
     // enable strict mode (adds overhead!)

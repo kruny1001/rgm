@@ -76,35 +76,35 @@
         </div>
         <div class="flex flex-center no-wrap">
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_pattern1.png"
+            <img class="select_btn pattern" src="statics/game11/choice_pattern1.png"
               @click=" ()=> patternType = 1">
           </div>
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_pattern2.png"
+            <img class="select_btn pattern" src="statics/game11/choice_pattern2.png"
               @click=" ()=> patternType = 2">
           </div>
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_pattern3.png"
+            <img class="select_btn pattern" src="statics/game11/choice_pattern3.png"
               @click=" ()=> patternType = 3">
           </div>
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_pattern4.png"
+            <img class="select_btn pattern" src="statics/game11/choice_pattern4.png"
               @click=" ()=> patternType = 4">
           </div>
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_pattern5.png"
+            <img class="select_btn pattern" src="statics/game11/choice_pattern5.png"
               @click=" ()=> patternType = 5">
           </div>
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_pattern6.png"
+            <img class="select_btn pattern" src="statics/game11/choice_pattern6.png"
               @click=" ()=> patternType = 6">
           </div>
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_pattern7.png"
+            <img class="select_btn pattern" src="statics/game11/choice_pattern7.png"
               @click=" ()=> patternType = 7">
           </div>
           <div class="flex flex-center select_container">
-            <img class="select_btn" src="statics/game11/choice_pattern8.png"
+            <img class="select_btn pattern" src="statics/game11/choice_pattern8.png"
               @click=" ()=> patternType = 8">
           </div>
         </div>
@@ -142,32 +142,32 @@
       <!-- Select Mouth -->
       <div class="row justify-between no-wrap" v-if="mode == 'mouth'">
         <div class="flex flex-center select_container navi_btn">
-          <img class="select_btn" src="statics/game11/btn_before.png"
+          <img class="select_btn mouth" src="statics/game11/btn_before.png"
             @click="progress(-1)"/>
         </div>
         <div class="flex flex-center no-wrap">
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
-            <img class="select_btn" src="statics/game11/mouth1.png"
+            <img class="select_btn mouth" src="statics/game11/mouth1.png"
               @click="mouthType = 1">
           </div>
           <div class="flex flex-center select_container"  style="height:100%;max-height: 65px; width: auto;">
-            <img class="select_btn" src="statics/game11/mouth2.png" 
+            <img class="select_btn mouth" src="statics/game11/mouth2.png" 
               @click="mouthType = 2">
           </div>
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
-            <img class="select_btn" src="statics/game11/mouth3.png" 
+            <img class="select_btn mouth"  src="statics/game11/mouth3.png" 
               @click="mouthType = 3">
           </div>
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
-            <img class="select_btn" src="statics/game11/mouth4.png" 
+            <img class="select_btn mouth" src="statics/game11/mouth4.png" 
               @click="mouthType = 4">
           </div>
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
-            <img class="select_btn" src="statics/game11/mouth5.png" 
+            <img class="select_btn mouth" src="statics/game11/mouth5.png" 
               @click="mouthType = 5">
           </div>
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
-            <img class="select_btn" src="statics/game11/mouth6.png" 
+            <img class="select_btn mouth" src="statics/game11/mouth6.png" 
               @click="mouthType = 6">
           </div>
         </div>
@@ -794,32 +794,10 @@ export default {
 }
 </script>
 <style scoped>
-  #name-tag{
-    padding-top: 100px;
-  }
-  .name-container{
-    /* width: 300px; */
-    height: 200px;
-    background: #fec;
-    position: relative;
-  }
-  .name-pin{
-    position: absolute;
-    background: #333;
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
-    top: -10px
-  }
-  .name-input{
-    background: transparent;
-    border: none;
-    font-size: 75px;
-    color: #a98;
-    width: 400px;
-    text-align: center;
-    overflow:visible;
-  }
+  #name-tag{ padding-top: 100px; }
+  .name-container{ height: 200px; background: #fec; position: relative; }
+  .name-pin{ position: absolute; background: #333; width: 30px; height: 30px; border-radius: 30px; top: -10px }
+  .name-input{ background: transparent; border: none; font-size: 75px; color: #a98; width: 400px; text-align: center; overflow:visible; }
 
   path, circle, rect{ fill: transparent; }
   .pio{ fill:beige; stroke:#2D4247;stroke-width:4;stroke-miterlimit:10;}
@@ -849,27 +827,27 @@ export default {
   .st1{display: none; fill:#FFFFFF;}
   .st2{display: none; fill:transparent; stroke:#2D4247;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
   .select_container{
-    margin: 5px 7px;
-    padding:4px;
+    margin: 5px 2px;
+    padding:1px;
     border-radius: 50%;
     /* background:#FFC107; */
     width:auto;
-    height: 75px;
+    height: 55px;
   }
   .selected_menu{
     background: #FCEFB9;
   }
   .select_container_small{
-    margin: 5px 7px;
-    padding:5px;
+    margin: 5px 2px;
+    padding:2px;
     border-radius: 50%;
     /* background:#FFC107; */
-    width: 55px;
-    height: 55px;
+    width: 35px;
+    height: 35px;
   }
   .select_btn{
     display: block;
-    width: 75px;
+    width: 55px;
     /* height: 100%; */
   }
 
@@ -901,4 +879,7 @@ export default {
     font-size:2rem;
     font-family: 'NanumSquareRound',sans-serif;
   }
+  .mouth{ width:45px;}
+  .pattern-container{}
+  .pattern{width:45px;}
 </style>
