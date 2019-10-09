@@ -11,7 +11,7 @@
     <!-- <desc-view class="desc-view" title="game11"></desc-view> -->
 
     <div style="height:80px; max-width:1280px; margin: 10px auto;">
-      <div class="row justify-between no-wrap" v-if="mode == 'color'" style="width: 100%;">
+      <div class="row justify-between no-wrap" v-if="['color1', 'color2'].includes(mode)" style="width: 100%;">
 
         <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_before.png"
@@ -20,31 +20,31 @@
 
         <div class="flex flex-center no-wrap">
           <div :class="{selected: color == '#FF5955' }" class="select_container_small bg1"
-              @click="color = '#FF5955'"></div>
+              @click="tap('color','#FF5955')"></div>
           <div :class="{selected: color == '#F9E2B4' }" class="select_container_small bg2"
-              @click="color = '#F9E2B4'"></div>
+              @click="tap('color','#F9E2B4')"></div>
           <div :class="{selected: color == '#F79F32' }" class="select_container_small bg3"
-              @click="color = '#F79F32'"></div>
+              @click="tap('color','#F79F32')"></div>
           <div :class="{selected: color == '#FFDC48' }" class="select_container_small bg4"       
-              @click="color = '#FFDC48'"></div>
+              @click="tap('color','#FFDC48')"></div>
           <div :class="{selected: color == '#A6F4B5' }" class="select_container_small bg5"       
-              @click="color = '#A6F4B5'"></div>
-          <div :class="{selected: color == '#29A585' }" class="select_container_small bg6"       
-              @click="color = '#29A585'"></div>
+              @click="tap('color','#A6F4B5')"></div>
+          <div :class="{selected: color == '#29A585' }" class="select_container_small bg6"
+              @click="tap('color','#29A585')"></div>
           <div :class="{selected: color == '#B6DFFC' }" class="select_container_small bg7"       
-              @click="color = '#B6DFFC'"></div>
+              @click="tap('color','#B6DFFC')"></div>
           <div :class="{selected: color == '#629FDD' }" class="select_container_small bg8"       
-              @click="color = '#629FDD'"></div>
+              @click="tap('color','#629FDD')"></div>
           <div :class="{selected: color == '#FFC7C7' }" class="select_container_small bg9"       
-              @click="color = '#FFC7C7'"></div>
+              @click="tap('color','#FFC7C7')"></div>
           <div :class="{selected: color == '#CD82F9' }" class="select_container_small bg10"      
-              @click="color = '#CD82F9'"></div>
+              @click="tap('color','#CD82F9')"></div>
           <div :class="{selected: color == '#DD9A58' }" class="select_container_small bg11"      
-              @click="color = '#DD9A58'"></div>
+              @click="tap('color','#DD9A58')"></div>
           <div :class="{selected: color == '#3A3A3A' }" class="select_container_small bg12"      
-              @click="color = '#3A3A3A'"></div>
+              @click="tap('color','#3A3A3A')"></div>
           <div :class="{selected: color == '#FFFFFF' }" class="select_container_small bg-erase"  
-              @click="color = '#FFFFFF'"></div>
+              @click="tap('color','#FFFFFF')"></div>
         </div>
         <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_next.png"
@@ -61,19 +61,19 @@
         <div class="flex flex-center no-wrap">
           <div class="flex flex-center select_container">
             <img class="select_btn" src="statics/game11/eye1.png"
-              @click="()=> eyeType = 1">
+              @click="tap('eyeType', 1)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn" src="statics/game11/eye2.png"
-              @click="()=> eyeType = 2">
+              @click="tap('eyeType', 2)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn" src="statics/game11/eye3.png"
-              @click="()=> eyeType = 3">
+              @click="tap('eyeType', 3)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn" src="statics/game11/eye4.png"
-              @click="()=> eyeType = 4">
+              @click="tap('eyeType', 4)">
           </div>
         </div>
         <div class="flex flex-center select_container navi_btn">
@@ -90,35 +90,35 @@
         <div class="flex flex-center no-wrap">
           <div class="flex flex-center select_container">
             <img class="select_btn pattern" src="statics/game11/choice_pattern1.png"
-              @click=" ()=> patternType = 1">
+              @click="tap('patternType', 1)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn pattern" src="statics/game11/choice_pattern2.png"
-              @click=" ()=> patternType = 2">
+              @click="tap('patternType', 2)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn pattern" src="statics/game11/choice_pattern3.png"
-              @click=" ()=> patternType = 3">
+              @click="tap('patternType', 3)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn pattern" src="statics/game11/choice_pattern4.png"
-              @click=" ()=> patternType = 4">
+              @click="tap('patternType', 4)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn pattern" src="statics/game11/choice_pattern5.png"
-              @click=" ()=> patternType = 5">
+              @click="tap('patternType', 5)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn pattern" src="statics/game11/choice_pattern6.png"
-              @click=" ()=> patternType = 6">
+              @click="tap('patternType', 6)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn pattern" src="statics/game11/choice_pattern7.png"
-              @click=" ()=> patternType = 7">
+              @click="tap('patternType', 7)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn pattern" src="statics/game11/choice_pattern8.png"
-              @click=" ()=> patternType = 8">
+              @click="tap('patternType', 8)">
           </div>
         </div>
         <div class="flex flex-center select_container navi_btn">
@@ -135,15 +135,15 @@
         <div class="flex flex-center no-wrap">
           <div class="flex flex-center select_container">
             <img class="select_btn" src="statics/game11/choice_nest1.png"
-              @click="() => nestType = 1">
+              @click="tap('nestType', 1)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn" src="statics/game11/choice_nest2.png"
-              @click="() => nestType = 2">
+              @click="tap('nestType', 2)">
           </div>
           <div class="flex flex-center select_container">
             <img class="select_btn" src="statics/game11/choice_nest3.png"
-              @click="() => nestType = 3">
+              @click="tap('nestType', 3)">
           </div>
         </div>
         <div class="flex flex-center select_container navi_btn">
@@ -161,27 +161,27 @@
         <div class="flex flex-center no-wrap">
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
             <img class="select_btn mouth" src="statics/game11/mouth1.png"
-              @click="mouthType = 1">
+              @click="tap('mouthType', 1)">
           </div>
           <div class="flex flex-center select_container"  style="height:100%;max-height: 65px; width: auto;">
             <img class="select_btn mouth" src="statics/game11/mouth2.png" 
-              @click="mouthType = 2">
+              @click="tap('mouthType', 2)">
           </div>
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
             <img class="select_btn mouth"  src="statics/game11/mouth3.png" 
-              @click="mouthType = 3">
+              @click="tap('mouthType', 3)">
           </div>
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
             <img class="select_btn mouth" src="statics/game11/mouth4.png" 
-              @click="mouthType = 4">
+              @click="tap('mouthType', 4)">
           </div>
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
             <img class="select_btn mouth" src="statics/game11/mouth5.png" 
-              @click="mouthType = 5">
+              @click="tap('mouthType', 5)">
           </div>
           <div class="flex flex-center select_container" style="height:100%;max-height: 65px; width: auto;">
             <img class="select_btn mouth" src="statics/game11/mouth6.png" 
-              @click="mouthType = 6">
+              @click="tap('mouthType', 6)">
           </div>
         </div>
         <div class="flex flex-center select_container navi_btn">
@@ -711,6 +711,7 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 // import descView from 'src/components/descView.vue'
 export default {
   // components: {
@@ -725,7 +726,7 @@ export default {
       '4. 색칠하기',
       '5. 둥지 모양 고르기',
       '6. 둥지 색칠',
-      '7. 이름 짓기',
+      '7. 이름을 지어주세요',
     ],
     mode: 'eye',
     curStep: 0,
@@ -735,34 +736,19 @@ export default {
     nestType: 0,
     color: 'transparent',
     colorInfo: {},
-    stepList: ['eye', 'mouth', 'pattern', 'color', 'nest', 'color'] //, 'name']
+    stepList: ['eye', 'mouth', 'pattern', 'color1', 'nest', 'color2', 'end'] //, 'name']
   }},
   methods:{
-    // hideDesc(){
-    //   TweenMax.to('.desc-view', 0.5, {
-    //     css: { x: 150, y: -150 },
-    //     onComplete: ()=>{ // this.destroy()
-    //     }
-    //   })
-    //   TweenMax.to('.desc-view', 0.5, {opacity:0, display:'none'})
-    // },
-    // showDesc(){
-    //   TweenMax.set('.desc-view', {display:"block"})
-    //   TweenMax.to('.desc-view', 0.5, {
-    //     css: {
-    //       x: 0,
-    //       y: 0
-    //     },
-    //     onComplete: ()=>{
-    //       // this.destroy()
-    //     }
-    //   })
-    //   TweenMax.to('.desc-view', 0.5, {opacity:1,})
-    // },
-
+    ...mapActions({
+      playSound: 'sound/playSound'
+    }),
+    tap(key, val){
+      this.playSound('tap')
+      this.$set(this.$data, key, val)
+    },
     handleColor(evt){
       // console.log(evt.target, this.color)
-      if(this.mode == 'color'){
+      if( ['color1', 'color2'].includes(this.mode) ){
         this.colorInfo[evt.target.id] = this.color
         evt.target.style.fill = this.color
         console.log(this.colorInfo)
@@ -770,24 +756,48 @@ export default {
     },
     setEventListener(mode){
 
-      
-      const idList = [
+      const all_Id = [
         'pio',
         'nest1', 'nest2', 'nest3',
         'mouth1', 'mouth2', 'mouth3', 'mouth4', 'mouth5', 'mouth6',
         // 'eyes1', 'eyes2', 'eyes3', 'eyes4',
         'pattern1','pattern2','pattern3','pattern4','pattern5','pattern6','pattern7','pattern8',
       ]
-      for( let id of idList ){
+      for( let id of all_Id ){
         const outer = this.$refs.svg.querySelector('#' + id)
         outer.querySelectorAll('*').forEach( dom => {
           dom.removeEventListener('click', this.handleColor)
         })
       }
-
+      if(mode == 'color1'){
+        const idList = [
+          'pio',
+          'mouth1', 'mouth2', 'mouth3', 'mouth4', 'mouth5', 'mouth6',
+          'pattern1','pattern2','pattern3','pattern4',
+          'pattern5','pattern6','pattern7','pattern8',
+        ]
+        for( let id of idList ){
+          const outer = this.$refs.svg.querySelector('#' + id)
+          outer.querySelectorAll('*').forEach( dom => {
+            dom.addEventListener('click', this.handleColor)
+          })
+        }
+      }
+      if(mode == 'color2'){
+        const idList = [
+          'nest1', 'nest2', 'nest3',
+        ]
+        for( let id of idList ){
+          const outer = this.$refs.svg.querySelector('#' + id)
+          outer.querySelectorAll('*').forEach( dom => {
+            dom.addEventListener('click', this.handleColor)
+          })
+        }
+      }
 
     },
     progress(step){
+      this.playSound('tap')
       let nextStep = this.curStep + step
       if( nextStep < 0 ){ nextStep = 0 }
       if( nextStep >= this.stepList.length){ nextStep = this.stepList.length-1}
@@ -797,6 +807,12 @@ export default {
     },
     initMode(mode){
       switch(mode){
+        case 'color1':
+          this.setEventListener('color1')
+          break;
+        case 'color2':
+          this.setEventListener('color2')
+          break;
         case 'name':
           TweenMax.set('svg *', {'stroke-width': 0})
           const svgStr = this.$refs.svg.outerHTML
@@ -806,7 +822,6 @@ export default {
     }
   },
   mounted(){
-    this.setEventListener()
   }
 }
 </script>
