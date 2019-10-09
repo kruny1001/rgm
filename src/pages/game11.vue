@@ -18,19 +18,32 @@
         </div>
 
         <div class="flex flex-center no-wrap">
-          <div class="select_container_small bg1"   @click="color = '#FF5955'"></div>
-          <div class="select_container_small bg2"   @click="color = '#F9E2B4'"></div>
-          <div class="select_container_small bg3"   @click="color = '#F79F32'"></div>
-          <div class="select_container_small bg4"   @click="color = '#FFDC48'"></div>
-          <div class="select_container_small bg5"   @click="color = '#A6F4B5'"></div>
-          <div class="select_container_small bg6"   @click="color = '#29A585'"></div>
-          <div class="select_container_small bg7"   @click="color = '#B6DFFC'"></div>
-          <div class="select_container_small bg8"   @click="color = '#629FDD'"></div>
-          <div class="select_container_small bg9"   @click="color = '#FFC7C7'"></div>
-          <div class="select_container_small bg10"  @click="color = '#CD82F9'"></div>
-          <div class="select_container_small bg11"  @click="color = '#DD9A58'"></div>
-          <div class="select_container_small bg12"  @click="color = '#3A3A3A'"></div>
-          <div class="select_container_small bg-erase"  @click="color = '#FFFFFF'"></div>
+          <div :class="{selected: color == '#FF5955' }" class="select_container_small bg1"
+              @click="color = '#FF5955'"></div>
+          <div :class="{selected: color == '#F9E2B4' }" class="select_container_small bg2"
+              @click="color = '#F9E2B4'"></div>
+          <div :class="{selected: color == '#F79F32' }" class="select_container_small bg3"
+              @click="color = '#F79F32'"></div>
+          <div :class="{selected: color == '#FFDC48' }" class="select_container_small bg4"       
+              @click="color = '#FFDC48'"></div>
+          <div :class="{selected: color == '#A6F4B5' }" class="select_container_small bg5"       
+              @click="color = '#A6F4B5'"></div>
+          <div :class="{selected: color == '#29A585' }" class="select_container_small bg6"       
+              @click="color = '#29A585'"></div>
+          <div :class="{selected: color == '#B6DFFC' }" class="select_container_small bg7"       
+              @click="color = '#B6DFFC'"></div>
+          <div :class="{selected: color == '#629FDD' }" class="select_container_small bg8"       
+              @click="color = '#629FDD'"></div>
+          <div :class="{selected: color == '#FFC7C7' }" class="select_container_small bg9"       
+              @click="color = '#FFC7C7'"></div>
+          <div :class="{selected: color == '#CD82F9' }" class="select_container_small bg10"      
+              @click="color = '#CD82F9'"></div>
+          <div :class="{selected: color == '#DD9A58' }" class="select_container_small bg11"      
+              @click="color = '#DD9A58'"></div>
+          <div :class="{selected: color == '#3A3A3A' }" class="select_container_small bg12"      
+              @click="color = '#3A3A3A'"></div>
+          <div :class="{selected: color == '#FFFFFF' }" class="select_container_small bg-erase"  
+              @click="color = '#FFFFFF'"></div>
         </div>
         <div class="flex flex-center select_container navi_btn">
           <img class="select_btn" src="statics/game11/btn_next.png"
@@ -722,7 +735,7 @@ export default {
     nestType: 0,
     color: 'transparent',
     colorInfo: {},
-    stepList: ['eye', 'mouth', 'pattern', 'color', 'nest', 'color', 'name']
+    stepList: ['eye', 'mouth', 'pattern', 'color', 'nest', 'color'] //, 'name']
   }},
   methods:{
     // hideDesc(){
@@ -755,7 +768,9 @@ export default {
         console.log(this.colorInfo)
       }
     },
-    setEventListener(){
+    setEventListener(mode){
+
+      
       const idList = [
         'pio',
         'nest1', 'nest2', 'nest3',
@@ -766,9 +781,11 @@ export default {
       for( let id of idList ){
         const outer = this.$refs.svg.querySelector('#' + id)
         outer.querySelectorAll('*').forEach( dom => {
-          dom.addEventListener('click', this.handleColor)
+          dom.removeEventListener('click', this.handleColor)
         })
       }
+
+
     },
     progress(step){
       let nextStep = this.curStep + step
@@ -889,7 +906,13 @@ export default {
   .bg10{ background: #CD82F9}
   .bg11{ background: #DD9A58}
   .bg12{ background: #3A3A3A}
-
+  .bg-erase{
+    background: url('/statics/game11/color_erase.png');
+    background-size: contain;
+  }
+  .selected{
+    border: 8px #000 solid
+  }
 
   /* .desc-view{
     opacity: 0;
