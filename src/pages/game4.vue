@@ -271,20 +271,20 @@ export default {
     left: 0,
     right: 0
   }},
-  // watch: {
-  //   up(newVal){
-  //     this.changeBtn("up", newVal)
-  //   },
-  //   down(newVal){
-  //     this.changeBtn("down", newVal)
-  //   },
-  //   left(newVal){
-  //     this.changeBtn("left", newVal)
-  //   },
-  //   right(newVal){
-  //     this.changeBtn("right", newVal)
-  //   },
-  // },
+  watch: {
+    up(newVal){
+      this.changeBtn("up", newVal)
+    },
+    down(newVal){
+      this.changeBtn("down", newVal)
+    },
+    left(newVal){
+      this.changeBtn("left", newVal)
+    },
+    right(newVal){
+      this.changeBtn("right", newVal)
+    },
+  },
   methods:{
     sendMsg(){
       console.log(123)
