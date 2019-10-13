@@ -1,5 +1,10 @@
 <template>
-  <section>
+  <section style="overflow-y:hidden;">
+
+    <game-start title="동작 가르치기" :show="show"></game-start>
+    <Sub1></Sub1>
+    <div class="sub" v-html="buff">
+    </div>
     <div class="row">
       <q-input
         v-model.number="up"
@@ -28,6 +33,19 @@
       <q-btn @click="action('left')">
         액션
       </q-btn>
+      <q-btn style="z-index:999" @click="show = !show">
+        액션
+      </q-btn>
+      <q-btn style="z-index:999" @click="add">
+        add
+      </q-btn>
+      <q-btn style="z-index:999" @click="sub">
+        sub
+      </q-btn>
+      <q-btn style="z-index:999" @click="sendMsg">
+        sendMsg
+      </q-btn>
+      <pre>{{msg}}</pre>
     </div>
     <svg width="100%" viewBox="0 0 1920 1200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
@@ -233,33 +251,64 @@
             </g>
         </g>
     </svg>
+
   </section>
 </template>
 <script>
+import Sub1 from 'src/components/sub1'
+import gameStart from 'src/components/gameStart'
 import {TweenMax, Power2, TimelineLite} from "gsap/TweenMax";
 export default {
-  mounted(){},
+  components: {
+    gameStart, Sub1
+  },
   data(){return{
+    buff: 'Sub1:<br>',
+    msg: "",
+    show: true,
     up: 0,
     down: 0,
     left: 0,
     right: 0
   }},
-  watch: {
-    up(newVal){
-      this.changeBtn("up", newVal)
-    },
-    down(newVal){
-      this.changeBtn("down", newVal)
-    },
-    left(newVal){
-      this.changeBtn("left", newVal)
-    },
-    right(newVal){
-      this.changeBtn("right", newVal)
-    },
-  },
+  // watch: {
+  //   up(newVal){
+  //     this.changeBtn("up", newVal)
+  //   },
+  //   down(newVal){
+  //     this.changeBtn("down", newVal)
+  //   },
+  //   left(newVal){
+  //     this.changeBtn("left", newVal)
+  //   },
+  //   right(newVal){
+  //     this.changeBtn("right", newVal)
+  //   },
+  // },
   methods:{
+    sendMsg(){
+      console.log(123)
+      this.$mqtt.publish('VueMqtt/publish1', "Hello ")
+    },
+    reset(){
+      this.up = 0
+      this.down = 0
+      this.left = 0
+      this.right = 0
+      this.action()
+    },
+    add(){
+      this.up = this.up+1
+      this.down = this.down+1
+      this.left = this.left+1
+      this.right = this.right+1
+    },
+    sub(){
+      this.up = this.up-1
+      this.down = this.down-1
+      this.left = this.left-1
+      this.right = this.right-1
+    },
     changeBtn(action, newVal){
       if(newVal == 0){
         TweenMax.set(`#btn2 > #btn2_${action}`, {opacity:0})
@@ -285,15 +334,27 @@ export default {
       TweenMax.set('#btn1 > *', {opacity:0})
       TweenMax.set('#btn2 > *', {opacity:0})
       TweenMax.set('#btn3 > *', {opacity:0})
+      TweenMax.set('#head > *', {opacity:0})
       TweenMax.set('#btn3_click  > *', {opacity:0})
+      TweenMax.set('#head > #piohead1_normal', {opacity:1})
     }
   },
+  mqtt: {
+    /** 'VueMqtt/publish1' or '+/publish1' */
+    'VueMqtt/publish1' (data) {
+      this.buff = this.buff + data + '<br>'
+    }
+  },
+  
   mounted(){
     this.action()
     TweenMax.to('#btn1 > *', 2, {opacity:1})
+    this.reset()
+    this.$mqtt.subscribe('VueMqtt/#')
+    
   }
 }
 </script>
-<style lang="">
-    
+<style scoped>
+
 </style>

@@ -21,7 +21,7 @@ export default {
   mqtt: {
     'VueMqtt/publish1' (data, topic) {
       let msg = String.fromCharCode.apply(null, data)
-      JSON.parse()
+      // console.log(JSON.parse(msg))
       console.log(topic + ': ' + String.fromCharCode.apply(null, data))
     },
     'VueMqtt/publish2' (data, topic) {

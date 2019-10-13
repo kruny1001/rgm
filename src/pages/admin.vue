@@ -20,6 +20,10 @@ section.q-pa-md
       q-btn(@click="closeDesc(); setCrntGame('start')") 시작페이지로 이동하기
       q-btn(@click="closeDesc(); setCrntGame('g11')") 아기피오 색칠하기 이동하기 
       q-btn(@click="closeDesc(); setCrntGame('g12')") 망토 색칠연습 이동하기 
+      q-btn(@click="closeDesc(); setCrntGame('g12')") 망토 색칠연습 이동하기 
+
+      q-btn(@click="closeDesc(); setCrntGame('g4')") 동작 가르치기
+      
       q-btn(@click="closeDesc(); setCrntGame('end')") 마치기 페이지로 이동하기
 
     q-btn(@click.prevent="playSound('brush')") brush

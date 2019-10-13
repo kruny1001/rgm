@@ -25,3 +25,41 @@ gsutil cors set cors.json gs://dershare-db
 
 
 스트레칭가르치기
+[5회기] <스트레칭 가르치기>
+*기획서 내용에서 조금 변경되었습니다.(영상 빠지고 버튼만 나오게) 업로드해둔 ‘스트레칭 가르치기_스토리보드’ pdf 파일을 참고해주시길 바랍니다.
+본게임 내용
+제어앱에서 CmdCode [start / 스트레칭 가르치기 / 0105002] 받으면 시작
+게임 시작 화면. 시작버튼 누르면 게임 시작함(2인모드 따로 없음) 
+화면엔 btn_right/left/up/down 뜸[3014] > btn 중앙의 자막: 준비~ 시작! + 피오보조앱 음성: “준비, 시작!”
+ 음성 지시[5020] >
+버튼을 누르면CmdCode(robot, left/right/up/down) btn_click + sound_correct[3907] + piohead2_smile + 피오 해당 방향으로 움직임 > btn_click>btn
+CmdCode [3001, fin]]자막: 스트레칭 끝! + 피오: “스트레칭 끝!”
+image_guide 뜸[0105003] +  [보조앱 음성: “아이, 시원하다! 운동시켜주셔서 감사해요!” + motion_happy]
+제어앱에서 CmdCode [ stop ]하면 대기화면
+
+
+알 부화시키기 - 개인
+제어앱에서 CmdCode [start / 알 부화시키기_개인 / 0101001] 받으면 시작
+*색깔 순서: White → Red → Blue → Orange → Green → Purple → Rainbow
+image_eggWhite 등장 + 자막: 알을 흔들어주세요.  
+> 참가자: 알을 흔든다.
+>흔들림이 1회 인식될 때마다 sound_ding + sprite_eggColorLight
+>알을 n회 흔들면 sprite_ColorChange(색깔이 변함) + sound_start
+> 색깔이 다 변하고 나면 자막:색깔이 변했어요! + 나레이션
+sound_colorchange가 끝나고 5초가 지난 뒤 자막: 알을 계속 흔들어주세요.
+마지막 색깔 변화인 sprite_ColorChange6_P-R가 끝나고 나면 sprite_twinke + sound_twinkle
+> 자막: 생명 에너지가 전해졌어요! + 나레이션
+>제어앱에서 CmdCode [ stop ]해야 종료됨
+
+알 부화시키기 - 협동
+제어앱에서 CmdCode [start / 알 부화시키기_협동 / 0101002] 받으면 시작
+*색깔 순서: White → Red → Blue → Orange → Green → Purple → Rainbow
+eggwhite 등장 + 자막: 알을 흔들어주세요.  
+> 참가자: 알을 흔든다.
+>흔들림이 1회 인식될 때마다 sound_ding[3901] + sprite_eggColorLight
+>알을 n회 흔들면 sprite_ColorChange(색깔이 변함) + sound_start[3909]
+> 색깔이 다 변하고 나면 자막:색깔이 변했어요. 짝꿍에게 넘겨주세요! + 나레이션
+sound_colorchange가 끝나고 5초가 지난 뒤 자막: 알을 계속 흔들어주세요.
+마지막 색깔 변화인 sprite_ColorChange6_P-R가 끝나고 나면 sprite_twinke + sound_twinkle[3902]
+> 자막: 생명 에너지가 전해졌어요! + 나레이션
+>제어앱에서 CmdCode [ stop ]해야 종료됨
