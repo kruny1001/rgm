@@ -30,8 +30,9 @@ export default {
     crntGame(newVal){
       console.log(newVal)
       console.log(this.crntUser)
-      if(this.crntUser != 'admin')
-        this.$router.push(newVal)
+      if(this.crntUser != 'admin'){
+        // this.$router.push(newVal)
+      }
       
     }
   },

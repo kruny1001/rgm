@@ -1,6 +1,5 @@
 <template>
   <q-layout view="hHh lpR fFf">
-
     <!-- <q-header elevated>
       <q-toolbar>
         <q-toolbar-title> 
@@ -16,16 +15,17 @@
 
 <script>
 import { openURL } from 'quasar'
+
 export default {
   name: 'MyLayout',
   data () {
     return {
-      leftDrawerOpen: false
+      leftDrawerOpen: false,
     }
   },
   methods: {
     openURL
-  }
+  },
 }
 </script>
 

@@ -31,7 +31,7 @@ class GameClass extends GameProperties {
       forceCanvas: true,
       forceFXAA: true,
       autoDensity: true,
-      resolution: 2,
+      // resolution: 2,
       autoResize: true,
       width: 1600,
       height: 900,
@@ -101,6 +101,7 @@ class GameClass extends GameProperties {
       // anim.visible = false;
       anim.x = this.app.screen.width / 2;
       anim.y = this.app.screen.height / 2 - 100;
+
       anim.height = asset.height;
       anim.width = asset.width;
       // anim.anchor.set(0.5);
