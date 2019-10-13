@@ -53,6 +53,7 @@ export default {
   },
   methods: {
     ...mapActions({
+      setAdmin: 'admin/setAdmin',
       createGame : 'game1/createGame',
     }),
     goTo(link){
@@ -62,8 +63,8 @@ export default {
     
   },
   mounted() {
-
-    resource = new GameLoader()  
+    this.setAdmin('admin')
+    resource = new GameLoader()
     resource.bringAllResource(this.targetResource)
     // this.bringAllResource(this.targetResource)
   }

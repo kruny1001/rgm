@@ -35,6 +35,7 @@ module.exports = function (ctx) {
       // all: true, // --- includes everything; for dev only!
 
       components: [
+        'QInput',
         'QImg',
         'QLayout',
         'QHeader',
